@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-clog"
+    },
+    "marquee": {
+      "type": "marquee-clog"
+    },
+    "colors": {
+      "type": "collection-colors",
+      "blocks": {
+        "pink": {
+          "type": "tile",
+          "settings": {
+            "label": "Rose bonbon",
+            "color": "#EDB9D2",
+            "shoe_color": "#FF8FB1"
+          }
+        },
+        "blue": {
+          "type": "tile",
+          "settings": {
+            "label": "Bleu ciel",
+            "color": "#BBE1FC",
+            "shoe_color": "#78B9EE"
+          }
+        },
+        "lilac": {
+          "type": "tile",
+          "settings": {
+            "label": "Lilas",
+            "color": "#D3C8F8",
+            "shoe_color": "#A99BEF"
+          }
+        }
+      },
+      "block_order": [
+        "pink",
+        "blue",
+        "lilac"
+      ]
+    },
+    "featured": {
+      "type": "featured-collection"
+    },
+    "charms": {
+      "type": "jibbitz-feature"
+    },
+    "benefits": {
+      "type": "benefits-clog",
+      "blocks": {
+        "light": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🪶",
+            "title": "Légers",
+            "description": "Des sabots conçus pour un port agréable au quotidien."
+          }
+        },
+        "style": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🎨",
+            "title": "Ton style",
+            "description": "Couleurs et accessoires selon les modèles disponibles."
+          }
+        },
+        "local": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "📍",
+            "title": "Stock à Dakar",
+            "description": "Produits physiquement disponibles et quantités actualisées."
+          }
+        },
+        "delivery": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "📦",
+            "title": "Livraison locale",
+            "description": "Options et frais précisés lors de la commande."
+          }
+        }
+      },
+      "block_order": [
+        "light",
+        "style",
+        "local",
+        "delivery"
+      ]
+    },
+    "reviews": {
+      "type": "testimonials-clog"
+    },
+    "gallery": {
+      "type": "ugc-gallery"
+    },
+    "newsletter": {
+      "type": "newsletter-clog"
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "colors",
+    "featured",
+    "charms",
+    "benefits",
+    "reviews",
+    "gallery",
+    "newsletter"
+  ]
+}

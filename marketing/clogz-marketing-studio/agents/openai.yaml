@@ -1,0 +1,6 @@
+interface:
+  display_name: CLOGZ Marketing Studio
+  short_description: Marketing CLOGZ au Sénégal
+  default_prompt: Propose un plan marketing CLOGZ de 30 jours.
+policy:
+  allow_implicit_invocation: true

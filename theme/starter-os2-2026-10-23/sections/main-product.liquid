@@ -1,0 +1,45 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+<script type="application/ld+json">{{ product | structured_data }}</script>
+<div class="clogz-container"><div class="clogz-breadcrumb"><a href="{{ routes.root_url }}">Accueil</a> / <a href="{{ routes.all_products_collection_url }}">Boutique</a> / {{ product.title | escape }}</div>
+<div class="clogz-product">
+ <div class="clogz-product__gallery" data-product-gallery>
+  <div class="clogz-product__mainmedia">
+   {% if product.media.size > 0 %}
+    {% for media in product.media %}<div data-media-id="{{ media.id }}" {% unless forloop.first %}hidden{% endunless %}>
+    {% case media.media_type %}
+    {% when 'image' %}<img src="{{ media.preview_image | image_url: width: 1300 }}" srcset="{{ media.preview_image | image_url: width: 500 }} 500w, {{ media.preview_image | image_url: width: 900 }} 900w, {{ media.preview_image | image_url: width: 1300 }} 1300w" sizes="(max-width: 850px) 90vw, 50vw" alt="{{ media.alt | default: product.title | escape }}" width="{{ media.preview_image.width }}" height="{{ media.preview_image.height }}" {% unless forloop.first %}loading="lazy"{% endunless %}>
+    {% else %}{{ media | media_tag: image_size: '1000x', controls: true }}
+    {% endcase %}
+    </div>{% endfor %}
+   {% else %}<div style="padding:14%;color:#b8a7ed">{% render 'clog-icon' %}</div>{% endif %}
+  </div>
+  {% if product.media.size > 1 %}<div class="clogz-product__thumbs" aria-label="Galerie produit">{% for media in product.media %}<button type="button" data-media-thumb="{{ media.id }}" aria-label="Voir visuel {{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"><img src="{{ media.preview_image | image_url: width: 180 }}" alt="{{ media.alt | default: product.title | escape }}" width="90" height="90" loading="lazy"></button>{% endfor %}</div>{% endif %}
+ </div>
+ <div class="clogz-product__info">
+  {% if product.vendor != blank %}<div class="clogz-eyebrow" style="color:var(--green)">{{ product.vendor | escape }}</div>{% endif %}
+  <h1>{{ product.title | escape }}</h1>
+  <div class="clogz-product__price" data-product-price>{{ current_variant.price | money }}</div>
+  <form class="clogz-product__form" data-product-form data-stock-threshold="{{ section.settings.low_stock_threshold }}" action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{{ current_variant.id }}">
+    {% unless product.has_only_default_variant %}
+     {% for option in product.options_with_values %}
+      <fieldset class="clogz-product__option" data-option-position="{{ option.position }}"><legend>{{ option.name | escape }}</legend><div class="clogz-product__option-values">
+        {% for value in option.values %}<label><input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}><span>{{ value | escape }}</span></label>{% endfor %}
+      </div></fieldset>
+     {% endfor %}
+    {% endunless %}
+    <div class="clogz-inline-form"><label for="Quantity-{{ section.id }}">Quantité</label><input id="Quantity-{{ section.id }}" name="quantity" type="number" min="1" value="1" style="width:84px"></div>
+    <p class="clogz-product__stock" data-variant-stock aria-live="polite"></p>
+    <button type="submit" name="add" class="clogz-pill clogz-pill--green clogz-product__atc" {% unless current_variant.available %}disabled{% endunless %}>{% if current_variant.available %}Ajouter au panier{% else %}Épuisé{% endif %}</button>
+    <small class="clogz-muted">Frais et délais de livraison confirmés à la commande selon la zone.</small>
+  </form>
+  <script type="application/json" data-product-variants>{{ product.variants | json }}</script>
+  {% if section.settings.size_guide != blank %}<p style="margin-top:20px"><a href="{{ section.settings.size_guide.url }}" style="text-decoration:underline">Guide des tailles ↗</a></p>{% endif %}
+  {% if product.description != blank %}<div class="clogz-product__description" style="margin-top:30px">{{ product.description }}</div>{% endif %}
+ </div>
+</div></div>
+<div class="clogz-sticky-atc"><div class="clogz-sticky-atc__label">{{ product.title | escape }}<br><span class="clogz-muted">Choisis ta variante</span></div><button type="button" class="clogz-pill clogz-pill--green" data-sticky-product-button {% unless current_variant.available %}disabled{% endunless %}>Ajouter au panier</button></div>
+{% if section.settings.upsell_collection != blank %}<section class="clogz-section" style="background:#f8f8fa"><div class="clogz-container"><div class="clogz-headrow"><h2 class="clogz-heading">{{ section.settings.upsell_title | escape }}</h2></div><div class="clogz-grid">{% for item in section.settings.upsell_collection.products limit: 4 %}{% unless item.id == product.id %}{% render 'product-card', product: item %}{% endunless %}{% endfor %}</div></div></section>{% endif %}
+{% schema %}
+{"name":"Fiche produit premium","settings":[{"type":"range","id":"low_stock_threshold","label":"Seuil alerte stock réel","min":1,"max":10,"step":1,"default":3,"info":"Affiche les quantités uniquement si elles sont suivies par Shopify."},{"type":"page","id":"size_guide","label":"Page guide des tailles"},{"type":"collection","id":"upsell_collection","label":"Collection complémentaire (charms)"},{"type":"text","id":"upsell_title","label":"Titre des suggestions","default":"Ajoute ta touche perso."}]}
+{% endschema %}

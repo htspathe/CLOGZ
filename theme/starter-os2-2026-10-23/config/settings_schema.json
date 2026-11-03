@@ -1,0 +1,10 @@
+[
+ {"name":"theme_info","theme_name":"CLOGZ Street / Dakar","theme_author":"CLOGZ Custom","theme_version":"1.0.0","theme_documentation_url":"https://shopify.dev/docs/storefronts/themes","theme_support_url":"https://help.shopify.com"},
+ {"name":"Identité visuelle CLOGZ","settings":[
+  {"type":"color","id":"color_ink","label":"Noir profond","default":"#0B0B0F"},
+  {"type":"color","id":"color_accent","label":"Vert accent","default":"#2E8B3E"},
+  {"type":"color","id":"color_background","label":"Fond principal","default":"#FFFFFF"},
+  {"type":"color","id":"color_pastel","label":"Fond cartes","default":"#F6F7FA"},
+  {"type":"image_picker","id":"favicon","label":"Favicon personnalisé"}
+ ]}
+]

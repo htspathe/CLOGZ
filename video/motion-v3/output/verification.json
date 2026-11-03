@@ -1,0 +1,234 @@
+[
+  {
+    "file": "CLOGZ_V3_Master_40s_Vertical_Musique.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "1200"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "1876"
+        }
+      ],
+      "format": {
+        "duration": "40.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_Master_40s_Vertical_Voix_Provisoire.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "1200"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "1876"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle",
+          "r_frame_rate": "0/0",
+          "nb_frames": "19"
+        }
+      ],
+      "format": {
+        "duration": "40.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_Reel_30s_Musique.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "900"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "1408"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_Reel_30s_Voix_Provisoire.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "900"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "1408"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle",
+          "r_frame_rate": "0/0",
+          "nb_frames": "17"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_Teaser_15s_Musique.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "450"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "705"
+        }
+      ],
+      "format": {
+        "duration": "15.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_Teaser_15s_Voix_Provisoire.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1080,
+          "height": 1920,
+          "r_frame_rate": "30/1",
+          "nb_frames": "450"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "705"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle",
+          "r_frame_rate": "0/0",
+          "nb_frames": "13"
+        }
+      ],
+      "format": {
+        "duration": "15.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_YouTube_43s_Musique.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "30/1",
+          "nb_frames": "1290"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "2017"
+        }
+      ],
+      "format": {
+        "duration": "43.000000"
+      }
+    }
+  },
+  {
+    "file": "CLOGZ_V3_YouTube_43s_Voix_Provisoire.mp4",
+    "technical_check": "PASS",
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "30/1",
+          "nb_frames": "1290"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "r_frame_rate": "0/0",
+          "nb_frames": "2017"
+        },
+        {
+          "codec_name": "mov_text",
+          "codec_type": "subtitle",
+          "r_frame_rate": "0/0",
+          "nb_frames": "19"
+        }
+      ],
+      "format": {
+        "duration": "43.000000"
+      }
+    }
+  }
+]

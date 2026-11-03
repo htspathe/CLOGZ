@@ -1,0 +1,20 @@
+{% liquid
+ assign v = product.selected_or_first_available_variant
+ assign has_options = false
+ if product.has_only_default_variant == false
+  assign has_options = true
+ endif
+%}
+<article class="clogz-card">
+<a href="{{ product.url }}" class="clogz-card__photo" aria-label="Voir {{ product.title | escape }}">
+ {% if product.featured_image != blank %}<img src="{{ product.featured_image | image_url: width: 650 }}" srcset="{{ product.featured_image | image_url: width: 330 }} 330w, {{ product.featured_image | image_url: width: 650 }} 650w" sizes="(max-width: 520px) 45vw, (max-width: 850px) 45vw, 23vw" alt="{{ product.featured_image.alt | default: product.title | escape }}" loading="lazy" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">{% else %}{% render 'clog-icon' %}{% endif %}
+ {% unless product.available %}<span class="clogz-card__badge">Épuisé</span>{% endunless %}
+</a>
+<div class="clogz-card__body"><h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3><span class="clogz-card__price">{% if product.price_varies %}Dès {{ product.price_min | money }}{% else %}{{ product.price | money }}{% endif %}</span>
+<div class="clogz-card__actions">{% if product.available and has_options == false %}<button type="button" class="clogz-pill" data-quick-add="{{ v.id }}">Ajout rapide +</button>{% elsif product.available %}
+<form class="clogz-quick-form" data-card-variant-form>
+<label class="clogz-sr-only" for="QuickVariant-{{ product.id }}">Couleur et pointure</label>
+<select id="QuickVariant-{{ product.id }}" name="id" required aria-label="Couleur et taille {{ product.title | escape }}">{% for variant in product.variants %}<option value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }} · {{ variant.price | money }}{% unless variant.available %} · Épuisé{% endunless %}</option>{% endfor %}</select>
+<button class="clogz-pill" type="submit">Ajout rapide +</button>
+</form>{% else %}<span class="clogz-pill" style="opacity:.55">Indisponible</span>{% endif %}</div></div>
+</article>

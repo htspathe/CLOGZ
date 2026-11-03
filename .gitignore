@@ -1,0 +1,30 @@
+# Local secrets and customer data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*credentials*
+*token*
+*secret*
+customers*.csv
+orders*.csv
+private/
+node_modules/
+.DS_Store
+*.log
+coverage/
+dist/
+.cache/
+.vercel/
+.shopify/
+# media / export artifacts (maintain source URLs in docs)
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.ttf
+*.otf

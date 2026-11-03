@@ -1,0 +1,6 @@
+<section class="clogz-section"><div class="clogz-container"><div class="clogz-newsletter"><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.description | escape }}</p>
+{% form 'customer', class: 'clogz-newsletter__form' %}<input type="hidden" name="contact[tags]" value="newsletter"><label class="clogz-sr-only" for="NewsletterEmail-{{ section.id }}">Adresse e-mail</label><input id="NewsletterEmail-{{ section.id }}" name="contact[email]" type="email" autocomplete="email" required placeholder="ton@email.com"><button class="clogz-pill clogz-pill--green" type="submit">S'inscrire</button>{% if form.posted_successfully? %}<p role="status">Merci pour ton inscription !</p>{% endif %}{% if form.errors %}<p role="alert">{{ form.errors | default_errors }}</p>{% endif %}{% endform %}
+</div></div></section>
+{% schema %}
+{"name":"Newsletter","settings":[{"type":"text","id":"heading","label":"Titre","default":"Reste dans le move."},{"type":"textarea","id":"description","label":"Texte","default":"Reçois nos nouveaux drops et disponibilités. Pas de fausses promesses, juste les nouveautés."}],"presets":[{"name":"Newsletter CLOGZ"}]}
+{% endschema %}

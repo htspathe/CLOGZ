@@ -1,0 +1,31 @@
+{
+  "name": "clogz-marketing",
+  "version": "1.0.0",
+  "description": "Suite de 12 workflows marketing conçus pour CLOGZ Sénégal : SEO, contenu, CRO, Meta/TikTok Ads, fidélisation, GTM et analytics.",
+  "author": {
+    "name": "CLOGZ"
+  },
+  "keywords": [
+    "clogz",
+    "shopify",
+    "marketing",
+    "seo",
+    "cro",
+    "meta-ads",
+    "senegal"
+  ],
+  "skills": "./skills",
+  "interface": {
+    "displayName": "CLOGZ Marketing Studio",
+    "developerName": "CLOGZ",
+    "shortDescription": "Stratégie, contenu, SEO et croissance CLOGZ",
+    "longDescription": "12 compétences marketing privées spécialisées pour la boutique CLOGZ : stratégie et segments, SEO Sénégal, rédaction e-commerce, optimisation de conversion, réseaux sociaux, campagnes publicitaires, créations d’annonces, CRM WhatsApp/e-mail, mesure des ventes, tests et calendrier de croissance. Inspirées des thèmes abordés par coreyhaines31/marketingskills et realjaymes/marketingagentskills. Ne modifie aucune boutique ni ne lance de publicité sans accord explicite.",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Prépare la stratégie marketing CLOGZ pour les 30 prochains jours avec un budget serré.",
+      "Fais un audit SEO et conversion de www.clogz.sn et classe les correctifs par impact.",
+      "Crée une campagne Instagram et TikTok de lancement pour les sabots CLOGZ à Dakar."
+    ]
+  }
+}

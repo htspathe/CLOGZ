@@ -1,0 +1,9 @@
+<footer class="clogz-footer"><div class="clogz-container">
+ <div class="clogz-footer__grid"><div><a class="clogz-logo" href="{{ routes.root_url }}"><span class="clogz-logo__mark">C</span>{{ section.settings.brand | escape }}</a><p>{{ section.settings.blurb | escape }}</p></div>
+ <div><h3>Explorer</h3><div class="clogz-footlinks">{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ routes.all_products_collection_url }}">Tous les produits</a><a href="{{ routes.collections_url }}">Collections</a>{% endif %}</div></div>
+ <div><h3>Informations</h3><div class="clogz-footlinks">{% if section.settings.policy_menu != blank %}{% for link in section.settings.policy_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% endif %}{% if shop.email != blank %}<a href="mailto:{{ shop.email }}">Nous contacter</a>{% endif %}</div></div></div>
+ <div class="clogz-footer__bottom">© {{ 'now' | date: '%Y' }} {{ shop.name | escape }} · Boutique indépendante · {{ shop.currency }}{% if section.settings.disclaimer != blank %}<p>{{ section.settings.disclaimer | escape }}</p>{% endif %}</div>
+ </div></footer>
+{% schema %}
+{"name":"Pied de page CLOGZ","settings":[{"type":"text","id":"brand","label":"Marque","default":"CLOGZ"},{"type":"textarea","id":"blurb","label":"Description","default":"Les sabots et accessoires qui mettent du style dans ton quotidien. Stock local à Dakar."},{"type":"link_list","id":"menu","label":"Menu des collections"},{"type":"link_list","id":"policy_menu","label":"Menu des politiques et contact"},{"type":"textarea","id":"disclaimer","label":"Information complémentaire","default":"Les noms et logos de marques tierces restent la propriété de leurs titulaires."}]}
+{% endschema %}

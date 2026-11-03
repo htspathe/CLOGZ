@@ -1,0 +1,12 @@
+<header class="clogz-header">
+ <div class="clogz-header__inner">
+ <button class="clogz-iconbutton clogz-menu-toggle" type="button" data-clogz-menu aria-expanded="false" aria-controls="ClogzMobileMenu" aria-label="Ouvrir le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+ <a href="{{ routes.root_url }}" class="clogz-logo" aria-label="Accueil {{ shop.name | escape }}">{% if section.settings.logo != blank %}<img src="{{ section.settings.logo | image_url: width: 350 }}" alt="{{ shop.name | escape }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" loading="eager">{% else %}<span class="clogz-logo__mark">C</span>{{ section.settings.brand | escape }}{% endif %}</a>
+ <nav class="clogz-nav" aria-label="Navigation principale">{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ routes.all_products_collection_url }}">Nouveautés</a><a href="{{ routes.collections_url }}">Collections</a>{% endif %}</nav>
+ <div class="clogz-header__actions"><a href="{{ routes.search_url }}" class="clogz-iconbutton" aria-label="Rechercher"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15.5 15.5 6 6"/></svg></a><button class="clogz-iconbutton" type="button" data-open-cart aria-label="Ouvrir le panier"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16l-1.5 13h-13L4 7ZM9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="clogz-cart-count" data-cart-count>{{ cart.item_count }}</span></button></div>
+ </div>
+ <nav id="ClogzMobileMenu" class="clogz-mobile-menu" hidden aria-label="Navigation mobile">{% if section.settings.menu != blank %}{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}{% else %}<a href="{{ routes.all_products_collection_url }}">Nouveautés</a><a href="{{ routes.collections_url }}">Collections</a>{% endif %}</nav>
+</header>
+{% schema %}
+{"name":"En-tête CLOGZ","settings":[{"type":"text","id":"brand","label":"Nom affiché","default":"CLOGZ"},{"type":"image_picker","id":"logo","label":"Logo personnalisé"},{"type":"link_list","id":"menu","label":"Menu principal"}]}
+{% endschema %}

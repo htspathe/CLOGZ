@@ -1,0 +1,16 @@
+# EXEMPLE : à configurer avec Shopify CLI après création de l'application CLOGZ.
+# Ne fonctionne pas sans client_id et installation de l'application dans la boutique.
+name = "CLOGZ Suivi"
+client_id = "REMPLACER_PAR_LE_CLIENT_ID_SHOPIFY"
+application_url = "https://REMPLACER_PAR_URL_API_VERCEL"
+embedded = false
+
+[access_scopes]
+scopes = "read_orders,write_orders,read_metaobjects,write_metaobjects"
+
+[webhooks]
+api_version = "2026-10"
+
+[[webhooks.subscriptions]]
+topics = ["orders/create"]
+uri = "https://REMPLACER_PAR_URL_API_VERCEL/api/webhooks/orders-create"

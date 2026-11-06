@@ -1,0 +1,44 @@
+{{ 'clogz-social.css' | asset_url | stylesheet_tag }}
+<footer class="clogz-footer"><div class="clogz-container">
+ <div class="clogz-footer__grid"><div><a class="clogz-logo" href="{{ routes.root_url }}" aria-label="Accueil CLOGZ">{% render 'clogz-brand-mark' %}</a><p>{{ section.settings.blurb | escape }}</p><p class="clogz-footer__cod">Tu paies à la livraison : cash, Wave ou OM</p></div>
+ <div><h3>Explorer</h3><div class="clogz-footlinks"><a href="{{ routes.collections_url }}">Les coloris</a><a href="/pages/notre-histoire">Notre histoire</a><a href="/collections/clogz-spider-man">Le drop Spider-Man</a><a href="/pages/idees-de-personnalisation">Notre univers CLOGZ</a><a href="/pages/contact-clogz">Contact CLOGZ</a></div></div>
+ <div><h3>Informations</h3><div class="clogz-footlinks"><a href="/pages/nos-engagements">Nos engagements</a><a href="/#clogz-faq">FAQ · Crocs Dakar &amp; livraison</a><a href="/pages/contact-clogz">Formulaire de contact</a><a href="/pages/politique-retours-clogz">Retours et remboursements</a><a href="/pages/politique-livraison-clogz">Livraison</a><a href="/pages/commandes-internationales">Hors Sénégal</a><a href="/pages/conditions-generales-clogz">Conditions de vente</a><a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}">Confidentialité</a><a href="/pages/suivi">Suivre ma commande</a><a href="/pages/modifier-commande">Demander un changement</a><a href="{{ routes.cart_url }}">Ton panier</a><span>Livraison gratuite partout à Dakar</span><span>Paiement à la livraison : cash, Wave ou Orange Money</span></div></div></div>
+
+{% assign clogz_social_instagram = section.settings.social_instagram | default: 'https://www.instagram.com/clogz221' %}
+{% assign clogz_social_tiktok = section.settings.social_tiktok | default: 'https://www.tiktok.com/@clogz221' %}
+{% assign clogz_social_facebook = section.settings.social_facebook | default: 'https://www.facebook.com/share/1eSisoRogM/' %}
+{% assign clogz_social_threads = section.settings.social_threads | default: 'https://www.threads.com/@clogz221' %}
+{% assign clogz_social_whatsapp = section.settings.social_whatsapp | default: 'https://whatsapp.com/channel/0029VbDsqB4EAKWLtyW1gc33' %}
+{% assign clogz_has_social = false %}
+{% if clogz_social_instagram != blank or clogz_social_tiktok != blank or clogz_social_facebook != blank or clogz_social_threads != blank or clogz_social_whatsapp != blank %}{% assign clogz_has_social = true %}{% endif %}
+{% if clogz_has_social %}
+<section class="clogz-social" aria-label="Réseaux sociaux et WhatsApp CLOGZ">
+  <div class="clogz-social__heading"><span class="clogz-social__eyebrow">REJOINS LE MOOD</span><h3>Suis CLOGZ</h3><p>Les nouveautés, les drops et les idées de style.</p></div>
+  <nav class="clogz-social__links" aria-label="Suis CLOGZ sur les réseaux">
+    {% if clogz_social_instagram != blank %}<a class="clogz-social__link clogz-social__link--instagram" href="{{ clogz_social_instagram | escape }}" target="_blank" rel="noopener noreferrer" aria-label="CLOGZ sur Instagram"><span class="clogz-social__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.4"/><circle cx="17.8" cy="6.4" r=".9" fill="currentColor" stroke="none"/></svg></span><span>Instagram</span></a>{% endif %}
+    {% if clogz_social_tiktok != blank %}<a class="clogz-social__link clogz-social__link--tiktok" href="{{ clogz_social_tiktok | escape }}" target="_blank" rel="noopener noreferrer" aria-label="CLOGZ sur TikTok"><span class="clogz-social__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3v11.1a5.3 5.3 0 1 1-5-5.25"/><path d="M14.5 3c.45 3.25 2.55 5.35 6 5.5"/></svg></span><span>TikTok</span></a>{% endif %}
+    {% if clogz_social_facebook != blank %}<a class="clogz-social__link clogz-social__link--facebook" href="{{ clogz_social_facebook | escape }}" target="_blank" rel="noopener noreferrer" aria-label="CLOGZ sur Facebook"><span class="clogz-social__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.8 21V12.8h2.65l.4-3.3H13.8V7.4c0-.98.27-1.65 1.62-1.65h1.6V2.8c-.28-.04-1.29-.13-2.46-.13-2.48 0-4.17 1.5-4.17 4.25V9.5H7.6v3.3h2.79V21h3.41Z"/></svg></span><span>Facebook</span></a>{% endif %}
+    {% if clogz_social_threads != blank %}<a class="clogz-social__link clogz-social__link--threads" href="{{ clogz_social_threads | escape }}" target="_blank" rel="noopener noreferrer" aria-label="CLOGZ sur Threads"><span class="clogz-social__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.75 9.15c-.42-2.1-1.9-3.35-4.55-3.35-4.1 0-6.38 2.5-6.38 6.55 0 4.05 2.2 6.450 6.4 6.45 3.75 0 5.78-2.25 5.78-4.85 0-2.2-1.65-3.62-4.1-3.62-2.55 0-4.1 1.18-4.1 3 0 1.5 1.15 2.47 2.66 2.47 2.6 0 4.27-2.07 4.27-4.65 0-3.8-2.63-5.8-6.14-5.8"/></svg></span><span>Threads</span></a>{% endif %}
+    {% if clogz_social_whatsapp != blank %}<a class="clogz-social__link clogz-social__link--whatsapp" href="{{ clogz_social_whatsapp | escape }}" target="_blank" rel="noopener noreferrer" aria-label="Suivre la chaîne WhatsApp de CLOGZ"><span class="clogz-social__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.35 11.7a8.35 8.35 0 0 1-12.3 7.3l-4.4 1.2 1.22-4.25a8.36 8.36 0 1 1 15.48-4.25Z"/><path d="M8.2 7.9c-.38.35-.88 1.2-.55 2.45.6 2.28 3.32 5.1 5.85 5.85 1.07.32 2.06-.18 2.5-.78l-2.07-1.22-.9.75a8.3 8.3 0 0 1-3.8-3.9l.7-1.05-1.3-2.2Z"/></svg></span><span>Chaîne WhatsApp</span></a>{% endif %}
+  </nav>
+</section>
+{% endif %}
+ <div class="clogz-footer__bottom">© {{ 'now' | date: '%Y' }} CLOGZ · Boutique indépendante · {{ shop.currency }}{% if section.settings.disclaimer != blank %}<p>{{ section.settings.disclaimer | escape }}</p>{% endif %}</div>
+ </div></footer>
+{% schema %}
+{
+  "name": "Pied de page CLOGZ",
+  "settings": [
+    {"type": "text", "id": "brand", "label": "Marque", "default": "CLOGZ"},
+    {"type": "textarea", "id": "blurb", "label": "Description", "default": "Sabots à 12 000 FCFA • Livraison gratuite partout à Dakar • Pins offerts."},
+    {"type": "link_list", "id": "menu", "label": "Menu des collections"},
+    {"type": "link_list", "id": "policy_menu", "label": "Menu des politiques et contact"},
+    {"type": "textarea", "id": "disclaimer", "label": "Information complémentaire", "default": "Les noms et logos de marques tierces restent la propriété de leurs titulaires."},
+    {"type": "url", "id": "social_instagram", "label": "Instagram — URL du profil CLOGZ"},
+    {"type": "url", "id": "social_tiktok", "label": "TikTok — URL du profil CLOGZ"},
+    {"type": "url", "id": "social_facebook", "label": "Facebook — URL de la page CLOGZ"},
+    {"type": "url", "id": "social_threads", "label": "Threads — URL du profil CLOGZ"},
+    {"type": "url", "id": "social_whatsapp", "label": "Chaîne WhatsApp — URL du canal"}
+  ]
+}
+{% endschema %}

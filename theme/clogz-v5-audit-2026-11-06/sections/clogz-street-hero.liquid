@@ -1,0 +1,16 @@
+<section class="clogz-street-hero" aria-label="Bienvenue sur CLOGZ" id="ClogzHero-{{ section.id }}">
+  
+  <div class="clogz-street-hero__veil" aria-hidden="true"></div>
+  <div class="clogz-street-hero__inner clogz-container" style="grid-template-columns:minmax(0,1fr)">
+    <div class="clogz-street-hero__copy">
+      <p class="clogz-street-hero__eyebrow">CLOGZ / DAKAR / Dey Daw Rek</p>
+      <h1>Le style prend la <em>rue.</em></h1>
+      <p class="clogz-street-hero__promise">Des paires qui suivent ton mouvement. 10 couleurs, ton choix, tes règles.</p>
+      <a class="clogz-street-hero__cta" href="{{ section.settings.primary_link | default: '/collections/clogz-tous-les-sabots' }}">{{ section.settings.primary_label | escape }} </a>
+      <a class="clogz-street-hero__quiet-link" href="/pages/idees-de-personnalisation">Découvrir notre univers </a>
+    </div>
+  </div>
+  <div class="clogz-street-hero__label" aria-hidden="true">SENEGAL STREETWEAR FOR MOVEMENT</div>
+</section>{% schema %}
+{"name":"Hero CLOGZ Dakar","settings":[{"type":"text","id":"primary_label","label":"Bouton principal","default":"Découvrir la collection"},{"type":"url","id":"primary_link","label":"Lien vers la collection"}],"presets":[{"name":"Hero CLOGZ Dakar"}]}
+{% endschema %}

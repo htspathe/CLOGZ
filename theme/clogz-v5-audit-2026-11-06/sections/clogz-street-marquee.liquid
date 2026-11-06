@@ -1,0 +1,29 @@
+<div class="clogz-slogan-ribbon" role="region" aria-label="Ton mood, ta paire, tes règles, Dey Daw Rek">
+  <div class="clogz-slogan-ribbon__track" aria-hidden="true">
+    {% for repetition in (1..2) %}
+      <div class="clogz-slogan-ribbon__group">
+        {% for cycle in (1..4) %}
+          <div class="clogz-slogan-ribbon__line">
+            <span>TON MOOD</span><span class="clogz-slogan-ribbon__boom">💥</span>
+            <span>TA PAIRE</span><span class="clogz-slogan-ribbon__boom">💥</span>
+            <span>TES RÈGLES</span><span class="clogz-slogan-ribbon__boom">💥</span>
+            <strong>Dey Daw Rek</strong><span class="clogz-slogan-ribbon__boom">💥</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<style>
+  /* Inclinaison douce de l'intégralité du ruban, sans toucher à son animation. */
+  .clogz-slogan-ribbon {
+    transform: skewY(-1.1deg);
+    transform-origin: center center;
+  }
+  .clogz-slogan-ribbon::before {
+    transform: none;
+  }
+</style>
+{% schema %}
+{"name":"Signature CLOGZ","settings":[],"presets":[{"name":"Signature CLOGZ"}]}
+{% endschema %}

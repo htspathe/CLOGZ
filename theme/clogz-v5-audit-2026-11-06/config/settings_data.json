@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "color_ink": "#191817",
+    "color_accent": "#EE4A3D",
+    "color_background": "#FFF8F1",
+    "color_pastel": "#FBE2D5",
+    "color_copper": "#C77859",
+    "clogz_monogram_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-new-monogram-cuivre-20261025.webp?v=1792944291",
+    "clogz_logo_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-new-logo-wordmark-peche-20261025.webp?v=1792944286",
+    "sections": {
+      "site-footer": {
+        "type": "site-footer",
+        "settings": {
+          "social_instagram": "https://www.instagram.com/clogz221",
+          "social_tiktok": "https://www.tiktok.com/@clogz221",
+          "social_facebook": "https://www.facebook.com/share/1eSisoRogM/",
+          "social_threads": "https://www.threads.com/@clogz221",
+          "social_whatsapp": "https://whatsapp.com/channel/0029VbDsqB4EAKWLtyW1gc33"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {}
+}

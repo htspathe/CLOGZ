@@ -1,0 +1,4 @@
+<section class="clogz-marquee" aria-label="{{ section.settings.text | escape }}"><div class="clogz-marquee__track" aria-hidden="true">{% for i in (1..12) %}<span>{{ section.settings.text | escape }}</span><span>✦</span>{% endfor %}</div></section>
+{% schema %}
+{"name":"Bandeau défilant","settings":[{"type":"text","id":"text","label":"Texte répété","default":"CLOGZ • CONFORT • STYLE"}],"presets":[{"name":"Bandeau défilant"}]}
+{% endschema %}

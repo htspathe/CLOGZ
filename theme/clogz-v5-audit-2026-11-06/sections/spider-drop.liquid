@@ -1,0 +1,15 @@
+<section class="clogz-spider-section clogz-section" id="ClogzSpider-{{ section.id }}">
+ <div class="clogz-container">
+  <div class="clogz-spider-head">
+   <div class="clogz-spider-head__text"><span class="clogz-spider-kicker">LE DROP • ÉDITION SPÉCIALE</span>
+    <h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.description | escape }}</p>
+   </div>
+   <a class="clogz-spider-head__link" href="/collections/clogz-spider-man">Découvrir la collection </a>
+  </div>
+  {% render 'clogz-spider-cards' %}
+  <div class="clogz-spider-disclaimer"><span aria-hidden="true">✦</span> 22 500 FCFA par paire · Pointures 36 à 46 · Livraison gratuite à Dakar.</div>
+ </div>
+</section>
+{% schema %}
+{"name":"Drop Spider CLOGZ","settings":[{"type":"text","id":"heading","label":"Titre","default":"Spider-Man. Trois façons de se démarquer."},{"type":"textarea","id":"description","label":"Description","default":"Rouge, noir ou bleu : découvre l’édition spéciale Spider-Man à 22 500 FCFA la paire."}],"presets":[{"name":"Drop Spider CLOGZ"}]}
+{% endschema %}

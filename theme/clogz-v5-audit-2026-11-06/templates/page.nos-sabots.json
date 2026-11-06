@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Nos sabots. Ton style.",
+        "description": "10 coloris • 12 000 FCFA • Pointures du 36 au 46 • Paiement à la livraison • Pins offerts.",
+        "show_clogz_catalog": true,
+        "collection": "clogz-tous-les-sabots",
+        "limit": 8
+      }
+    }
+  },
+  "order": [
+    "featured"
+  ]
+}

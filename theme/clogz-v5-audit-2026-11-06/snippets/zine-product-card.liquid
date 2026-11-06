@@ -1,0 +1,35 @@
+
+{% doc %}
+@param {product} product - Produit du catalogue Shopify
+@param {string} [eyebrow] - Petit texte facultatif sur la carte
+@param {number} [index] - Position dans la grille
+{% enddoc %}
+{% if product != blank %}
+  {% capture czine_color %}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{% endcapture %}
+  {% assign czine_category = 'essentiels' %}
+  {% if product.handle contains 'lilas' or product.handle contains 'rose' or product.handle contains 'bleu-ciel' %}
+    {% assign czine_category = 'pastels' %}
+  {% endif %}
+  <article class="czine-product-card" data-zine-card data-zine-category="{{ czine_category }}" style="--card-index:{{ index | default: 0 }}">
+    <span class="czine-card-tape" aria-hidden="true"></span>
+    <a href="{{ product.url }}" class="czine-product-image" aria-label="Voir {{ product.title | escape }}">
+      {% if product.featured_image %}
+        {% if product.handle == 'sabots-clogz-orange' %}
+          <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010" alt="{{ product.title | escape }} — vue détaillée de la paire" width="600" height="600" loading="lazy" decoding="async">
+        {% elsif product.handle == 'sabots-clogz-bleu-ciel' %}
+          <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804" alt="{{ product.title | escape }}" width="600" height="600" loading="lazy" decoding="async">
+        {% elsif product.handle == 'sabots-clogz-gris' %}
+          <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849" alt="{{ product.title | escape }}" width="600" height="600" loading="lazy" decoding="async">
+        {% else %}
+          {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 78vw', alt: product.title | append: ' — collection CLOGZ, coloris exclusif' }}
+        {% endif %}
+      {% else %}<span class="czine-no-photo">{{ czine_color | strip | escape }}</span>{% endif %}
+      <span class="czine-card-arrow" aria-hidden="true">↗</span>
+    </a>
+    <div class="czine-product-details">
+      <div><span class="czine-micro">{{ eyebrow | default: 'CHOISIS TA PAIRE' | escape }}</span><h3>{{ czine_color | strip | upcase | escape }}</h3></div>
+      <span class="czine-promo-prices"><strong>{% render 'clogz-price', amount: product.price %}</strong>{% if product.compare_at_price_max > product.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: product.compare_at_price_max %}</s>{% endif %}</span>
+    </div>
+    <a class="czine-pill czine-card-action" href="{{ product.url }}">{% if product.available %}VOIR LA PAIRE{% else %}VOIR LE MODÈLE{% endif %}<span>→</span></a>
+  </article>
+{% endif %}

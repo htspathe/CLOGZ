@@ -1,0 +1,48 @@
+{%- comment -%}
+  Noms d'affichage des coloris CLOGZ (thème uniquement, les fiches Shopify ne sont pas modifiées).
+  Paramètres : handle, title, field ('name' par défaut, 'hook' pour l'accroche).
+{%- endcomment -%}
+{%- liquid
+  assign cz_name = ''
+  assign cz_hook = ''
+  case handle
+    when 'sabots-clogz-noir'
+      assign cz_name = 'Noir Plateau'
+      assign cz_hook = 'Le noir qui va avec tout, du bureau au campus.'
+    when 'sabots-clogz-rouge'
+      assign cz_name = 'Rouge Sandaga'
+      assign cz_hook = 'Pour celles et ceux qui ne passent jamais inaperçus.'
+    when 'sabots-clogz-blanc'
+      assign cz_name = 'Blanc Ngor'
+      assign cz_hook = 'Frais comme une matinée à la plage de Ngor.'
+    when 'sabots-clogz-beige'
+      assign cz_name = 'Sable Lompoul'
+      assign cz_hook = 'Doux et chaud, il se marie avec tout.'
+    when 'sabots-clogz-vert-foret'
+      assign cz_name = 'Vert Casamance'
+      assign cz_hook = 'Un vert profond, plein de caractère.'
+    when 'sabots-clogz-rose-bonbon-pins-offerts'
+      assign cz_name = 'Rose Lac Rose'
+      assign cz_hook = 'Le rose le plus doux de Dakar.'
+    when 'sabots-clogz-bleu-ciel'
+      assign cz_name = 'Bleu Corniche'
+      assign cz_hook = 'L’air de la Corniche, à tes pieds.'
+    when 'sabots-clogz-lilas'
+      assign cz_name = 'Lilas Almadies'
+      assign cz_hook = 'Pastel, chic, un peu rêveur.'
+    when 'sabots-clogz-orange'
+      assign cz_name = 'Orange Saly'
+      assign cz_hook = 'Le soleil de la Petite-Côte, toute l’année.'
+    when 'sabots-clogz-gris'
+      assign cz_name = 'Gris Médina'
+      assign cz_hook = 'Le neutre qui a du style.'
+  endcase
+  if cz_name == blank
+    assign cz_name = title | remove: 'Sabots CLOGZ - Crocs ' | remove: 'Sabots CLOGZ — ' | remove: 'Sabots CLOGZ - '
+  endif
+  if field == 'hook'
+    echo cz_hook
+  else
+    echo cz_name
+  endif
+-%}

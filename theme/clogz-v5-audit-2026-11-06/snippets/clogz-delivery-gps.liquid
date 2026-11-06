@@ -1,0 +1,25 @@
+{% liquid
+ assign geo_context = context | default: 'cart'
+%}
+<section class="clogz-geo cz4-geo" data-clogz-delivery-gps data-geo-context="{{ geo_context }}" aria-label="Lieu de livraison">
+  <div class="clogz-geo__fields">
+    <label for="ClogzQuartier-{{ geo_context }}">Ton quartier de livraison</label>
+    <input id="ClogzQuartier-{{ geo_context }}" type="text" maxlength="80" autocomplete="address-level3" placeholder="Ex. Ouakam, Almadies, Médina" data-clogz-geo-field="Quartier de livraison">
+  </div>
+  <details class="cz4-cart-accordion">
+    <summary>Partager ma position (optionnel)</summary>
+    <div class="clogz-geo__choices">
+      <button type="button" class="clogz-geo__share" data-clogz-geo-share>Partager ma position</button>
+      <button type="button" class="clogz-geo__whatsapp" data-clogz-geo-whatsapp aria-expanded="false" aria-controls="ClogzWhatsApp-{{ geo_context }}">Utiliser WhatsApp</button>
+    </div>
+    <div id="ClogzWhatsApp-{{ geo_context }}" class="clogz-geo__whatsapp-help" data-clogz-geo-whatsapp-help hidden>
+      Après la commande, envoie-nous la position du lieu de remise sur WhatsApp.
+      <a href="/pages/contact-clogz">Contacter CLOGZ</a>
+    </div>
+    <p class="clogz-geo__status" data-clogz-geo-status role="status" aria-live="polite"></p>
+    <div class="clogz-geo__result" data-clogz-geo-result hidden>
+      <a data-clogz-geo-map target="_blank" rel="noopener noreferrer">Voir la position sur Google Maps</a>
+      <button type="button" data-clogz-geo-remove>Supprimer ma position</button>
+    </div>
+  </details>
+</section>

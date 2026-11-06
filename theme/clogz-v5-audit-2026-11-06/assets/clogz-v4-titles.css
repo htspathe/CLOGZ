@@ -1,0 +1,22 @@
+/* CLOGZ V4 — écriture unique des grands titres sur tout le site,
+   alignée sur le titre d'accueil « LE STYLE PREND LA RUE. » :
+   majuscules, Anton 900, lettres serrées, mot fort en rouge. */
+html body.clogz-v2-unified main :is(h1,h2){
+  font-family:"Anton","Instrument Sans",sans-serif!important;
+  font-weight:900!important;
+  text-transform:uppercase!important;
+  letter-spacing:-.045em!important;
+  line-height:1!important;
+}
+html body.clogz-v2-unified main :is(h1,h2) :is(em,i){font-style:normal!important;color:#ED4B39!important}
+/* Titres qui étaient en vert foncé : passage au noir CLOGZ. */
+html body.clogz-v2-unified :is(.clogz-collections__group-top,.clogz-collections__intro,.clogz-collection-intro,.clogz-page-title,.cz-faq__heading) :is(h1,h2),
+html body.clogz-v2-unified main h1.clogz-page-title{color:#191817!important}
+/* Petits titres de cartes : on garde le style actuel (lisibilité). */
+html body.clogz-v2-unified main :is(.cz4-pack,.clogz-card,.cv2-product-card,.cz-help__tile) :is(h2,h3){text-transform:none}
+
+/* V4 — menu principal centré (mobile et ordinateur). */
+html body.clogz-v2-unified .clogz-header .clogz-nav{justify-content:center!important;text-align:center}
+@media(max-width:850px){
+ html body.clogz-v2-unified .clogz-header .clogz-nav{display:flex!important;width:100%!important;margin-left:auto!important;margin-right:auto!important;justify-content:center!important;gap:clamp(14px,5vw,28px)!important}
+}

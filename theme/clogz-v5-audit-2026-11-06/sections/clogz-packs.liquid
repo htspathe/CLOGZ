@@ -1,0 +1,66 @@
+<section class="czpack" id="czpacks-{{ section.id }}">
+<style>
+#czpacks-{{ section.id }}{--ink:#211f20;--red:#e54541;--peach:#fff0e8;background:#fffaf6;color:var(--ink);padding:clamp(36px,7vw,96px) 18px;font-family:inherit}
+#czpacks-{{ section.id }} .wrap{max-width:1170px;margin:auto}#czpacks-{{ section.id }} h1{font-size:clamp(42px,8vw,100px);line-height:.95;letter-spacing:-.075em;margin:12px 0 20px;text-transform:uppercase}
+#czpacks-{{ section.id }} .eyebrow{font-weight:800;letter-spacing:.2em;font-size:12px;color:var(--red)}#czpacks-{{ section.id }} .lead{max-width:650px;line-height:1.6;font-size:17px;color:#686365}
+#czpacks-{{ section.id }} .switch{display:flex;gap:12px;margin:30px 0;flex-wrap:wrap}#czpacks-{{ section.id }} button,#czpacks-{{ section.id }} select{font:inherit}#czpacks-{{ section.id }} .tab{border:1px solid #e1d6cf;background:white;color:#211f20;padding:15px 25px;border-radius:999px;font-weight:800;cursor:pointer}#czpacks-{{ section.id }} .tab.active{background:#211f20;color:white;border-color:#211f20}
+#czpacks-{{ section.id }} .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,350px);gap:24px;align-items:start}#czpacks-{{ section.id }} .pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}#czpacks-{{ section.id }} .pair{border-radius:22px;border:1px solid #eadfd9;background:#fff;overflow:hidden}
+#czpacks-{{ section.id }} .picture{background:var(--peach);aspect-ratio:1.35;display:flex;align-items:center;justify-content:center}#czpacks-{{ section.id }} .picture img{width:85%;height:85%;object-fit:contain}#czpacks-{{ section.id }} .pairbody{padding:22px}#czpacks-{{ section.id }} h2{font-size:20px;font-weight:850;letter-spacing:-.04em;margin:0 0 16px}
+#czpacks-{{ section.id }} label{display:block;font-weight:750;font-size:12px;letter-spacing:.04em;margin:16px 0 7px;text-transform:uppercase}#czpacks-{{ section.id }} select{width:100%;border:1px solid #dad4d0;border-radius:11px;padding:13px;color:#211f20;background:#fff}
+#czpacks-{{ section.id }} .summary{background:#211f20;color:#fff;border-radius:24px;padding:25px;position:sticky;top:25px}#czpacks-{{ section.id }} .summary p{color:#bdb5b4}#czpacks-{{ section.id }} .sumrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #4e4747}#czpacks-{{ section.id }} .total{font-size:36px;font-weight:900;letter-spacing:-.05em}#czpacks-{{ section.id }} .save{color:#8ce1a7}#czpacks-{{ section.id }} .cta{width:100%;border:0;border-radius:999px;background:var(--red);color:#fff;padding:17px;margin-top:22px;font-weight:850}#czpacks-{{ section.id }} .note{font-size:12px;line-height:1.55;color:#c8c0bf}
+@media(max-width:800px){#czpacks-{{ section.id }} .layout{grid-template-columns:1fr}#czpacks-{{ section.id }} .summary{position:static}}@media(max-width:560px){#czpacks-{{ section.id }} .pairs{grid-template-columns:1fr}}
+</style>
+<div class="wrap"><span class="eyebrow">CLOGZ / DEY DAW REK</span><h1>COMPOSE<br>TON PACK<span style="color:var(--red)">.</span></h1><p class="lead">Deux ou trois paires. Tes couleurs. Tes pointures. Tes règles. Crée un pack aussi unique que toi.</p>
+<div class="switch" role="group" aria-label="Choisir le pack"><button class="tab active" type="button" data-count="2">DUO · 21 000 FCFA</button><button class="tab" type="button" data-count="3">TRIO · 30 000 FCFA</button></div>
+<div class="layout"><div class="pairs" data-pairs></div><aside class="summary"><span class="eyebrow">TON PACK</span><h2 style="color:#fff;margin-top:12px" data-packname>PACK DUO</h2><p>Personnalise chaque paire indépendamment.</p><div class="sumrow"><span>Prix habituel</span><s data-original>24 000 FCFA</s></div><div class="sumrow"><span>Économie</span><b class="save" data-saving>3 000 FCFA</b></div><div class="sumrow" style="border:0;align-items:end"><span>Total du pack</span><span class="total" data-total>21 000 FCFA</span></div><button type="button" class="cta" data-add-pack>AJOUTER MON PACK AU PANIER</button><p class="note" data-order-note>Un seul produit Pack apparaîtra dans le panier, avec le détail de tes paires. Commandes disponibles après activation du bundle et de son stock.</p></aside></div></div>
+<script type="application/json" data-catalog>
+[{% assign sep = '' %}{% for product in collections['all'].products limit: 50 %}{% if product.vendor == 'CLOGZ' and product.type == 'Sabots' and product.available %}{{ sep }}{"title":{{ product.title | json }},"handle":{{ product.handle | json }},"image":{{ product.featured_image | image_url: width: 650 | json }},"variants":[{% for v in product.variants %}{% unless forloop.first %},{% endunless %}{"id":{{ v.id | json }},"title":{{ v.title | json }},"available":{{ v.available | json }}}{% endfor %}]}{% assign sep = ',' %}{% endif %}{% endfor %}]
+</script>
+<script>
+(function(){const root=document.getElementById('czpacks-{{ section.id }}');if(!root)return;const catalog=JSON.parse(root.querySelector('[data-catalog]').textContent||'[]');let count=2;const selections=[{p:0,v:0},{p:0,v:0},{p:0,v:0}];let editItem=null;const editKey=new URLSearchParams(window.location.search).get('edit_key');const money=n=>new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0}).format(n).replace(/[\u00a0\u202f]/g,' ')+' FCFA';const html=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));function paint(){const area=root.querySelector('[data-pairs]');area.innerHTML='';for(let i=0;i<count;i++){const selected=selections[i];let prod=catalog[selected.p];if(!prod && catalog.length){selected.p=0;prod=catalog[0]}if(prod&&!prod.variants[selected.v])selected.v=0;const card=document.createElement('article');card.className='pair';if(!prod){card.innerHTML='<div class="pairbody"><h2>Paire '+(i+1)+'</h2><p>Les modèles CLOGZ ne sont pas encore disponibles à la vente.</p></div>'}else{card.innerHTML='<div class="picture"><img alt="'+html(prod.title)+'" src="'+html(prod.image)+'" loading="lazy"></div><div class="pairbody"><h2>PAIRE 0'+(i+1)+'</h2><label>Modèle / Couleur</label><select data-model aria-label="Couleur paire '+(i+1)+'">'+catalog.map((p,j)=>'<option value="'+j+'" '+(selected.p===j?'selected':'')+'>'+html(p.title)+'</option>').join('')+'</select><label>Pointure</label><select data-size aria-label="Pointure paire '+(i+1)+'">'+prod.variants.map((v,j)=>'<option value="'+j+'" '+(selected.v===j?'selected':'')+' '+(!v.available?'disabled':'')+'>'+html(v.title)+(!v.available?' — épuisé':'')+'</option>').join('')+'</select></div>';card.querySelector('[data-model]').addEventListener('change',e=>{selected.p=Number(e.target.value);selected.v=0;paint()});card.querySelector('[data-size]').addEventListener('change',e=>{selected.v=Number(e.target.value)})}area.appendChild(card)}root.querySelector('[data-add-pack]').disabled=!catalog.length;root.querySelector('[data-packname]').textContent=count===2?'PACK DUO':'PACK TRIO';root.querySelector('[data-original]').textContent=money(count*12000);root.querySelector('[data-saving]').textContent=money(count===2?3000:6000);root.querySelector('[data-total]').textContent=money(count===2?21000:30000);root.querySelectorAll('[data-count]').forEach(b=>{b.classList.toggle('active',Number(b.dataset.count)===count);b.setAttribute('aria-pressed',String(Number(b.dataset.count)===count))})}root.querySelectorAll('[data-count]').forEach(b=>b.addEventListener('click',()=>{count=Number(b.dataset.count);paint()}));
+root.querySelector('[data-add-pack]').addEventListener('click',async function(){
+const btn=this;const note=root.querySelector('[data-order-note]');const detail={};const chosen=[];
+for(let i=0;i<count;i++){
+ const prod=catalog[selections[i].p],variant=prod&&prod.variants[selections[i].v];
+ if(!variant||!variant.available){note.textContent='Choisis une pointure disponible pour chaque paire.';return;}
+ chosen.push(variant.id);detail['Paire '+(i+1)]=prod.title+' — Pointure '+variant.title;
+}
+const variantId=count===2?67843377692732:67843378085948;
+btn.disabled=true;btn.textContent='AJOUT AU PANIER…';
+try{
+ let response;
+ if(editItem){
+   response=await fetch('/cart/change.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({id:editItem.key,quantity:editItem.quantity,properties:detail})});
+ }else{
+   response=await fetch('/cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:variantId,quantity:1,properties:detail}]})});
+ }
+ const data=await response.json();if(!response.ok)throw new Error(data.description||data.message||'Impossible de modifier le pack');
+ window.location.assign('/cart');
+}catch(e){note.textContent=e.message+' — Le pack doit être activé dans le catalogue et relié au suivi de stock.';btn.disabled=false;btn.textContent='RÉESSAYER'}
+});
+async function loadPackToEdit(){
+ if(!editKey){paint();return;}
+ try{
+  const resp=await fetch('/cart.js',{headers:{Accept:'application/json'}});
+  if(!resp.ok)throw new Error('Panier indisponible');
+  const cart=await resp.json();const item=(cart.items||[]).find(x=>x.key===editKey);
+  if(!item || ![15430136037436,15430136135740].includes(Number(item.product_id)))throw new Error('Le pack n’est plus dans le panier.');
+  editItem=item;count=Number(item.product_id)===15430136037436?2:3;
+  for(let i=0;i<count;i++){
+   const val=String((item.properties||{})['Paire '+(i+1)]||'');
+   const sep=' — Pointure ';const at=val.lastIndexOf(sep);
+   if(at===-1)continue;
+   const productTitle=val.slice(0,at),size=val.slice(at+sep.length);
+   const index=catalog.findIndex(p=>p.title===productTitle);
+   if(index>=0){selections[i].p=index;const vi=catalog[index].variants.findIndex(v=>v.title===size&&v.available);selections[i].v=vi>=0?vi:0;}
+  }
+  root.querySelectorAll('[data-count]').forEach(b=>{b.disabled=true;b.title='Pour changer DUO en TRIO, crée un nouveau pack.';});
+  paint();
+  const btn=root.querySelector('[data-add-pack]');btn.textContent='ENREGISTRER MON PACK';
+  root.querySelector('[data-order-note]').textContent='Modifie tes choix, puis enregistre. Ton pack existant sera mis à jour sans ajouter de doublon.';
+ }catch(e){paint();root.querySelector('[data-order-note]').textContent=e.message+' Tu peux créer un nouveau pack ci-dessus.';}
+}
+loadPackToEdit()})();
+</script>
+{% schema %}{"name":"CLOGZ Packs","settings":[],"presets":[{"name":"CLOGZ Packs"}]}{% endschema %}
+</section>

@@ -1,0 +1,5 @@
+{% comment %}CLOGZ official CZ monogram + wordmark. Both image URLs are centrally configured in theme settings.{% endcomment %}
+{% assign logo_load = 'lazy' %}
+{% if eager %}{% assign logo_load = 'eager' %}{% endif %}
+<img class="clogz-logo__cz" src="{{ settings.clogz_monogram_url | escape }}" alt="" width="256" height="256" loading="{{ logo_load }}" decoding="async">
+<img class="clogz-logo__wordmark" src="{{ settings.clogz_logo_url | escape }}" alt="CLOGZ" width="860" height="182" loading="{{ logo_load }}" decoding="async">

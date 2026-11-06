@@ -1,0 +1,27 @@
+
+{% liquid
+ assign zine_drop_collection = section.settings.collection
+ if zine_drop_collection == blank
+  assign zine_drop_collection = collections['clogz-spider-man']
+ endif
+%}
+<section class="czine-drop" id="zine-drop" aria-labelledby="ZineDropTitle-{{ section.id }}">
+  <div class="czine-cut-line" aria-hidden="true"><span>✂</span><span>DÉCOUPE ICI</span></div>
+  <div class="czine-drop-head"><span class="czine-sticker">NOUVEAU DROP !</span><p class="czine-kicker">02 / ÉDITION SPÉCIALE</p><h2 id="ZineDropTitle-{{ section.id }}">PAS UN<br>DROP <em>ORDINAIRE.</em></h2><p>Spider-Man. Trois vibes. Une seule question : laquelle est la tienne ?</p></div>
+  <div class="czine-drop-grid">
+    {% if zine_drop_collection != blank and zine_drop_collection.products_count > 0 %}
+      {% for product in zine_drop_collection.products limit: 3 %}
+        <article class="czine-drop-card">
+          <a href="{{ product.url }}" aria-label="Voir {{ product.title | escape }}"><span class="czine-drop-photo">{% if product.featured_image %}{{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '320, 480, 600', sizes: '(min-width: 1000px) 26vw, 80vw', alt: product.title | append: ' — collection spéciale CLOGZ Spider-Man' }}{% endif %}</span><span class="czine-drop-name">{{ product.title | remove: 'Sabots CLOGZ - ' | escape }}</span></a>
+          <div class="czine-drop-price"><div class="czine-promo-prices"><strong>{% render 'clogz-price', amount: product.price %}</strong>{% if product.compare_at_price_max > product.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: product.compare_at_price_max %}</s>{% endif %}</div><a href="{{ product.url }}" class="czine-pill">TROUVER MA POINTURE ↗</a></div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <a class="czine-drop-empty czine-pill" href="/collections/clogz-spider-man">DÉCOUVRIR LE DROP SPIDER ↗</a>
+    {% endif %}
+  </div>
+  <div class="czine-drop-foot"><span class="czine-marker">L'édition spéciale, sans faire semblant ✷</span><a href="/collections/clogz-spider-man" class="czine-circle-arrow" aria-label="Découvrir la collection Spider-Man">↗</a></div>
+</section>
+{% schema %}
+{"name":"Zine Drop Spider","settings":[{"type":"collection","id":"collection","label":"Collection spéciale Spider-Man"}],"presets":[{"name":"Zine Drop Spider"}]}
+{% endschema %}

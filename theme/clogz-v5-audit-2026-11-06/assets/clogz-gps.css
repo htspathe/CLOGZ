@@ -1,0 +1,27 @@
+/* CLOGZ — GPS livraison, volontaire et accessible */
+.clogz-geo{box-sizing:border-box;margin:20px 0;padding:17px 18px;border:1px solid rgba(25,24,23,.14);border-radius:18px;background:#fff8f1;color:#191817}
+.clogz-geo__heading{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:16px;line-height:1.4}
+.clogz-geo__heading strong{font-weight:800}
+.clogz-geo__optional{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-radius:99px;background:#fbe2d5;padding:4px 8px}
+.clogz-geo__copy{font-size:14px;line-height:1.45;margin:10px 0 12px}
+.clogz-geo__actions{display:flex;flex-wrap:wrap;gap:8px}
+.clogz-geo__share,.clogz-geo__clear{font-family:inherit;cursor:pointer;font-weight:800;border-radius:99px;padding:11px 14px;font-size:13px;line-height:1.3}
+.clogz-geo__share{border:1px solid #ee4a3d;background:#ee4a3d;color:#fff}
+.clogz-geo__share:hover{filter:brightness(.92)}
+.clogz-geo__clear{border:1px solid #c77859;background:transparent;color:#191817}
+.clogz-geo__share:disabled,.clogz-geo__clear:disabled{cursor:progress;opacity:.55}
+.clogz-geo__share:focus-visible,.clogz-geo__clear:focus-visible,.clogz-geo__map:focus-visible{outline:3px solid #191817;outline-offset:3px}
+.clogz-geo__status{font-size:13px;line-height:1.45;margin:10px 0 2px;min-height:1em}
+.clogz-geo__status.is-success{color:#146c43;font-weight:700}
+.clogz-geo__status.is-error{color:#a62520;font-weight:700}
+.clogz-geo__map{display:inline-block;font-size:13px;font-weight:800;text-decoration:underline;margin-top:5px}
+.clogz-geo__map[hidden],.clogz-geo__clear[hidden]{display:none!important}
+.clogz-geo__privacy{font-size:12px;line-height:1.55;margin:11px 0;color:#514843}
+.clogz-geo__privacy a{text-decoration:underline}
+.clogz-geo__fallback{padding-top:8px;border-top:1px solid rgba(25,24,23,.12);font-size:12px;line-height:1.55}
+.clogz-geo__fallback summary{cursor:pointer;font-weight:800}
+.clogz-geo__fallback p{margin:9px 0 2px}
+.clogz-drawer.is-empty .clogz-geo{display:none}
+#ClogzDrawer .clogz-geo{margin:12px 0;padding:13px;border-radius:14px}
+#ClogzDrawer .clogz-geo__heading{font-size:14px}
+@media(max-width:480px){.clogz-geo{padding:14px}.clogz-geo__share{width:100%;text-align:center}.clogz-geo__clear{width:100%}}

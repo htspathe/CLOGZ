@@ -1,0 +1,31 @@
+{{ 'clogz-cart-fix.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign clogz_has_other_brand = false
+  for cart_item in cart.items
+    if cart_item.product.vendor != 'CLOGZ'
+      assign clogz_has_other_brand = true
+    endif
+  endfor
+%}
+<div class="clogz-drawer__overlay" id="ClogzOverlay" hidden></div>
+<aside class="clogz-drawer{% if cart.item_count == 0 %} is-empty{% endif %}" id="ClogzDrawer" aria-label="Ton panier" aria-hidden="true" hidden>
+ <div class="clogz-drawer__head"><h2>Ton panier</h2><button id="ClogzCloseCart" type="button" class="clogz-iconbutton" aria-label="Fermer le panier">✕</button></div>
+ <div class="clogz-drawer__items" id="ClogzCartItems" aria-live="polite">{% if cart.item_count == 0 %}<div class="clogz-cart-empty"><strong>Ton panier attend sa paire.</strong><p>Choisis ton coloris et ta pointure pour commencer.</p><a class="clogz-pill clogz-pill--green" href="/collections/clogz-tous-les-sabots">Trouve ta paire</a></div>{% else %}<p class="clogz-muted">Chargement de tes articles…</p>{% endif %}</div>
+ <div class="clogz-drawer__bottom">
+  <div class="clogz-drawer__shipping" {% if section.settings.free_shipping_threshold == 0 %}hidden{% endif %}><div class="clogz-drawer__progress"><span id="ClogzShippingProgress" data-threshold="{{ section.settings.free_shipping_threshold | times: 100 }}"></span></div><div class="clogz-drawer__delivery" id="ClogzShippingMessage"></div></div>
+  <div class="clogz-drawer__total"><span>Sous-total</span><span id="ClogzCartTotal">{% render 'clogz-price', amount: cart.total_price %}</span></div>
+
+  <p class="clogz-cod-checkout-notice cz4-cart-trust">Livraison gratuite à Dakar · Paiement à la livraison (cash, Wave, OM) · Pins offerts</p>
+  <p class="clogz-muted" id="ClogzCartBrandNotice" role="alert" hidden>Retire les articles hors CLOGZ avant de commander.</p>
+  {% render 'clogz-order-details', context: 'drawer' %}
+  {% render 'clogz-delivery-gps', context: 'drawer' %}
+  <details class="cz4-cart-accordion">
+    <summary>Comment se passe la livraison ?</summary>
+    <p>On te confirme ta commande sur WhatsApp, puis on te livre gratuitement partout à Dakar. Tu paies à la réception : cash, Wave ou Orange Money. Hors Dakar, écris-nous avant de commander.</p>
+  </details>
+  <div class="clogz-drawer__buttons"><a id="ClogzEditPackLink" class="clogz-pill clogz-pill--line clogz-cart__edit" href="/pages/packs" hidden>Modifier mon pack</a><button type="button" class="clogz-pill clogz-pill--line" data-continue-shopping>Continuer mes achats</button><a href="{{ routes.root_url }}checkout" id="ClogzCheckoutLink" class="clogz-pill clogz-pill--green"{% if cart.item_count == 0 or clogz_has_other_brand %} hidden aria-disabled="true" tabindex="-1"{% endif %}>Je valide ma commande</a></div><p class="clogz-drawer__checkout-note">Commande sécurisée. On te confirme tout sur WhatsApp.</p><a href="{{ routes.cart_url }}" class="clogz-drawer__fullcart">Modifier couleur ou pointure dans mon panier</a>
+ </div>
+</aside>
+{% schema %}
+{"name":"Panier latéral","settings":[{"type":"number","id":"free_shipping_threshold","label":"Seuil livraison offerte (unités de devise; 0 pour désactiver)","default":0,"info":"À utiliser uniquement si la règle est configurée dans vos tarifs de livraison Shopify."}]}
+{% endschema %}

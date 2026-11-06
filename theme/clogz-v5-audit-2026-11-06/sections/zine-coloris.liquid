@@ -1,0 +1,31 @@
+
+{% liquid
+ assign zine_collection = section.settings.collection
+ if zine_collection == blank
+  assign zine_collection = collections['clogz-tous-les-sabots']
+ endif
+%}
+<section class="czine-coloris czine-paper" id="zine-coloris" aria-labelledby="ZineColorisTitle-{{ section.id }}">
+  <div class="czine-section-title">
+    <div><span class="czine-kicker">01 / VIENT CHOISIR</span><p class="czine-script">Ton mood ?</p><h2 id="ZineColorisTitle-{{ section.id }}">CHOISIS<br>TON <em>MOOD.</em></h2></div>
+    <p>Pas besoin de rentrer dans une case. Choisis ta couleur, le reste suit. <span class="czine-marker">Right ?!</span></p>
+  </div>
+  <div class="czine-filters" role="group" aria-label="Filtrer les produits">
+    <button type="button" class="is-selected" data-zine-filter="all" aria-pressed="true">TOUS LES COLORIS ✦</button>
+    <button type="button" data-zine-filter="essentiels" aria-pressed="false">LES ESSENTIELS</button>
+    <button type="button" data-zine-filter="pastels" aria-pressed="false">LES PASTELS</button>
+  </div>
+  <div class="czine-product-grid" data-zine-product-grid>
+    {% if zine_collection != blank %}
+      {% for item in zine_collection.products limit: 10 %}
+        {% render 'zine-product-card', product: item, index: forloop.index %}
+      {% endfor %}
+    {% else %}
+      <p>Les coloris seront bientôt visibles. <a href="/collections/clogz-tous-les-sabots">Découvre la collection.</a></p>
+    {% endif %}
+  </div>
+  <div class="czine-coloris-foot"><span class="czine-marker">C'est pas une paire comme les autres →</span><a href="{{ zine_collection.url | default: '/collections/clogz-tous-les-sabots' }}" class="czine-pill czine-pill-dark">VOIR TOUS LES MODÈLES <span>↗</span></a></div>
+</section>
+{% schema %}
+{"name":"Zine Coloris","settings":[{"type":"collection","id":"collection","label":"Collection des 10 coloris"}],"presets":[{"name":"Zine Coloris"}]}
+{% endschema %}

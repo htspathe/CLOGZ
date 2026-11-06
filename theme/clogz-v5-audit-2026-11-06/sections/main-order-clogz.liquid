@@ -1,0 +1,63 @@
+{% comment %}
+ CLOGZ checkout bridge. The legacy contact-form request is intentionally removed:
+ customers now complete secure Shopify checkout and produce actual Shopify orders.
+ No client data or pseudo-orders are sent via contact forms.
+{% endcomment %}
+{% liquid
+ assign has_other_brand = false
+ for item in cart.items
+  if item.product.vendor != 'CLOGZ'
+   assign has_other_brand = true
+  endif
+ endfor
+%}
+<section class="clogz-order-page clogz-page-space" aria-label="Finaliser ma commande CLOGZ">
+ <div class="clogz-container">
+  <a class="clogz-order-back" href="{{ routes.cart_url }}">Retour au panier</a>
+  <div class="clogz-order-header">
+   <p class="clogz-eyebrow">CLOGZ · DAKAR</p>
+   <h1>Ta commande, <em>tout simplement.</em></h1>
+   <p>Avant de confirmer ta commande, vérifie tes articles, tes pointures et tes quantités. Renseigne ensuite les coordonnées et l'adresse de livraison propres à cette commande.</p>
+  </div>
+  {% if cart.item_count == 0 %}
+   <div class="clogz-order-empty"><h2>Ton panier est vide</h2><p>Sélectionne d'abord les sabots et les pointures.</p><a class="clogz-pill" href="/collections/clogz-tous-les-sabots">Découvrir les couleurs</a></div>
+  {% elsif has_other_brand %}
+   <div class="clogz-order-empty"><h2>Vérifie ton panier</h2><p>Retire les articles qui ne font pas partie de CLOGZ avant de commander.</p><a href="{{ routes.cart_url }}" class="clogz-pill">Vérifier mon panier</a></div>
+  {% else %}
+   <div class="clogz-order-layout">
+    <div class="clogz-order-main">
+     <div class="clogz-order-form-card">
+      <div class="clogz-order-step"><span>01</span> Validation sécurisée</div>
+      <h2>Finalise ta commande en toute sécurité</h2>
+      <p>Vérifie le pays, l’adresse de remise et le numéro de téléphone du destinataire. Si le paiement à la réception est disponible, tu pourras le sélectionner au passage en caisse. Tu recevras ensuite ton numéro de commande.</p>
+      <p>Nous confirmerons la disponibilité des pointures et les modalités de remise. Si tu souhaites signaler un numéro WhatsApp différent du téléphone de livraison, précise-le à notre équipe. Le paiement à la réception n'est encaissé qu'au moment de la remise.</p>
+      <a href="/checkout" class="clogz-order-submit" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Finaliser ma commande </a>
+      <p style="font-size:13px;margin-top:18px"><a href="{{ routes.cart_url }}" style="text-decoration:underline">Modifier mon panier</a></p>
+     </div>
+    </div>
+    <aside class="clogz-order-summary" aria-label="Récapitulatif du panier">
+     <div class="clogz-order-summary-card">
+      <h2>Ton récapitulatif <span>{{ cart.item_count }} article{% if cart.item_count > 1 %}s{% endif %}</span></h2>
+      <div class="clogz-order-items">
+       {% for item in cart.items %}
+        <div class="clogz-order-item">
+         <div class="clogz-order-item-media">
+          {% if item.image %}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.product.title | escape }}" width="82" height="82" loading="lazy">{% endif %}
+          <span>{{ item.quantity }}</span>
+         </div>
+         <div class="clogz-order-item-body"><strong>{{ item.product.title | escape }}</strong><small>Pointure : {{ item.variant.title | escape }}</small><small>Qté : {{ item.quantity }}</small></div>
+         <span class="clogz-order-item-price">{% render 'clogz-price', amount: item.final_line_price %}</span>
+        </div>
+       {% endfor %}
+      </div>
+      <div class="clogz-order-cost"><span>Sous-total</span><strong>{% render 'clogz-price', amount: cart.total_price %}</strong></div>
+      <p>Les options et frais éventuels de livraison seront affichés avant la confirmation de ta commande.</p>
+     </div>
+    </aside>
+   </div>
+  {% endif %}
+ </div>
+</section>
+{% schema %}
+{"name":"Validation commande CLOGZ","settings":[]}
+{% endschema %}

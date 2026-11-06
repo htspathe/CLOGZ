@@ -1,0 +1,55 @@
+/* CLOGZ V2 UI/UX Pro Max: audit 2026-10-26. Test theme only. */
+.cv2 {
+  --cv2-ink: #191817;
+  --cv2-red: #C52B29;
+  --cv2-peach: #FFD0BB;
+  --cv2-cream: #FFF6EE;
+}
+.cv2-ticker {
+  background: #BC2724;
+  color: #FFFFFF;
+  height: 37px;
+  transform: rotate(-1.1deg);
+}
+.cv2-ticker-track { animation-duration: 42s; }
+.cv2-ticker-track i { font-size: 15px; }
+.cv2 :is(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid #191817;
+  outline-offset: 4px;
+}
+.cv2-story :is(a, button, summary, [tabindex]):focus-visible,
+.cv2-detail :is(a, button, summary, [tabindex]):focus-visible,
+.cv2-cart :is(a, button, summary, [tabindex]):focus-visible {
+  outline-color: #C52B29;
+}
+.cv2-sizes button,
+.cv2-swatches button,
+.cv2-filters button,
+.cv2-cart-qty button,
+.cv2-control button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.cv2-swatches button { width: 44px; height: 44px; border-width: 4px; }
+.cv2-filters button { font-size: 12px !important; line-height: 1.25; }
+.cv2-cart-qty { gap: 10px; }
+.cv2-cart-qty button { width: 44px; height: 44px; }
+.cv2-cart-qty .cv2-remove { padding: 0 8px; min-width: 60px; }
+.cv2-card-image:focus-visible .cv2-card-view {
+  opacity: 1;
+  transform: none;
+}
+.cv2 a:not(.cv2-card-image):focus-visible,
+.cv2 button:focus-visible { scroll-margin: 20px; }
+@media (max-width: 670px) {
+  .cv2-control button { width: 44px; height: 44px; }
+  .cv2-ticker { height: 35px; }
+  .cv2-ticker-track span { font-size: 12px; }
+  .cv2-filters { gap: 8px; }
+  .cv2-filters button { padding: 12px 13px; font-size: 12px !important; }
+  .cv2-card-info .cv2-eyebrow { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv2 .cv2-ticker-track { animation: none !important; }
+  .cv2 .cv2-shoe { transition: none !important; }
+}

@@ -1,0 +1,13 @@
+/* CLOGZ — indicateur de chargement mobile et ordinateur */
+.clogz-page-loader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;background:linear-gradient(145deg,#fff6ef 0%,#ffdacb 100%);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s ease}
+html.clogz-is-loading .clogz-page-loader{opacity:1;visibility:visible;pointer-events:auto}
+.clogz-page-loader__logo{position:relative;width:92px;height:92px;display:grid;place-items:center;border-radius:50%;background:#fff9f5;box-shadow:0 12px 36px rgba(105,58,35,.13);color:#f04d3e;font:800 29px/1 "Anton",Arial,sans-serif;letter-spacing:-2px}
+.clogz-page-loader__ring{position:absolute;inset:-5px;border-radius:50%;border:4px solid rgba(240,77,62,.17);border-top-color:#f04d3e;border-right-color:#f04d3e;animation:clogz-loader-spin .75s linear infinite}
+.clogz-page-loader__text{margin:0;color:#242125;font:800 12px/1.4 "Instrument Sans",Arial,sans-serif;letter-spacing:.2em}
+@keyframes clogz-loader-spin{to{transform:rotate(360deg)}}
+.clogz-cart-is-loading [data-clogz-live-cart-status]{display:flex;align-items:center;gap:.6rem}
+.clogz-cart-is-loading [data-clogz-live-cart-status]::before{content:"";width:16px;height:16px;box-sizing:border-box;flex:none;border:2px solid rgba(240,77,62,.22);border-top-color:#f04d3e;border-radius:50%;animation:clogz-loader-spin .75s linear infinite}
+@media(prefers-reduced-motion:reduce){.clogz-page-loader__ring,.clogz-cart-is-loading [data-clogz-live-cart-status]::before{animation:none;border-color:#f04d3e}.clogz-page-loader{transition:none}}
+/* Accessible and skippable initial loader */
+.clogz-page-loader__skip{min-height:44px;min-width:94px;border:2px solid #191817;border-radius:999px;background:#fff8f1;color:#191817;font:400 17px/1 "Anton",Impact,sans-serif;cursor:pointer;padding:9px 20px}
+.clogz-page-loader__skip:focus-visible{outline:3px solid #191817;outline-offset:3px}

@@ -1,0 +1,46 @@
+{% liquid
+  assign clogz_filter = ''
+  if collection.handle == 'clogz-tous-les-sabots' or collection.handle == 'all'
+    assign clogz_filter = 'tous'
+  elsif collection.handle == 'sabots-clogz-les-essentiels'
+    assign clogz_filter = 'essentiels'
+  elsif collection.handle == 'sabots-clogz-pastels-1'
+    assign clogz_filter = 'pastels'
+  elsif collection.handle == 'clogz-spider-man'
+    assign clogz_filter = 'spider'
+  endif
+%}
+<section class="clogz-page-space">
+  <div class="clogz-container">
+    <div class="clogz-breadcrumb"><a href="{{ routes.root_url }}">Accueil</a> / <a href="{{ routes.collections_url }}">Les coloris</a> / CLOGZ</div>
+    <div class="clogz-collection-intro">
+      <p class="clogz-eyebrow">CLOGZ • DAKAR</p>
+      <h1 class="clogz-page-title">
+        {% if clogz_filter == 'tous' %}Toutes nos paires
+        {% elsif clogz_filter == 'pastels' %}Les Pastels
+        {% elsif clogz_filter == 'essentiels' %}Les Essentiels
+        {% elsif clogz_filter == 'spider' %}Le drop Spider-Man
+        {% else %}Collection indisponible{% endif %}
+      </h1>
+      {% if clogz_filter != blank %}
+        {% if clogz_filter == "spider" %}<p class="clogz-catalog-tagline">Édition spéciale · 20 000 FCFA la paire (au lieu de 22 500 FCFA) · Pointures 36 à 46 · Livraison gratuite à Dakar</p>{% else %}<p class="clogz-catalog-tagline">12 000 FCFA la paire · Pointures 36 à 46 · Pins offerts · Livraison gratuite partout à Dakar</p>{% endif %}
+      {% elsif clogz_filter == blank %}
+        <div class="clogz-product__description">Cette collection n’est pas proposée sur CLOGZ.</div>
+      {% endif %}
+    </div>
+    {% if clogz_filter != blank %}
+      <nav class="clogz-collection-links" aria-label="Filtrer les collections CLOGZ">
+        <a class="clogz-pill {% unless clogz_filter == 'tous' %}clogz-pill--line{% endunless %}" href="/collections/clogz-tous-les-sabots">Les 10 coloris</a>
+        <a class="clogz-pill {% unless clogz_filter == 'pastels' %}clogz-pill--line{% endunless %}" href="/collections/sabots-clogz-pastels-1">Pastels</a>
+        <a class="clogz-pill {% unless clogz_filter == 'essentiels' %}clogz-pill--line{% endunless %}" href="/collections/sabots-clogz-les-essentiels">Essentiels</a>
+        <a class="clogz-pill {% unless clogz_filter == 'spider' %}clogz-pill--line{% endunless %}" href="/collections/clogz-spider-man">Spider-Man</a>
+        <a class="clogz-pill clogz-pill--line" href="/pages/packs">Packs</a>
+      </nav>
+      {% if clogz_filter == 'spider' %}{% render 'clogz-spider-showcase' %}{% render 'clogz-guide-pointures' %}{% else %}{% render 'clogz-catalog-grid', catalog_filter: clogz_filter %}{% endif %}
+    {% else %}
+      <p>Découvre les coloris CLOGZ.</p>
+      <a class="clogz-pill" href="/collections/clogz-tous-les-sabots">Les 10 coloris</a>
+    {% endif %}
+  </div>
+</section>
+{% schema %}{"name":"Collection CLOGZ","settings":[]}{% endschema %}

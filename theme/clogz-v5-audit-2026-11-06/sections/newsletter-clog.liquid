@@ -1,0 +1,7 @@
+<section class="clogz-section"><div class="clogz-container"><div class="clogz-newsletter"><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.description | escape }}</p>
+{% form 'customer', class: 'clogz-newsletter__form' %}<input type="hidden" name="contact[tags]" value="newsletter"><label class="clogz-sr-only" for="NewsletterEmail-{{ section.id }}">Adresse e-mail</label><input id="NewsletterEmail-{{ section.id }}" name="contact[email]" type="email" autocomplete="email" required placeholder="ton@email.com"><button class="clogz-pill clogz-pill--green" type="submit">Je m'inscris</button>{% if form.posted_successfully? %}<p role="status">Merci, tu es inscrit !</p>{% endif %}{% if form.errors %}<p role="alert">{{ form.errors | default_errors }}</p>{% endif %}{% endform %}
+<p class="cz4-newsletter-whatsapp" style="margin-top:16px"><a href="https://whatsapp.com/channel/0029VbDsqB4EAKWLtyW1gc33" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Ou rejoins la chaîne WhatsApp CLOGZ</a></p>
+</div></div></section>
+{% schema %}
+{"name":"Newsletter","settings":[{"type":"text","id":"heading","label":"Titre","default":"Les nouveaux coloris, avant tout le monde."},{"type":"textarea","id":"description","label":"Texte","default":"Inscris-toi et reçois les drops en premier."}],"presets":[{"name":"Newsletter CLOGZ"}]}
+{% endschema %}

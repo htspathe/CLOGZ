@@ -1,0 +1,37 @@
+{% if key == 'gris' or key == 'bleu-ciel' %}
+{% assign exact_photo = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849' %}
+{% assign exact_alt = 'Sabot CLOGZ gris anthracite — écusson noir' %}
+{% if key == 'bleu-ciel' %}
+  {% assign exact_photo = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804' %}
+  {% assign exact_alt = 'Sabot CLOGZ bleu turquoise — écusson noir' %}
+{% endif %}
+{% if part == 'thumbs' %}
+<div class="clogz-product__thumbs cz-newgal__thumbs" aria-label="Photo fidèle du modèle">
+  <button type="button" data-media-thumb="cz-v5-photo" aria-pressed="true" aria-label="Voir la photo authentique"><img src="{{ exact_photo }}" alt="{{ exact_alt }}" loading="lazy" width="90" height="90"></button>
+</div>
+{% else %}
+{% render 'clogz-new-gallery-style' %}
+<div data-media-id="cz-v5-photo" data-cz-new class="cz-newgal__slide czine-exact-photo">
+  <img src="{{ exact_photo }}" alt="{{ exact_alt }}" width="1024" height="1024" loading="eager" fetchpriority="high">
+</div>
+{% endif %}
+{% else %}
+{%- comment -%}
+  Galerie des nouvelles photos détourées (Contenu > Fichiers).
+  Fichiers attendus : clogz-{clé}-paire-detoure.png et clogz-{clé}-seule-detoure.png
+  Si un fichier manque, la galerie revient automatiquement à l'ancienne photo.
+  Paramètres : key, title, part ('main' ou 'thumbs')
+{%- endcomment -%}
+{%- assign cz_paire = 'clogz-' | append: key | append: '-paire-detoure.png' -%}
+{%- assign cz_seule = 'clogz-' | append: key | append: '-seule-detoure.png' -%}
+{%- if part == 'thumbs' -%}
+<div class="clogz-product__thumbs cz-newgal__thumbs" data-cz-new aria-label="Galerie produit"><button type="button" data-media-thumb="cz-paire" aria-label="Voir la paire" aria-pressed="true"><img src="{{ cz_paire | file_img_url: '240x' }}" alt="{{ title | escape }} — paire" width="90" height="90" loading="lazy" onerror="czNewFail()"></button><button type="button" data-media-thumb="cz-seule" aria-label="Voir la chaussure seule" aria-pressed="false"><img src="{{ cz_seule | file_img_url: '240x' }}" alt="{{ title | escape }} — seule" width="90" height="90" loading="lazy" onerror="czNewFail()"></button></div>
+<script>(function(){var g=document.currentScript.closest('[data-product-gallery]');if(!g)return;g.addEventListener('click',function(e){var b=e.target.closest('[data-cz-new] [data-media-thumb]');if(!b)return;var t=g.querySelector('[data-media-id="'+b.getAttribute('data-media-thumb')+'"]');if(!t)return;g.querySelectorAll('[data-media-id]').forEach(function(x){x.hidden=x!==t});g.querySelectorAll('[data-media-thumb]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});});})();</script>
+{%- else -%}
+{% render 'clogz-new-gallery-style' %}
+<script>window.czNewFail=window.czNewFail||function(){var g=document.querySelector('[data-product-gallery]');if(!g||g.getAttribute('data-cz-fallback'))return;g.setAttribute('data-cz-fallback','1');g.querySelectorAll('[data-cz-new]').forEach(function(e){e.remove()});var o=g.querySelector('[data-cz-old]');if(o){o.hidden=false;var i=o.querySelector('img');if(i)i.loading='eager';}};</script>
+<div data-media-id="cz-paire" data-cz-new class="cz-newgal__slide"><img src="{{ cz_paire | file_img_url: '1400x' }}" srcset="{{ cz_paire | file_img_url: '600x' }} 600w, {{ cz_paire | file_img_url: '1000x' }} 1000w, {{ cz_paire | file_img_url: '1400x' }} 1400w" sizes="(max-width: 850px) 90vw, 50vw" alt="{{ title | escape }} — paire" loading="eager" fetchpriority="high" onerror="czNewFail()"></div>
+<div data-media-id="cz-seule" data-cz-new class="cz-newgal__slide" hidden><img src="{{ cz_seule | file_img_url: '1400x' }}" srcset="{{ cz_seule | file_img_url: '600x' }} 600w, {{ cz_seule | file_img_url: '1000x' }} 1000w, {{ cz_seule | file_img_url: '1400x' }} 1400w" sizes="(max-width: 850px) 90vw, 50vw" alt="{{ title | escape }} — seule" loading="lazy" onerror="czNewFail()"></div>
+{%- endif -%}
+
+{% endif %}

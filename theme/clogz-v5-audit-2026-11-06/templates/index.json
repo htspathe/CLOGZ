@@ -1,0 +1,366 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero-clog",
+      "disabled": true,
+      "settings": {
+        "subtitle": "10 coloris à 12 000 FCFA la paire. Livraison gratuite sous 24 h à Dakar, pins offerts et paiement à la livraison. Pointures 36 à 46 selon stock.",
+        "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-hero-trois-sabots-pastel-20261024.png?v=1792861229",
+        "primary_link": "/collections/clogz-tous-les-sabots",
+        "secondary_link": "/collections"
+      }
+    },
+    "marquee": {
+      "type": "marquee-clog",
+      "disabled": true,
+      "settings": {
+        "text": "CLOGZ • CONFORT • STYLE • DAKAR"
+      }
+    },
+    "colors": {
+      "type": "collection-colors",
+      "blocks": {
+        "pink": {
+          "type": "tile",
+          "settings": {
+            "label": "Rose bonbon",
+            "color": "#F8CBDD",
+            "shoe_color": "#F38BA9",
+            "link": "/products/sabots-clogz-rose-bonbon-pins-offerts",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rose-badge.png?v=1792779566",
+            "image_white_background": false
+          }
+        },
+        "blue": {
+          "type": "tile",
+          "settings": {
+            "label": "Bleu ciel",
+            "color": "#D7EEFF",
+            "shoe_color": "#8DC9FF",
+            "link": "/products/sabots-clogz-bleu-ciel",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-carrousel-bleu-ciel-badge-noir-exact-20261028.png?v=1793159339",
+            "image_white_background": false
+          }
+        },
+        "lilac": {
+          "type": "tile",
+          "settings": {
+            "label": "Lilas",
+            "color": "#E7D9FA",
+            "shoe_color": "#C7AAE9",
+            "link": "/products/sabots-clogz-lilas",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-lilas-badge.png?v=1792779578",
+            "image_white_background": false
+          }
+        },
+        "noir": {
+          "type": "tile",
+          "settings": {
+            "label": "Noir",
+            "color": "#E2E2E5",
+            "shoe_color": "#1B1B20",
+            "link": "/products/sabots-clogz-noir",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-noir-badge.png?v=1792779583",
+            "image_white_background": false
+          }
+        },
+        "rouge": {
+          "type": "tile",
+          "settings": {
+            "label": "Rouge",
+            "color": "#FFE0DC",
+            "shoe_color": "#F03D49",
+            "link": "/products/sabots-clogz-rouge",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rouge-badge.png?v=1792779589",
+            "image_white_background": false
+          }
+        },
+        "blanc": {
+          "type": "tile",
+          "settings": {
+            "label": "Blanc",
+            "color": "#F0EBE6",
+            "shoe_color": "#FFFFFF",
+            "link": "/products/sabots-clogz-blanc",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-blanc-badge.png?v=1792779595",
+            "image_white_background": false
+          }
+        },
+        "beige": {
+          "type": "tile",
+          "settings": {
+            "label": "Beige",
+            "color": "#F5E3D2",
+            "shoe_color": "#ECD1AE",
+            "link": "/products/sabots-clogz-beige",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-beige-badge.png?v=1792779600",
+            "image_white_background": false
+          }
+        },
+        "vert": {
+          "type": "tile",
+          "settings": {
+            "label": "Vert forêt",
+            "color": "#D8E6DC",
+            "shoe_color": "#244C38",
+            "link": "/products/sabots-clogz-vert-foret",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-vert-foret-badge.png?v=1792779606",
+            "image_white_background": false
+          }
+        },
+        "orange": {
+          "type": "tile",
+          "settings": {
+            "label": "Orange",
+            "color": "#FFE3C6",
+            "shoe_color": "#FF8B00",
+            "link": "/products/sabots-clogz-orange",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010",
+            "image_white_background": false
+          }
+        },
+        "gris": {
+          "type": "tile",
+          "settings": {
+            "label": "Gris",
+            "color": "#DADDDC",
+            "shoe_color": "#A6ABA8",
+            "link": "/products/sabots-clogz-gris",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-gris-clair-medaillon-noir-identique-fond-transparent_a71822cc-a067-4677-8735-1732156cbc57.png?v=1793161013",
+            "image_white_background": false
+          }
+        }
+      },
+      "block_order": [
+        "pink",
+        "blue",
+        "lilac",
+        "noir",
+        "rouge",
+        "blanc",
+        "beige",
+        "vert",
+        "orange",
+        "gris"
+      ],
+      "settings": {
+        "heading": "Une couleur. Une attitude.",
+        "description": "10 coloris. 12 000 FCFA la paire. Choisis le mood qui te ressemble.",
+        "zoom_percent": 118,
+        "zoom_speed": 0.6,
+        "enable_parallax": false
+      },
+      "disabled": true
+    },
+    "charms": {
+      "type": "jibbitz-feature",
+      "settings": {
+        "heading": "TES PINS SONT OFFERTS.",
+        "description": "Avec chaque paire, tes pins sont pour toi. Des cœurs, des étoiles, des lettres : à toi de jouer.",
+        "button_label": "Voir les idées de pins",
+        "link": "/pages/idees-de-personnalisation"
+      },
+      "disabled": true
+    },
+    "benefits": {
+      "type": "benefits-clog",
+      "blocks": {
+        "light": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🪶",
+            "title": "Légers",
+            "description": "Des sabots conçus pour un port agréable au quotidien."
+          }
+        },
+        "style": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🎁",
+            "title": "Pins offerts",
+            "description": "Des pins décoratifs offerts avec chaque paire."
+          }
+        },
+        "local": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "📍",
+            "title": "Stock à Dakar",
+            "description": "Produits physiquement disponibles et quantités actualisées."
+          }
+        },
+        "delivery": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "🚚",
+            "title": "Livraison gratuite",
+            "description": "Livraison offerte sous 24 h à Dakar."
+          }
+        },
+        "cod": {
+          "type": "benefit",
+          "settings": {
+            "emoji": "💵",
+            "title": "Paie à la livraison",
+            "description": "Tu règles ta commande au moment de recevoir tes sabots."
+          }
+        }
+      },
+      "block_order": [
+        "light",
+        "style",
+        "local",
+        "delivery",
+        "cod"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "reviews": {
+      "type": "testimonials-clog",
+      "settings": {}
+    },
+    "gallery": {
+      "type": "ugc-gallery",
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "newsletter-clog",
+      "settings": {}
+    },
+    "spider": {
+      "type": "spider-feature",
+      "settings": {},
+      "disabled": true
+    },
+    "editorial": {
+      "type": "clogz-editorial-home",
+      "disabled": true,
+      "settings": {
+        "line_one": "Crocs.",
+        "line_two": "Plus que",
+        "line_three": "des sabots.",
+        "hero_image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-hero-image1-tropical-cinq-sabots-20261025.png?v=1792894835",
+        "pattern_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-chenille-background-green.png?v=1792882202",
+        "primary_label": "Découvrir la collection",
+        "primary_link": "/collections",
+        "collection_heading": "Des crocs pour toutes tes envies :) Dey Daw Rek .",
+        "collection_description": "Des classiques intemporels aux modèles les plus audacieux, découvre notre sélection de clogs pensés pour le quotidien.",
+        "promo_heading": "Confort toute l’année.",
+        "promo_link": "/collections#spider-man"
+      }
+    },
+    "street_hero": {
+      "type": "clogz-street-hero",
+      "disabled": true,
+      "settings": {
+        "primary_label": "Découvrir la collection",
+        "primary_link": "/collections/clogz-tous-les-sabots"
+      }
+    },
+    "trust_strip": {
+      "type": "clogz-trust-strip",
+      "settings": {},
+      "disabled": true
+    },
+    "street_marquee": {
+      "type": "clogz-street-marquee",
+      "disabled": true,
+      "settings": {}
+    },
+    "order_steps": {
+      "type": "clogz-order-steps",
+      "settings": {},
+      "disabled": true
+    },
+    "international": {
+      "type": "clogz-international",
+      "settings": {
+        "eyebrow": "CLOGZ SANS FRONTIÈRES",
+        "heading": "Tu es loin ? Offre une paire à Dakar.",
+        "text": "Commande d’où tu veux. On livre ton proche à Dakar, gratuitement. Il paie à la réception : cash, Wave ou OM.",
+        "button": "Offrir une paire",
+        "link": "/pages/commandes-internationales"
+      },
+      "disabled": true
+    },
+    "cv2_showroom": {
+      "type": "clogz-v2-showroom",
+      "settings": {
+        "collection": "clogz-tous-les-sabots"
+      },
+      "disabled": true
+    },
+    "faq_seo": {
+      "type": "clogz-seo-faq",
+      "settings": {
+        "title": "Questions fréquentes sur les sabots CLOGZ à Dakar",
+        "intro": "Prix, pointures, livraison à Dakar, paiement et échanges : tout ce qu’il faut savoir avant de commander."
+      }
+    },
+    "zine_hero": {
+      "type": "zine-hero",
+      "settings": {
+        "monument_image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-dakar-monument-renaissance-coucher-de-soleil-20261025.webp?v=1792944302"
+      }
+    },
+    "zine_coloris": {
+      "type": "zine-coloris",
+      "settings": {
+        "collection": "clogz-tous-les-sabots"
+      }
+    },
+    "zine_drop": {
+      "type": "zine-drop",
+      "settings": {
+        "collection": "clogz-spider-man"
+      }
+    },
+    "zine_pins": {
+      "type": "zine-pins",
+      "settings": {}
+    },
+    "zine_steps": {
+      "type": "zine-steps",
+      "settings": {}
+    },
+    "zine_outro": {
+      "type": "zine-outro",
+      "settings": {}
+    }
+  },
+  "order": [
+    "zine_hero",
+    "zine_coloris",
+    "zine_drop",
+    "zine_pins",
+    "zine_steps",
+    "zine_outro",
+    "faq_seo",
+    "reviews",
+    "gallery",
+    "newsletter",
+    "cv2_showroom",
+    "spider",
+    "charms",
+    "order_steps",
+    "international",
+    "street_hero",
+    "trust_strip",
+    "street_marquee",
+    "colors",
+    "editorial",
+    "hero",
+    "marquee",
+    "benefits"
+  ]
+}

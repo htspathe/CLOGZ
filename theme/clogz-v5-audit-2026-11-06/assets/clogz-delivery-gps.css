@@ -1,0 +1,50 @@
+
+/* CLOGZ — panier mobile à défilement unique.
+   Le sabot et la section de livraison montent ensemble; seul le titre reste visible. */
+.clogz-v2-unified #ClogzDrawer{
+  display:block;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-y:contain;scrollbar-gutter:stable;
+}
+.clogz-v2-unified #ClogzDrawer .clogz-drawer__head{
+  position:sticky;top:0;z-index:3;background:#fff9f4;
+  box-sizing:border-box;
+}
+.clogz-v2-unified #ClogzCartItems{
+  display:block;flex:none;min-height:0;max-height:none;height:auto;
+  overflow:visible;overscroll-behavior:auto;
+}
+.clogz-v2-unified #ClogzDrawer .clogz-drawer__bottom{
+  display:grid;flex:none;max-height:none;min-height:0;overflow:visible;
+  overscroll-behavior:auto;
+}
+/* Un seul bloc quartier + GPS / WhatsApp dans le panier et le tiroir. */
+.clogz-geo{border:1px solid #e7d6cc;background:#fffaf6;border-radius:18px;padding:17px;display:grid;gap:10px;min-width:0;color:#26201d;text-align:left}
+.clogz-geo__title{font-size:17px;font-weight:850;line-height:1.3;margin:0}
+.clogz-geo__intro,.clogz-geo__privacy,.clogz-geo__status{margin:0;font-size:12.5px;line-height:1.55;color:#675950}
+.clogz-geo__fields{display:grid;gap:7px}
+.clogz-geo__fields label{font-size:12px;font-weight:750;color:#3c302a}
+.clogz-geo__fields input{display:block;width:100%;box-sizing:border-box;border:1px solid #d9c8be;border-radius:11px;background:#fff;color:#2b211c;min-height:46px;padding:10px 12px;font:inherit;font-size:16px}
+.clogz-geo__fields input:focus-visible{outline:2px solid #cc493a;outline-offset:2px}
+.clogz-geo__choices{display:grid;grid-template-columns:1fr;gap:8px}
+.clogz-geo__share,.clogz-geo__whatsapp{box-sizing:border-box;width:100%;min-height:46px;border-radius:999px;padding:10px 13px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;line-height:1.4}
+.clogz-geo__share{border:1px solid #bb392b;background:#d94233;color:#fff}
+.clogz-geo__whatsapp{border:1px solid #c6af9f;background:#fff;color:#4b332b}
+.clogz-geo__whatsapp[aria-expanded=true]{border-color:#24764b;background:#f0fbf4;color:#16643d}
+.clogz-geo__share:disabled,.clogz-geo__whatsapp:disabled{opacity:.65;cursor:wait}
+.clogz-geo__whatsapp-help{border:1px solid #d6e7d9;background:#f5fcf7;border-radius:12px;padding:12px;font-size:12.5px;line-height:1.5;color:#254b36}
+.clogz-geo__whatsapp-help[hidden]{display:none!important}
+.clogz-geo__whatsapp-help small{display:block;margin:7px 0;font-size:12px}
+.clogz-geo__whatsapp-help a{font-size:12px;font-weight:750;text-decoration:underline}
+.clogz-geo__status[data-state=success]{color:#16643d;font-weight:700}
+.clogz-geo__status[data-state=warning]{color:#8c4f0e}
+.clogz-geo__status[data-state=error]{color:#ae3029}
+.clogz-geo__result{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.clogz-geo__result[hidden]{display:none!important}
+.clogz-geo__result a{font-size:12.5px;font-weight:750;text-decoration:underline;text-underline-offset:2px;color:#8b3128}
+.clogz-geo__result button{background:none;border:0;padding:4px 0;color:#675950;font:inherit;font-size:12px;text-decoration:underline;cursor:pointer}
+.clogz-geo__privacy a{text-decoration:underline}
+#ClogzDrawer.is-empty .clogz-geo{display:none!important}
+#ClogzDrawer .clogz-geo{padding:13px;border-radius:14px;gap:9px;margin:0}
+#ClogzDrawer .clogz-geo__title{font-size:15px}
+#ClogzDrawer .clogz-geo__privacy{font-size:11px}
+@media(max-width:700px){[data-clogz-page-cart] .clogz-geo{margin:18px 0}.clogz-geo__result{gap:9px}}

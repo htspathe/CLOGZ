@@ -1,0 +1,14 @@
+{%- assign cz_price = amount | default: 0 | divided_by: 100 | floor -%}
+{%- assign cz_millions = cz_price | divided_by: 1000000 | floor -%}
+{%- assign cz_thousands = cz_price | divided_by: 1000 | modulo: 1000 -%}
+{%- assign cz_remainder = cz_price | modulo: 1000 -%}
+{%- assign cz_units3 = cz_remainder | prepend: '000' | slice: -3, 3 -%}
+{%- assign cz_thousands3 = cz_thousands | prepend: '000' | slice: -3, 3 -%}
+{%- if cz_millions > 0 -%}
+  {%- assign cz_formatted = cz_millions | append: ' ' | append: cz_thousands3 | append: ' ' | append: cz_units3 -%}
+{%- elsif cz_price >= 1000 -%}
+  {%- assign cz_formatted = cz_thousands | append: ' ' | append: cz_units3 -%}
+{%- else -%}
+  {%- assign cz_formatted = cz_price -%}
+{%- endif -%}
+{{- cz_formatted | append: ' FCFA' -}}

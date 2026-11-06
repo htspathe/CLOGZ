@@ -1,0 +1,24 @@
+{% assign clogz_context = context | default: 'cart' %}
+{% assign clogz_order_country = cart.attributes['Pays de commande'] | default: 'Sénégal' %}
+{% assign clogz_whatsapp = cart.attributes['WhatsApp (si différent)'] | default: '' %}
+<section class="clogz-order-details cz4-order-details" data-clogz-order-details data-order-context="{{ clogz_context }}" aria-label="Coordonnées complémentaires">
+  <label class="clogz-order-details__toggle" for="ClogzWhatsappDifferent-{{ clogz_context }}">
+    <input id="ClogzWhatsappDifferent-{{ clogz_context }}" data-clogz-order-whatsapp-different type="checkbox" {% if clogz_whatsapp != blank %}checked{% endif %}>
+    <span>Mon numéro WhatsApp est différent</span>
+  </label>
+  <div class="clogz-order-details__field" data-clogz-order-whatsapp-group {% if clogz_whatsapp == blank %}hidden{% endif %}>
+    <label for="ClogzWhatsappNumber-{{ clogz_context }}">Numéro WhatsApp (avec indicatif)</label>
+    <input id="ClogzWhatsappNumber-{{ clogz_context }}" data-clogz-order-whatsapp type="tel" inputmode="tel" autocomplete="tel" maxlength="24" placeholder="Ex. +221 77 123 45 67" value="{{ clogz_whatsapp | escape }}" {% if clogz_whatsapp != blank %}required{% endif %}>
+  </div>
+  <details class="cz4-cart-accordion">
+    <summary>Je commande depuis l’étranger</summary>
+    <div class="clogz-order-details__field">
+      <label for="ClogzCountry-{{ clogz_context }}">Pays depuis lequel tu commandes</label>
+      <input id="ClogzCountry-{{ clogz_context }}" data-clogz-order-country type="text" list="ClogzCountryOptions-{{ clogz_context }}" maxlength="80" autocomplete="country-name" value="{{ clogz_order_country | escape }}" required>
+      <datalist id="ClogzCountryOptions-{{ clogz_context }}"><option value="Sénégal"><option value="France"><option value="Belgique"><option value="Canada"><option value="Côte d’Ivoire"><option value="Mali"><option value="Gambie"><option value="Guinée"><option value="Mauritanie"><option value="États-Unis"></datalist>
+    </div>
+    <p>Pour remettre ton colis à un proche ou à un GP à Dakar, indique son adresse au paiement. Tu organises librement le transport après Dakar.</p>
+    <a href="/pages/commandes-internationales">Voir les commandes internationales</a>
+  </details>
+  <p class="clogz-order-details__error" data-clogz-order-error role="alert" hidden></p>
+</section>

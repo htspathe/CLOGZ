@@ -1,0 +1,58 @@
+{% comment %}
+CLOGZ / Page de remerciement (/pages/merci).
+Ce n'est PAS la page de confirmation native du checkout Shopify : aucune donnée de commande n'est affichée ici.
+Elle explique la suite et renvoie vers le suivi WhatsApp, la modification de commande et la boutique.
+{% endcomment %}
+{%- assign cz_wa = 'https://wa.me/221788770615?text=Salut%20CLOGZ%2C%20je%20viens%20de%20passer%20commande.' -%}
+<style>
+.cz-merci{padding:clamp(28px,5vw,64px) 0 clamp(40px,6vw,80px)}
+.cz-merci__hero{background:linear-gradient(160deg,#ffe9dc,#fff8f1);border:1px solid #f0dccf;border-radius:28px;padding:clamp(26px,5vw,56px)}
+.cz-merci__eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;color:#191817;margin:0 0 12px;text-transform:uppercase}
+.cz-merci h1{font-size:clamp(44px,8vw,96px);margin:0 0 14px;color:#191817}
+.cz-merci__dot{color:#ED4B39}
+.cz-merci__lead{font-size:18px;max-width:600px;margin:0;color:#32302e}
+.cz-merci__steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:28px}
+.cz-merci__step{background:#fff;border:1px solid #efe2d8;border-radius:20px;padding:22px}
+.cz-merci__num{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#ED4B39;color:#fff;font-family:"Anton",sans-serif;font-weight:800;margin-bottom:12px}
+.cz-merci__step strong{display:block;font-family:"Anton",sans-serif;font-size:18px;color:#191817;margin-bottom:6px}
+.cz-merci__step p{margin:0;font-size:15px;color:#3a3938}
+.cz-merci__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cz-merci__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border-radius:999px;font-family:"Anton",sans-serif!important;font-weight:800;font-size:15px;text-decoration:none!important;white-space:nowrap}
+.cz-merci__btn svg{width:20px;height:20px}
+.cz-merci__btn--wa{background:#1f8f4e;color:#fff!important}
+.cz-merci__btn--wa:hover{background:#18763f}
+.cz-merci__btn--dark{background:#191817;color:#fff!important}
+.cz-merci__btn--dark:hover{background:#000}
+.cz-merci__btn--line{background:#fff;color:#191817!important;border:2px solid #191817}
+.cz-merci__card{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:#242321;color:#fff;border-radius:24px;padding:clamp(22px,4vw,40px)}
+html body .cz-merci .cz-merci__card h2{font-size:clamp(28px,4vw,44px);margin:0 0 8px;color:#fff!important}
+.cz-merci__card p{margin:0;color:#eee8e2!important}
+.cz-merci__note{margin-top:18px;font-size:14px;color:#5b4f48}
+@media(max-width:600px){.cz-merci__btn{width:100%}}
+</style>
+<section class="cz-merci" aria-labelledby="CzMerciTitle">
+ <div class="clogz-container">
+  <div class="cz-merci__hero">
+   <p class="cz-merci__eyebrow">CLOGZ · DEY DAW REK</p>
+   <h1 id="CzMerciTitle">MERCI <em>À TOI</em><span class="cz-merci__dot">.</span></h1>
+   <p class="cz-merci__lead">Ta commande est bien partie. Voici comment ça se passe maintenant.</p>
+   <div class="cz-merci__steps">
+    <div class="cz-merci__step"><span class="cz-merci__num">1</span><strong>On te confirme</strong><p>On t’écrit sur WhatsApp pour valider ta pointure et ton adresse.</p></div>
+    <div class="cz-merci__step"><span class="cz-merci__num">2</span><strong>On te livre</strong><p>Livraison gratuite partout à Dakar, avec tes pins offerts.</p></div>
+    <div class="cz-merci__step"><span class="cz-merci__num">3</span><strong>Tu paies</strong><p>À la réception : cash, Wave ou Orange Money.</p></div>
+   </div>
+   <div class="cz-merci__actions">
+    <a class="cz-merci__btn cz-merci__btn--dark" href="/pages/suivi">Où est ma paire ?</a>
+    <a class="cz-merci__btn cz-merci__btn--line" href="/pages/modifier-commande">Modifier ma commande</a>
+   </div>
+   <p class="cz-merci__note">Une erreur de pointure ou de couleur ? Demande la modification avant l’expédition.</p>
+  </div>
+  <section class="cz-merci__card" aria-labelledby="CzMerciQuestion">
+   <div><h2 id="CzMerciQuestion">Une question <em>?</em></h2><p>Écris-nous, on te répond directement sur WhatsApp.</p></div>
+   <a class="cz-merci__btn cz-merci__btn--wa" href="{{ cz_wa }}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.35 11.7a8.35 8.35 0 0 1-12.3 7.3l-4.4 1.2 1.22-4.25a8.36 8.36 0 1 1 15.48-4.25Z"/></svg>Écris-nous sur WhatsApp</a>
+  </section>
+  <div class="cz-merci__actions" style="justify-content:center;margin-top:28px">
+   <a class="cz-merci__btn cz-merci__btn--line" href="/collections/clogz-tous-les-sabots">Continuer mes achats</a>
+  </div>
+ </div>
+</section>

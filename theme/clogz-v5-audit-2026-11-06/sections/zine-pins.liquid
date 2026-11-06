@@ -1,0 +1,15 @@
+
+<section class="czine-pins czine-paper" id="zine-pins" aria-labelledby="ZinePinsTitle-{{ section.id }}">
+  <div class="czine-tape-banner" aria-hidden="true"><span>TES PINS SONT OFFERTS ✳ TES PINS SONT OFFERTS ✳ TES PINS SONT OFFERTS ✳</span></div>
+  <div class="czine-pins-content">
+    <div class="czine-pins-copy"><span class="czine-kicker">03 / CUSTOMISE</span><p class="czine-script">La touche perso !</p><h2 id="ZinePinsTitle-{{ section.id }}">FAIS TA<br><em>PROPRE</em><br>VERSION.</h2><p>Une paire, mille façons de la porter. Les pins sont offerts avec chaque paire classique.</p><a class="czine-pill czine-pill-dark" href="/pages/idees-de-personnalisation">VOIR LES IDÉES DE PINS <span>↗</span></a><span class="czine-pins-arrow" aria-hidden="true">↗</span></div>
+    <div class="czine-polaroid-stack" aria-label="Photos des pins décoratifs CLOGZ">
+      <figure class="czine-polaroid czine-polaroid-a"><img src="{{ section.settings.photo_one | default: 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-pins-roses-detail.jpg?v=1792776760' | escape }}" alt="Sabots roses et pins décoratifs CLOGZ" loading="lazy" width="600" height="600"><figcaption>TON MOOD ✳</figcaption></figure>
+      <figure class="czine-polaroid czine-polaroid-b"><img src="{{ section.settings.photo_two | default: 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-pins-assortiment.jpg?v=1792776765' | escape }}" alt="Assortiment de pins décoratifs CLOGZ" loading="lazy" width="600" height="600"><figcaption>EXPRIME-TOI !</figcaption></figure>
+      <span class="czine-polaroid-star" aria-hidden="true">✦</span>
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"Zine Pins Collage","settings":[{"type":"text","id":"photo_one","label":"URL première photo de pins"},{"type":"text","id":"photo_two","label":"URL deuxième photo de pins"}],"presets":[{"name":"Zine Pins Collage"}]}
+{% endschema %}

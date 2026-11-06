@@ -1,0 +1,16 @@
+{% if product.vendor == 'CLOGZ' %}
+{%- capture cz_card_name -%}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{%- endcapture -%}
+<article class="clogz-card clogz-card--navigate clogz-card--editorial clogz-pair-theme--{{ product.handle }}">
+ <a href="{{ product.url }}" class="clogz-card__photo" aria-label="Découvrir {{ cz_card_name | escape }} et choisir une pointure">
+  {% if product.featured_image != blank %}
+   {% if product.handle == 'sabots-clogz-gris' %}<img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849" alt="Sabot CLOGZ gris anthracite avec écusson noir" loading="lazy" width="600" height="600">{% elsif product.handle == 'sabots-clogz-bleu-ciel' %}<img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804" alt="Sabot CLOGZ bleu turquoise avec écusson noir" loading="lazy" width="600" height="600">{% else %}<img src="{{ product.featured_image | image_url: width: 600 }}" srcset="{{ product.featured_image | image_url: width: 330 }} 330w, {{ product.featured_image | image_url: width: 600 }} 600w" sizes="(max-width: 520px) 45vw, (max-width: 850px) 45vw, 23vw" alt="Sabot CLOGZ {{ cz_card_name | escape }}" loading="lazy" width="{{ product.featured_image.width }}" height="{{ product.featured_image.height }}">{% endif %}
+  {% else %}{% render 'clog-icon' %}{% endif %}
+  <span class="clogz-card__view" aria-hidden="true">VOIR LA PAIRE</span>
+  {% unless product.available %}<span class="clogz-card__badge">Indisponible</span>{% endunless %}
+ </a>
+ <div class="clogz-card__body">
+  <div class="clogz-card__info"><h3><a href="{{ product.url }}">{{ cz_card_name | escape }}</a></h3>
+  <span class="clogz-card__price">{% if product.price_varies %}Dès {% render 'clogz-price', amount: product.price_min %}{% else %}{% render 'clogz-price', amount: product.price %}{% endif %}{% if product.compare_at_price_max > product.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: product.compare_at_price_max %}</s>{% endif %}</span></div>
+ </div>
+</article>
+{% endif %}

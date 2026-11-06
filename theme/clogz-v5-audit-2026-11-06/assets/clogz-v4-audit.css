@@ -1,0 +1,101 @@
+/* CLOGZ V4 / audit — garder les caractères de la V3, sans Walkway. */
+:root{
+ --cz4-body:"Instrument Sans",system-ui,sans-serif;
+ --cz4-display:"Anton","Instrument Sans",sans-serif;
+ --cz4-copy:#32302e;
+}
+html body.clogz-v2-unified{font-family:var(--cz4-body)!important;color:var(--cz4-copy)!important;font-size:16px!important;line-height:1.55!important}
+html body.clogz-v2-unified :is(p,li,dd,dt,.clogz-muted,.clogz-product__description,.clogz-cart-support,.cv2-order-help,.clogz-footer p){
+ font-family:var(--cz4-body)!important;font-size:max(16px,1em);line-height:1.55;color:inherit;
+}
+html body.clogz-v2-unified :is(h1,h2,h3,.clogz-heading,.clogz-page-title,.clogz-product__price,.clogz-pill,.clogz-nav a,.clogz-mobile-menu a,.cv2-detail-price,.cv2-card-price){
+ font-family:var(--cz4-display)!important;
+}
+html body.clogz-v2-unified :is(small,.clogz-eyebrow,.cv2-eyebrow,.clogz-footlinks,.clogz-disclaimer,.cz-faq__disclaimer){font-size:12px!important;color:inherit}
+html body.clogz-v2-unified :is(a,button,input,select,textarea,summary, [role="button"]):focus-visible{
+ outline:3px solid #b63b2f!important;outline-offset:3px!important;
+}
+html body.clogz-v2-unified :is(.clogz-iconbutton,.cv2-filters button,.clogz-product__option-values label,.clogz-product__thumbs button){min-width:44px;min-height:44px}
+html body.clogz-v2-unified :is(.clogz-footer p,.clogz-footer a){color:#eee8e2!important}
+html body.clogz-v2-unified :is(.clogz-muted,.clogz-product__description,.cz-faq__answer,.clogz-order-details__field small){color:#3a3938!important}
+html body.clogz-v2-unified .clogz-newsletter{
+ background:#242321!important;color:#ffffff!important;box-shadow:none!important;
+}
+html body.clogz-v2-unified .clogz-newsletter :is(h2,p,label){color:#ffffff!important;text-shadow:none!important}
+html body.clogz-v2-unified .clogz-newsletter input{background:#fff!important;color:#242321!important}
+html body.clogz-v2-unified .clogz-newsletter input::placeholder{color:#555!important}
+html body.clogz-v2-unified .cv2{overflow-x:hidden!important;overflow-x:clip!important}
+html body.clogz-v2-unified .cv2-sky{overflow-x:hidden!important;overflow-x:clip!important}
+html body.clogz-v2-unified .cv2-story{display:none!important}
+html body.clogz-v2-unified .clogz-trust-strip{background:#fff8f1!important}
+html body.clogz-v2-unified .cv2-shoe{max-width:100%!important}
+html body.clogz-v2-unified .clogz-product__option-values label:focus-within{outline:3px solid #b63b2f!important;outline-offset:3px}
+@media(max-width:700px){
+ html body.clogz-v2-unified{font-size:15px!important}
+ html body.clogz-v2-unified :is(p,li,.clogz-muted,.clogz-product__description){font-size:15px!important}
+ html body.clogz-v2-unified .clogz-newsletter p{font-size:15px!important}
+}
+
+/* V4 — panier épuré, informations complémentaires repliées. */
+html body.clogz-v2-unified .cz4-order-details{display:grid;gap:10px;padding:0;margin:10px 0;border:0;background:transparent;box-shadow:none}
+html body.clogz-v2-unified .cz4-order-details .clogz-order-details__toggle{min-height:44px;display:flex;align-items:center}
+html body.clogz-v2-unified .cz4-geo{border:0!important;background:transparent!important;padding:0!important;margin:12px 0!important;box-shadow:none!important}
+html body.clogz-v2-unified .cz4-geo .clogz-geo__fields{margin-bottom:10px}
+html body.clogz-v2-unified .cz4-cart-accordion{border:1px solid #dfd6ce;border-radius:12px;background:#fff;box-shadow:none;margin:10px 0;padding:0}
+html body.clogz-v2-unified .cz4-cart-accordion>summary{min-height:45px;padding:12px 15px;cursor:pointer;list-style:revert;font-family:var(--cz4-body)!important;font-size:14px!important;font-weight:700!important;color:#292321;line-height:1.45}
+html body.clogz-v2-unified .cz4-cart-accordion[open]>:not(summary){margin:10px 15px 14px;max-width:100%}
+html body.clogz-v2-unified .cz4-cart-accordion p{font-size:13px!important;line-height:1.5!important;color:#3a3938!important}
+html body.clogz-v2-unified .cz4-cart-accordion a{text-decoration:underline;text-underline-offset:3px}
+html body.clogz-v2-unified .cz4-cart-trust{font-family:var(--cz4-body)!important;font-size:13px!important;font-weight:700!important;line-height:1.5!important;background:#f7f5f2!important;color:#24211f!important;padding:10px 12px!important;border-radius:10px!important}
+html body.clogz-v2-unified .clogz-cart-total{margin:14px 0 8px!important}
+html body.clogz-v2-unified .clogz-cart-payment-reminder{padding:10px 13px!important;font-size:13px!important}
+html body.clogz-v2-unified .clogz-drawer__delivery-terms,html body.clogz-v2-unified .clogz-drawer__help{display:none!important}
+@media(max-width:700px){
+ html body.clogz-v2-unified [data-clogz-page-cart] .clogz-cart-actions{
+  position:sticky;bottom:0;z-index:12;background:rgba(255,255,255,.97);
+  padding:10px 0 calc(10px + env(safe-area-inset-bottom));border-top:1px solid #e8dfd6;
+ }
+ html body.clogz-v2-unified [data-clogz-page-cart] #ClogzNativeCheckoutButton{flex:1 1 100%;order:-1;min-height:50px!important}
+ html body.clogz-v2-unified .clogz-order-details__toggle span{font-size:13px}
+}
+
+/* Dernières corrections V4 : galerie, prix, upsell et panier mobile. */
+html body.clogz-v2-unified .cz4-size-guide-link{font-family:var(--cz4-body)!important;font-size:13px!important;font-weight:700!important;margin-left:10px;text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}
+html body.clogz-v2-unified .cz4-product-details{padding:18px 0;margin-top:18px;border-top:1px solid #e8dcd3}
+html body.clogz-v2-unified .cz4-product-details h2{font-size:clamp(19px,2vw,23px)!important;line-height:1.25}
+html body.clogz-v2-unified .cz4-product-details ul{padding-left:20px;line-height:1.6}
+html body.clogz-v2-unified .cz4-product-details li{margin:7px 0;font-size:15px;color:#303030}
+html body.clogz-v2-unified .cz4-complete-look__packs{margin-top:22px}
+html body.clogz-v2-unified .cz4-complete-look__packs a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px;font-weight:800}
+html body.clogz-v2-unified .cv2-cart-heading{display:block;font-family:var(--cz4-display);font-weight:800;font-size:22px}
+html body.clogz-v2-unified .clogz-product__thumbs button{min-height:44px!important;min-width:44px!important}
+html body.clogz-v2-unified .clogz-product__thumbs button:focus-visible{outline:3px solid #b63b2f!important}
+@media(max-width:700px){
+ html body.clogz-v2-unified .clogz-product__thumbs{touch-action:pan-x}
+}
+
+/* V4 — barre fixe « Choisis ta pointure » supprimée : le bouton principal suffit. */
+html body .clogz-sticky-atc{display:none!important}
+html body.clogz-template-product{padding-bottom:0!important}
+
+/* Bouton de validation rapide visible dès le haut du panier sur ordinateur. */
+html body.clogz-v2-unified .cz4-cart-quick-actions{display:flex;justify-content:flex-end;margin:10px 0 15px}
+html body.clogz-v2-unified .cz4-cart-quick-actions .clogz-pill{min-width:205px;min-height:46px}
+@media(max-width:700px){html body.clogz-v2-unified .cz4-cart-quick-actions{display:none!important}}
+
+/* V4 — textes fiche produit. */
+html body.clogz-v2-unified .cz4-product-copy__hook{font-size:18px!important;margin:0 0 10px}
+html body.clogz-v2-unified .cz4-product-copy ul{padding-left:20px;margin:0;line-height:1.7}
+html body.clogz-v2-unified .clogz-card__label{display:none!important}
+
+/* V4 — barre de navigation mobile du bas supprimée. */
+html body .cz4-bottom-nav{display:none!important}
+
+/* V4 — page Univers : même écriture que le titre d'accueil « LE STYLE PREND LA RUE. » */
+html body.clogz-v2-unified .clogz-univers :is(h1,h2){
+ font-family:var(--cz4-display)!important;font-weight:900!important;text-transform:uppercase!important;
+ letter-spacing:-.055em!important;line-height:1!important;
+}
+html body.clogz-v2-unified .clogz-univers h1{color:#191817!important}
+html body.clogz-v2-unified .clogz-univers :is(h1,h2) em{color:#ED4B39!important;font-style:normal!important}
+html body.clogz-v2-unified .clogz-univers__eyebrow{color:#191817!important;font-size:13px!important;letter-spacing:.18em!important}

@@ -1,0 +1,782 @@
+
+/* CLOGZ V5 — mobile-first monument hero + 9-pair carousel, 2026-11-06.
+   Scoped to the copied theme; loaded after all prior CSS assets. */
+html body.clogz-zine .czine-bottom-nav,
+html body.clogz-zine .cz4-bottom-nav { display:none!important; }
+html body.clogz-zine .clogz-footer { padding-bottom:clamp(32px,5vw,60px)!important; }
+
+/* The fixed ticker occupies 34px; the hero starts immediately beneath it. */
+html body.clogz-zine.clogz-template-index main#MainContent{
+  padding-top:0!important;
+  overflow-x:clip;
+}
+html body.clogz-zine.clogz-template-index main#MainContent>.shopify-section:first-child{
+  margin-top:0!important;
+  padding-top:0!important;
+}
+html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+  display:flex!important;
+  flex-direction:column;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:clamp(735px,92svh,940px)!important;
+  background:var(--z-ink,#191817)!important;
+  padding:28px 4% 32px!important;
+  margin:0!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+html body.clogz-zine .czine-v5-hero .czine-hero-monument-image{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:67% 48%;
+  z-index:0;
+  pointer-events:none;
+}
+html body.clogz-zine .czine-v5-hero:before{
+  display:none!important;
+}
+html body.clogz-zine .czine-v5-hero:after{
+  content:""!important;
+  display:block!important;
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:linear-gradient(90deg,rgba(17,15,15,.86) 0%,rgba(18,15,16,.71) 40%,rgba(17,14,14,.28) 78%),
+             linear-gradient(0deg,rgba(15,12,12,.69),transparent 46%);
+  pointer-events:none;
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-stamp,
+html body.clogz-zine .czine-v5-hero>.czine-hero-head,
+html body.clogz-zine .czine-v5-hero>.czine-v5-stage,
+html body.clogz-zine .czine-v5-hero>.czine-v5-pair-meta,
+html body.clogz-zine .czine-v5-hero>.czine-v5-hero-foot{
+  position:relative;
+  z-index:3;
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-stamp{
+  align-self:flex-start;
+  max-width:100%;
+  color:var(--z-ink)!important;
+  background:var(--z-paper)!important;
+  border:1px solid var(--z-ink)!important;
+  box-shadow:5px 5px 0 rgba(20,14,13,.48);
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-head{
+  max-width:100%;
+  padding:clamp(26px,3vw,46px) 0 0;
+  margin:0;
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+  font-family:var(--z-display,"Anton",Impact,sans-serif)!important;
+  font-weight:400!important;
+  font-size:clamp(66px,8.3vw,132px)!important;
+  line-height:.91!important;
+  white-space:normal!important;
+  word-spacing:normal!important;
+  letter-spacing:-.025em!important;
+  color:#fff8f1!important;
+  margin:0;
+  max-width:100%;
+  text-shadow:0 5px 22px rgba(0,0,0,.42);
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-head h1 em{color:var(--z-red)!important}
+html body.clogz-zine .czine-v5-hero .czine-hero-note{
+  position:absolute;
+  top:13px;
+  right:2%;
+  font-family:var(--z-note,"Permanent Marker",cursive)!important;
+  font-size:clamp(15px,1.55vw,24px)!important;
+  color:#fff8f1!important;
+  text-shadow:0 3px 8px #171314;
+  transform:rotate(4deg);
+  white-space:nowrap;
+  z-index:4;
+}
+html body.clogz-zine .czine-v5-hero>.czine-hero-head>p{
+  font-family:var(--z-display,"Anton",Impact,sans-serif)!important;
+  font-weight:400!important;
+  color:#fff8f1!important;
+  font-size:clamp(16px,2vw,24px)!important;
+  margin:13px 0 0!important;
+  max-width:100%;
+  letter-spacing:.04em;
+}
+
+/* Stage: center shoe is dominant; only neighbors remain visible and clickable. */
+html body.clogz-zine .czine-v5-stage{
+  display:block;
+  flex:1 1 auto;
+  min-height:clamp(280px,34vw,455px);
+  width:100%;
+  margin:5px 0 0;
+  touch-action:pan-y;
+  outline-offset:-4px;
+}
+html body.clogz-zine .czine-v5-shoe{
+  position:absolute;
+  top:50%;
+  left:50%;
+  display:block;
+  width:min(42vw,620px);
+  height:min(34vw,500px);
+  max-width:620px;
+  max-height:500px;
+  opacity:0;
+  z-index:0;
+  pointer-events:none;
+  transform:translate(-50%,-50%) scale(.25);
+  transition:transform .54s cubic-bezier(.2,.75,.24,1),opacity .35s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+html body.clogz-zine .czine-v5-shoe img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  background:transparent!important;
+  mix-blend-mode:normal!important;
+  filter:drop-shadow(0 21px 15px rgba(0,0,0,.40));
+  pointer-events:none;
+  transition:transform .25s ease;
+}
+html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="0"]{
+  transform:translate(-50%,-50%) scale(1.05) rotate(-2deg);
+  z-index:5;
+  opacity:1;
+  pointer-events:auto;
+}
+html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="-1"]{
+  transform:translate(-50%,-50%) translateX(-61%) scale(.58) rotate(-8deg);
+  z-index:3;
+  opacity:.92;
+  pointer-events:auto;
+}
+html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="1"]{
+  transform:translate(-50%,-50%) translateX(61%) scale(.58) rotate(8deg);
+  z-index:3;
+  opacity:.92;
+  pointer-events:auto;
+}
+html body.clogz-zine .czine-v5-shoe:not([data-zine-v5-position="0"]):not([data-zine-v5-position="-1"]):not([data-zine-v5-position="1"]){
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+}
+@media(hover:hover) and (pointer:fine){
+ html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="0"]:hover img{
+   transform:translateY(-7px) rotate(-1deg);
+ }
+}
+html body.clogz-zine .czine-v5-pair-meta{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  align-self:center;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto 12px;
+  padding:9px 17px;
+  gap:8px 13px;
+  border:1px solid rgba(255,248,241,.45);
+  border-radius:999px;
+  background:rgba(19,15,15,.84);
+  backdrop-filter:blur(8px);
+  color:#fff8f1;
+  text-align:center;
+}
+html body.clogz-zine .czine-v5-pair-meta strong{
+  font:400 clamp(20px,2.6vw,30px)/1 var(--z-display)!important;
+  text-transform:uppercase;
+  letter-spacing:0!important;
+}
+html body.clogz-zine .czine-v5-pair-meta>span{
+  font:700 14px/1.2 var(--z-body)!important;
+  color:#fff8f1;
+}
+html body.clogz-zine .czine-v5-pair-meta a{
+  font:400 15px/1 var(--z-display)!important;
+  color:#fff8f1;
+  text-transform:uppercase;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+html body.clogz-zine .czine-v5-hero-foot{
+  margin:0;
+  padding:8px 0 0;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:16px;
+  bottom:auto!important;
+  left:auto!important;
+  right:auto!important;
+  width:100%;
+}
+html body.clogz-zine .czine-v5-hero-foot .czine-script{
+  flex:0 1 250px;
+  max-width:250px;
+  margin:0;
+  transform:rotate(-4deg);
+  font:400 clamp(17px,1.9vw,23px)/1.35 var(--z-note)!important;
+  color:#fff8f1!important;
+  text-shadow:0 2px 12px #0008;
+}
+.czine-v5-hero-actions{display:flex;align-items:center;justify-content:flex-end;gap:15px;flex-wrap:wrap}
+.czine-v5-controls{display:flex;align-items:center;gap:8px;color:#fff8f1}
+.czine-v5-controls button{
+  width:48px;height:48px;display:grid;place-items:center;
+  background:var(--z-paper)!important;color:var(--z-ink)!important;
+  border:2px solid var(--z-ink)!important;border-radius:50%;
+  padding:9px;cursor:pointer;
+}
+.czine-v5-controls button:hover{background:var(--z-red)!important;color:#fff!important}
+.czine-v5-controls svg,.czine-v5-explore svg{
+  display:block;width:23px;height:23px;fill:none;
+  stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
+}
+.czine-v5-controls span{font:400 18px/1 var(--z-display)!important;white-space:nowrap;color:#fff8f1}
+.czine-v5-explore{display:inline-flex!important;align-items:center;gap:13px;min-height:48px;}
+.czine-v5-explore svg{width:20px;height:20px;flex:none}
+html body.clogz-zine .czine-trust>div>span:first-child{
+  font-family:Arial,sans-serif!important;font-weight:700!important;font-size:29px;
+}
+/* No emoji stickers or fixed nav; all cart actions remain accessible in MENU. */
+html body.clogz-zine .czine-hero-scribble{display:none!important}
+
+@media(max-width:900px){
+  html body.clogz-zine.clogz-template-index .czine-mobile-head{
+    position:fixed;
+    top:34px!important;left:0;right:0;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+    padding:8px 12px;
+    z-index:83;
+  }
+  html body.clogz-zine.clogz-template-index .czine-mobile-logo{
+    display:flex!important;align-items:center;gap:3px;
+    border-radius:13px;
+    padding:7px 9px;
+    background:rgba(255,248,241,.94)!important;
+    box-shadow:0 2px 12px rgba(15,12,12,.12);
+    max-width:calc(100% - 118px);
+  }
+  html body.clogz-zine.clogz-template-index .czine-mobile-logo img.clogz-logo__cz{width:32px;height:32px}
+  html body.clogz-zine.clogz-template-index .czine-mobile-logo img.clogz-logo__wordmark{width:clamp(91px,25vw,142px);max-height:33px}
+  html body.clogz-zine .czine-menu-open{
+    padding:10px 18px;min-height:45px;
+    background:var(--z-paper)!important;
+    color:var(--z-ink)!important;
+    font-family:var(--z-display)!important;
+    border-radius:999px!important;
+    font-size:20px!important;
+    white-space:nowrap;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+  }
+  html body.clogz-zine.clogz-template-index .czine-menu-hint{display:none!important}
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+    padding:91px 4% 28px!important;
+    min-height:max(740px,calc(100svh - 34px))!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head{padding-top:19px!important}
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+    font-size:clamp(55px,10.1vw,89px)!important;
+    white-space:normal!important;
+    word-spacing:normal!important;
+  }
+  html body.clogz-zine .czine-v5-hero .czine-hero-note{top:0;right:0;font-size:15px!important}
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head>p{
+    font-size:clamp(15px,2.2vw,19px)!important;margin-top:11px!important;
+  }
+  html body.clogz-zine .czine-v5-stage{min-height:240px;margin:7px 0 0}
+  html body.clogz-zine .czine-v5-shoe{width:min(65vw,465px);height:min(50vw,340px)}
+  html body.clogz-zine .czine-v5-pair-meta{margin-bottom:11px}
+}
+@media(max-width:640px){
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+    min-height:max(744px,calc(100svh - 34px))!important;
+    padding:88px 16px 24px!important;
+  }
+  html body.clogz-zine .czine-v5-hero .czine-hero-monument-image{
+    object-position:77% center!important;
+  }
+  html body.clogz-zine .czine-v5-hero:after{
+    background:linear-gradient(90deg,rgba(15,12,12,.83),rgba(16,12,12,.54)),
+               linear-gradient(0deg,rgba(14,11,11,.81),transparent 56%);
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-stamp{
+    font-size:9px!important;
+    letter-spacing:.09em;
+    padding:9px 13px;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head{
+    padding-top:29px!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+    font-size:clamp(47px,12.4vw,68px)!important;
+    line-height:.90!important;
+    letter-spacing:-.025em!important;
+    white-space:normal!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1 br{display:initial!important}
+  html body.clogz-zine .czine-v5-hero .czine-hero-note{
+    top:1px;right:0;font-size:13px!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head>p{
+    font-size:14px!important;margin-top:13px!important;
+  }
+  html body.clogz-zine .czine-v5-stage{
+    display:block;
+    min-height:225px!important;
+    flex:1 1 auto;
+    width:100%;
+    margin:6px 0 0;
+    overflow:visible;
+  }
+  html body.clogz-zine .czine-v5-shoe{
+    width:83vw!important;
+    height:clamp(210px,60vw,306px)!important;
+    max-width:390px;
+    max-height:306px;
+  }
+  html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="0"]{
+    transform:translate(-50%,-50%) scale(1.02) rotate(-2deg)!important;
+  }
+  html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="-1"]{
+    transform:translate(-50%,-50%) translateX(-46%) scale(.48) rotate(-10deg)!important;
+    opacity:.88;
+  }
+  html body.clogz-zine .czine-v5-shoe[data-zine-v5-position="1"]{
+    transform:translate(-50%,-50%) translateX(46%) scale(.48) rotate(10deg)!important;
+    opacity:.88;
+  }
+  html body.clogz-zine .czine-v5-pair-meta{
+    gap:4px 10px;
+    border-radius:16px;
+    padding:8px 11px;
+    max-width:100%;
+    margin:1px auto 12px;
+  }
+  html body.clogz-zine .czine-v5-pair-meta strong{font-size:19px!important}
+  html body.clogz-zine .czine-v5-pair-meta>span{font-size:12px!important}
+  html body.clogz-zine .czine-v5-pair-meta a{
+    font-size:12px!important;text-decoration:underline;white-space:normal;
+  }
+  html body.clogz-zine .czine-v5-hero-foot{
+    position:relative!important;
+    inset:auto!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:flex-end!important;
+    padding:0!important;
+    gap:8px!important;
+    margin:0!important;
+  }
+  html body.clogz-zine .czine-v5-hero-foot .czine-script{
+    display:block;
+    max-width:none!important;
+    flex:auto;
+    font-size:14px!important;
+    line-height:1.25!important;
+    transform:rotate(-1deg);
+    margin:0 0 4px!important;
+  }
+  .czine-v5-hero-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:9px;
+    width:100%;
+    flex-wrap:nowrap;
+  }
+  .czine-v5-controls{gap:4px;flex:none}
+  .czine-v5-controls button{
+    width:44px;height:44px;min-width:44px;min-height:44px;
+  }
+  .czine-v5-controls span{font-size:13px!important}
+  html body.clogz-zine .czine-v5-explore{
+    display:inline-flex!important;
+    font-size:clamp(12px,3.6vw,16px)!important;
+    min-height:44px!important;
+    padding:9px 11px!important;
+    gap:7px!important;
+    flex:none;
+    white-space:nowrap;
+  }
+  .czine-v5-explore svg{width:16px;height:16px}
+  html body.clogz-zine .czine-trust>div{padding:15px 9px!important}
+  html body.clogz-zine .czine-trust>div>span:first-child{display:none!important}
+  html body.clogz-zine .czine-trust>div{grid-template-columns:1fr!important}
+  html body.clogz-zine .czine-trust strong{font-size:18px!important;line-height:1.1}
+  html body.clogz-zine .czine-trust small{font-size:9px!important}
+  html body.clogz-zine .czine-marquee{transform:rotate(-1deg) scale(1.01)}
+}
+@media(max-width:370px){
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{font-size:46px!important}
+  .czine-v5-controls span{display:none!important}
+  html body.clogz-zine .czine-v5-explore{font-size:13px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.clogz-zine .czine-v5-shoe,
+  html body.clogz-zine .czine-v5-shoe img{transition:none!important;animation:none!important}
+}
+
+/* Sous 900px, le bandeau noir fixe de 34px conserve son espace.
+   Sur ordinateur le 34px supplémentaire causait la bande crème parasite. */
+@media(max-width:900px){
+  html body.clogz-zine.clogz-template-index main#MainContent{padding-top:34px!important}
+}
+
+
+/* V5 gris ardoise: contrast against the dark monument, without changing the product image. */
+.czine-v5-stage .czine-v5-shoe[data-zine-v5-color="sabots-clogz-gris"]::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:18% 4% 21%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,248,241,.21) 0%,rgba(255,248,241,.08) 52%,transparent 74%);
+  pointer-events:none;
+}
+/* Desktop: do not reserve a second strip under the fixed announcement ticker. */
+@media(min-width:901px) {
+  html body.clogz-zine.clogz-template-index main#MainContent{
+    padding-top:0!important;
+  }
+  html body.clogz-zine.clogz-template-index .czine-v5-hero{
+    margin-top:0!important;
+  }
+}
+/* Narrow mobile devices: controls flow onto a new line instead of causing horizontal scroll. */
+@media(max-width:420px) {
+  html body.clogz-zine .czine-v5-hero-actions {
+    display:grid;
+    grid-template-columns:1fr;
+    gap:9px;
+    width:100%;
+  }
+  html body.clogz-zine .czine-v5-controls {
+    justify-content:center;
+    width:100%;
+  }
+  html body.clogz-zine .czine-v5-explore {
+    width:100%;
+    justify-content:space-between;
+    white-space:normal;
+    font-size:15px!important;
+    min-height:46px!important;
+  }
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero {
+    min-height:max(780px,calc(100svh - 34px))!important;
+  }
+  html body.clogz-zine .czine-v5-pair-meta {
+    border-radius:12px;
+    font-size:13px;
+  }
+}
+@media(max-width:360px) {
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+    font-size:clamp(43px,12.5vw,51px)!important;
+  }
+}
+
+
+/* CLOGZ V5 — mobile header + responsive hero correction, 2026-11-06.
+   Permanent two-level masthead (ticker + CLOGZ logo/MENU), all pages. */
+@media(max-width:900px){
+  /* La navigation crème défile ; seul le ticker noir reste fixé à l'écran. */
+  html body.clogz-zine .czine-header{position:relative!important}
+  html body.clogz-zine .czine-header .czine-announce{
+    position:fixed!important;
+    top:0!important;
+    right:0!important;
+    left:0!important;
+    width:100%!important;
+    height:34px!important;
+    min-height:34px!important;
+    z-index:250!important;
+    margin:0!important;
+    background:#191817!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  html body.clogz-zine .czine-header .czine-mobile-head,
+  html body.clogz-zine.clogz-template-index .czine-header .czine-mobile-head{
+    position:absolute!important;
+    inset:34px 0 auto 0!important;
+    display:flex!important;
+    flex-direction:row!important;
+    justify-content:space-between!important;
+    align-items:center!important;
+    height:70px!important;
+    min-height:70px!important;
+    width:100%!important;
+    padding:8px max(13px,env(safe-area-inset-right)) 8px max(13px,env(safe-area-inset-left))!important;
+    margin:0!important;
+    background:#fff8f1!important;
+    border:0!important;
+    border-bottom:1px solid rgba(25,24,23,.25)!important;
+    border-radius:0!important;
+    box-shadow:0 3px 12px rgba(19,15,13,.12)!important;
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    z-index:251!important;
+    isolation:isolate;
+    box-sizing:border-box!important;
+  }
+  html body.clogz-zine .czine-header .czine-mobile-logo,
+  html body.clogz-zine.clogz-template-index .czine-header .czine-mobile-logo{
+    flex:0 1 auto;
+    display:flex!important;
+    align-items:center!important;
+    gap:3px!important;
+    min-width:0!important;
+    max-width:calc(100% - 106px)!important;
+    padding:0!important;
+    margin:0!important;
+    background:transparent!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    line-height:1!important;
+    isolation:auto!important;
+  }
+  html body.clogz-zine .czine-header .czine-mobile-logo img.clogz-logo__cz{
+    width:clamp(30px,8vw,36px)!important;
+    height:clamp(30px,8vw,36px)!important;
+    flex:none;
+    object-fit:contain;
+  }
+  html body.clogz-zine .czine-header .czine-mobile-logo img.clogz-logo__wordmark{
+    width:clamp(100px,29vw,150px)!important;
+    height:auto!important;
+    max-height:39px!important;
+    object-fit:contain;
+    flex:0 1 auto;
+  }
+  html body.clogz-zine .czine-header .czine-menu-open{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    flex:0 0 auto!important;
+    min-width:89px!important;
+    min-height:46px!important;
+    padding:10px 15px!important;
+    margin:0!important;
+    color:#191817!important;
+    background:#fff8f1!important;
+    border:2px solid #191817!important;
+    border-radius:999px!important;
+    font:400 19px/1 "Anton",Impact,sans-serif!important;
+    box-shadow:none!important;
+    white-space:nowrap;
+    position:relative;
+    z-index:2;
+  }
+  html body.clogz-zine .czine-header .czine-menu-overlay:not([hidden]){
+    position:fixed!important;
+    inset:34px 0 0 0!important;
+    z-index:260!important;
+    background:#fff8f1!important;
+  }
+  html body.clogz-zine .czine-menu-overlay .czine-menu-top{
+    min-height:48px;
+  }
+  /* Interior pages start under both fixed bars. The home hero image starts under the ticker,
+     but its text waits until below the cream logo/MENU strip. */
+  html body.clogz-zine:not(.clogz-template-index) main#MainContent{
+    padding-top:104px!important;
+  }
+  html body.clogz-zine.clogz-template-index main#MainContent{
+    padding-top:34px!important;
+    margin-top:0!important;
+  }
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+    min-height:max(745px,calc(100svh - 34px))!important;
+    padding:95px 15px 20px!important;
+    margin-top:0!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head{
+    padding-top:18px!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+    max-width:100%!important;
+    font-size:clamp(48px,10.1vw,85px)!important;
+    line-height:.90!important;
+    overflow-wrap:normal!important;
+    word-break:normal!important;
+    margin:0!important;
+  }
+  html body.clogz-zine .czine-v5-hero .czine-hero-note{
+    position:relative!important;
+    display:block!important;
+    width:max-content;
+    max-width:100%;
+    top:auto!important;
+    right:auto!important;
+    margin:0 0 9px auto!important;
+    padding:0!important;
+    font-size:clamp(12px,2.4vw,17px)!important;
+    transform:rotate(3deg);
+    text-align:right;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head>p{
+    margin:14px 0 0!important;
+    font-size:clamp(14px,2.1vw,18px)!important;
+    line-height:1.3!important;
+  }
+  html body.clogz-zine .czine-v5-stage{
+    display:block!important;
+    position:relative!important;
+    flex:1 1 235px!important;
+    min-height:225px!important;
+    max-height:375px!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:8px 0 2px!important;
+    overflow:visible!important;
+    touch-action:pan-y;
+  }
+  html body.clogz-zine .czine-v5-stage .czine-v5-shoe{
+    width:clamp(245px,75vw,380px)!important;
+    height:clamp(225px,60vw,330px)!important;
+    max-width:100%;
+    max-height:330px!important;
+    left:50%!important;
+    top:50%!important;
+  }
+  html body.clogz-zine .czine-v5-stage .czine-v5-shoe[data-zine-v5-position="0"]{
+    transform:translate(-50%,-50%) scale(.92) rotate(-2deg)!important;
+  }
+  html body.clogz-zine .czine-v5-stage .czine-v5-shoe[data-zine-v5-position="-1"]{
+    transform:translate(calc(-50% - 37vw),-50%) scale(.38) rotate(-9deg)!important;
+    opacity:.84!important;
+  }
+  html body.clogz-zine .czine-v5-stage .czine-v5-shoe[data-zine-v5-position="1"]{
+    transform:translate(calc(-50% + 37vw),-50%) scale(.38) rotate(9deg)!important;
+    opacity:.84!important;
+  }
+  html body.clogz-zine .czine-v5-pair-meta{
+    flex:none;
+    max-width:100%!important;
+    width:100%;
+    padding:9px 11px!important;
+    margin:0 0 10px!important;
+    gap:5px 12px!important;
+    border-radius:12px!important;
+    box-sizing:border-box;
+  }
+  html body.clogz-zine .czine-v5-pair-meta strong{font-size:19px!important}
+  html body.clogz-zine .czine-v5-pair-meta a{
+    font-size:12px!important;
+    min-height:28px;
+    display:inline-flex;
+    align-items:center;
+  }
+  html body.clogz-zine .czine-v5-hero-foot{
+    flex:none!important;
+    position:relative!important;
+    inset:auto!important;
+    margin:0!important;
+    padding:0!important;
+    gap:9px!important;
+  }
+  html body.clogz-zine .czine-v5-hero-foot .czine-script{
+    font-size:14px!important;
+    margin:0 0 3px!important;
+    line-height:1.25!important;
+  }
+  html body.clogz-zine .czine-v5-hero-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);
+    gap:10px!important;
+    width:100%;
+    align-items:center;
+  }
+  html body.clogz-zine .czine-v5-controls{
+    width:auto!important;
+    min-width:0!important;
+    display:flex!important;
+    justify-content:flex-start!important;
+    gap:4px!important;
+  }
+  html body.clogz-zine .czine-v5-controls button{
+    width:44px!important;height:44px!important;
+    min-width:44px!important;min-height:44px!important;
+  }
+  html body.clogz-zine .czine-v5-controls span{display:none!important}
+  html body.clogz-zine .czine-v5-hero-actions .czine-v5-explore{
+    min-width:0!important;
+    width:100%!important;
+    min-height:46px!important;
+    padding:9px 12px!important;
+    margin:0!important;
+    gap:7px!important;
+    white-space:normal!important;
+    font-size:clamp(12px,2.9vw,16px)!important;
+    line-height:1.1!important;
+    text-align:left!important;
+  }
+  html body.clogz-zine .czine-v5-hero-actions .czine-v5-explore svg{
+    flex:none;
+    width:17px!important;height:17px!important;
+  }
+}
+@media(max-width:390px){
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+    min-height:max(770px,calc(100svh - 34px))!important;
+  }
+  html body.clogz-zine .czine-v5-hero>.czine-hero-head h1{
+    font-size:clamp(43px,11.8vw,52px)!important;
+  }
+  html body.clogz-zine .czine-v5-hero-actions{
+    grid-template-columns:1fr!important;
+  }
+  html body.clogz-zine .czine-v5-controls{
+    justify-content:center!important;
+  }
+}
+@media(max-width:900px) and (orientation:landscape) and (max-height:540px){
+  html body.clogz-zine.clogz-template-index .czine-hero.czine-hero-monument.czine-v5-hero{
+    min-height:690px!important;
+  }
+  html body.clogz-zine .czine-v5-stage{min-height:205px!important}
+}
+/* Respect fixed header for in-page collection and FAQ links. */
+@media(max-width:900px){
+  html body.clogz-zine [id]{scroll-margin-top:115px}
+}
+
+
+/* CLOGZ mobile — continuous black announcement background.
+   The ticker remains fixed; this 34px extension scrolls away with the logo/MENU bar.
+   It fills the unwanted pale gap caused by the header's 34px mobile offset. */
+@media (max-width:900px){
+  html body.clogz-zine .czine-header{
+    position:relative!important;
+  }
+  html body.clogz-zine .czine-header::before{
+    content:"";
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:34px;
+    background:#191817;
+    pointer-events:none;
+    z-index:249;
+  }
+}

@@ -11,8 +11,9 @@
   <div class="czine-drop-grid">
     {% if zine_drop_collection != blank and zine_drop_collection.products_count > 0 %}
       {% for product in zine_drop_collection.products limit: 3 %}
+        {% assign czine_spider_alt = product.title | append: ' — collection spéciale CLOGZ' %}
         <article class="czine-drop-card">
-          <a href="{{ product.url }}" aria-label="Voir {{ product.title | escape }}"><span class="czine-drop-photo">{% if product.featured_image %}{{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '320, 480, 600', sizes: '(min-width: 1000px) 26vw, 80vw', alt: product.title | append: ' — collection spéciale CLOGZ Spider-Man' }}{% endif %}</span><span class="czine-drop-name">{{ product.title | remove: 'Sabots CLOGZ - ' | escape }}</span></a>
+          <a href="{{ product.url }}" aria-label="Voir {{ product.title | escape }}"><span class="czine-drop-photo">{% if product.featured_image %}{{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '320, 480, 600', sizes: '(min-width: 1000px) 26vw, 80vw', alt: czine_spider_alt }}{% endif %}</span><span class="czine-drop-name">{{ product.title | remove: 'Sabots CLOGZ - ' | escape }}</span></a>
           <div class="czine-drop-price"><div class="czine-promo-prices"><strong>{% render 'clogz-price', amount: product.price %}</strong>{% if product.compare_at_price_max > product.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: product.compare_at_price_max %}</s>{% endif %}</div><a href="{{ product.url }}" class="czine-pill">TROUVER MA POINTURE ↗</a></div>
         </article>
       {% endfor %}

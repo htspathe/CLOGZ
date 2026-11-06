@@ -6,6 +6,7 @@
 {% enddoc %}
 {% if product != blank %}
   {% capture czine_color %}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{% endcapture %}
+  {% assign czine_product_alt = product.title | append: ' — vue produit, collection CLOGZ Dakar' %}
   {% assign czine_category = 'essentiels' %}
   {% if product.handle contains 'lilas' or product.handle contains 'rose' or product.handle contains 'bleu-ciel' %}
     {% assign czine_category = 'pastels' %}
@@ -21,7 +22,7 @@
         {% elsif product.handle == 'sabots-clogz-gris' %}
           <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849" alt="{{ product.title | escape }}" width="600" height="600" loading="lazy" decoding="async">
         {% else %}
-          {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 78vw', alt: product.title | append: ' — collection CLOGZ, coloris exclusif' }}
+          {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(min-width: 1100px) 24vw, (min-width: 640px) 45vw, 78vw', alt: czine_product_alt }}
         {% endif %}
       {% else %}<span class="czine-no-photo">{{ czine_color | strip | escape }}</span>{% endif %}
       <span class="czine-card-arrow" aria-hidden="true">↗</span>

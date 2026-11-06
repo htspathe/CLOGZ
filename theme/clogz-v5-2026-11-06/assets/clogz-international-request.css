@@ -1,0 +1,38 @@
+/* Parcours alternatif pour les clients hors Sénégal, sans promettre de transport gratuit. */
+.clogz-cart-international{border:1px solid #dfd0c3;border-radius:15px;background:#fff8f1;padding:14px;display:grid;gap:9px;color:#302620}
+.clogz-cart-international strong{font-size:14px;line-height:1.35}
+.clogz-cart-international p{margin:0;font-size:12px;line-height:1.5;color:#675950}
+.clogz-cart-international .clogz-pill{max-width:100%;box-sizing:border-box;text-align:center;white-space:normal}
+[data-clogz-intl-header]{border-left:3px solid #d94233;padding:10px 13px;background:#fff4ee;font-size:14px;line-height:1.5;border-radius:4px}
+[data-clogz-intl-header][hidden],[data-clogz-intl-country][hidden],[data-clogz-intl-city][hidden],[data-clogz-intl-delivery-mode][hidden],[data-clogz-intl-recipient][hidden],[data-clogz-intl-recipient-phone][hidden]{display:none!important}
+#ClogzDrawer.is-empty .clogz-cart-international{display:none!important}
+#ClogzDrawer .clogz-cart-international{padding:11px}
+@media(max-width:650px){[data-clogz-page-cart] .clogz-cart-international{margin:14px 0}}
+
+/* Accueil CLOGZ — lien international placé juste sous le showroom, sans toucher au carrousel. */
+.cv2-international-home{
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+  padding:24px max(5%,24px);background:#fff8f1;color:#221c19;
+  border-top:1px solid #e8d7ca;border-bottom:1px solid #e8d7ca;
+  position:relative;z-index:6;box-sizing:border-box;
+}
+.cv2-international-home__text{max-width:760px;min-width:0}
+.cv2-international-home__eyebrow{display:block;margin:0 0 6px;font-size:11px;line-height:1.5;font-weight:800;letter-spacing:.1em;color:#b53c31}
+.cv2-international-home h2{margin:0 0 7px;font-family:inherit;font-size:clamp(20px,2.3vw,27px);line-height:1.2;letter-spacing:-.02em}
+.cv2-international-home p{margin:0;font-size:13px;line-height:1.6;color:#584942}
+.cv2-international-home p strong{font-weight:850;color:#241d19}
+.cv2-international-home__link{
+  flex-shrink:0;display:inline-flex;justify-content:center;align-items:center;
+  gap:8px;min-height:47px;max-width:100%;padding:12px 20px;box-sizing:border-box;
+  background:#d94233;border:1px solid #d94233;color:#fff!important;border-radius:999px;
+  text-decoration:none!important;text-align:center;font-size:13px;line-height:1.3;
+  font-family:inherit;font-weight:850;transition:background-color .18s ease;
+}
+.cv2-international-home__link:hover{background:#b32e22}
+.cv2-international-home__link:focus-visible{outline:3px solid #201c1a;outline-offset:3px}
+@media(max-width:760px){
+ .cv2-international-home{flex-direction:column;align-items:stretch;gap:15px;padding:19px 5% 22px}
+ .cv2-international-home h2{font-size:21px}
+ .cv2-international-home p{font-size:12.5px}
+ .cv2-international-home__link{width:100%;padding:12px 14px;font-size:12px;white-space:normal}
+}

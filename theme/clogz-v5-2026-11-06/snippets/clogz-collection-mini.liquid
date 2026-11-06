@@ -1,0 +1,88 @@
+{% comment %}Compact CLOGZ group previews. Always preserve Shopify price/stock; drafts are informational only.{% endcomment %}
+{% liquid
+ assign target_url = '/collections'
+ assign handles = ''
+ if group == 'pastels'
+  assign target_url = '/collections/sabots-clogz-pastels-1'
+  assign handles = 'sabots-clogz-rose-bonbon-pins-offerts|sabots-clogz-bleu-ciel|sabots-clogz-lilas'
+ elsif group == 'essentiels'
+  assign target_url = '/collections/sabots-clogz-les-essentiels'
+  assign handles = 'sabots-clogz-noir|sabots-clogz-rouge|sabots-clogz-blanc|sabots-clogz-beige|sabots-clogz-vert-foret|sabots-clogz-orange|sabots-clogz-gris'
+ elsif group == 'spider'
+  assign target_url = '/collections/clogz-spider-man'
+  assign handles = 'sabots-clogz-spider-man-rouge|sabots-clogz-spider-man-noir|sabots-clogz-spider-man-bleu'
+ endif
+ assign model_handles = handles | split: '|'
+%}
+<div class="clogz-curated-grid clogz-curated-grid--{{ group }}" role="list">
+{% for model_handle in model_handles %}
+ {% liquid
+  assign model = all_products[model_handle]
+  assign model_name = ''
+  assign fallback_image = ''
+  case model_handle
+   when 'sabots-clogz-rose-bonbon-pins-offerts'
+    assign model_name = 'Rose bonbon'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rose-badge.png?v=1792779566'
+   when 'sabots-clogz-bleu-ciel'
+    assign model_name = 'Bleu ciel'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804'
+   when 'sabots-clogz-lilas'
+    assign model_name = 'Lilas'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-lilas-badge.png?v=1792779578'
+   when 'sabots-clogz-noir'
+    assign model_name = 'Noir'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-noir-badge.png?v=1792779583'
+   when 'sabots-clogz-rouge'
+    assign model_name = 'Rouge'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rouge-badge.png?v=1792779589'
+   when 'sabots-clogz-blanc'
+    assign model_name = 'Blanc'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-blanc-badge.png?v=1792779595'
+   when 'sabots-clogz-beige'
+    assign model_name = 'Beige'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-beige-badge.png?v=1792779600'
+   when 'sabots-clogz-vert-foret'
+    assign model_name = 'Vert forêt'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-vert-foret-badge.png?v=1792779606'
+   when 'sabots-clogz-orange'
+    assign model_name = 'Orange'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-orange-v1.png?v=1792854700'
+   when 'sabots-clogz-gris'
+    assign model_name = 'Gris'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849'
+   when 'sabots-clogz-spider-man-rouge'
+    assign model_name = 'Spider-Man rouge'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&width=900'
+   when 'sabots-clogz-spider-man-noir'
+    assign model_name = 'Spider-Man noir'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&width=900'
+   when 'sabots-clogz-spider-man-bleu'
+    assign model_name = 'Spider-Man bleu'
+    assign fallback_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&width=900'
+  endcase
+  assign model_link = target_url
+  if model != blank and model.vendor == 'CLOGZ'
+   assign model_link = model.url
+  endif
+ %}
+ <a class="clogz-curated-card clogz-card--editorial clogz-pair-theme--{{ model_handle }}" role="listitem" href="{{ model_link }}" aria-label="Voir {{ model_name | escape }}">
+  <span class="clogz-curated-card__image">
+   {% if model_handle == 'sabots-clogz-gris' or model_handle == 'sabots-clogz-bleu-ciel' %}
+    <img src="{{ fallback_image }}" alt="Sabot CLOGZ {{ model_name | escape }} — photo fidèle" width="520" height="520" loading="lazy">
+   {% elsif model != blank and model.vendor == 'CLOGZ' and model.featured_image != blank and group != 'spider' %}
+    <img src="{{ model.featured_image | image_url: width: 650 }}" srcset="{{ model.featured_image | image_url: width: 320 }} 320w, {{ model.featured_image | image_url: width: 650 }} 650w" sizes="(max-width:720px) 44vw, 23vw" alt="{{ model.featured_image.alt | default: model_name | escape }}" width="520" height="520" loading="lazy">
+   {% else %}<img src="{{ fallback_image }}" alt="Sabots CLOGZ {{ model_name | escape }}" width="520" height="520" loading="lazy">{% endif %}
+   <span class="clogz-card__view" aria-hidden="true">VOIR LA PAIRE</span>
+  </span>
+  <span class="clogz-curated-card__details">
+   <span class="clogz-card__label">Sabots - Crocs</span>
+   <span class="clogz-editorial-line">
+    <strong>{{ model_name | escape }}</strong>
+    {% if model != blank and model.vendor == 'CLOGZ' and model.price > 0 %}<small>{% render 'clogz-price', amount: model.price %}</small>
+    {% else %}<small>Voir la collection</small>{% endif %}
+   </span>
+  </span>
+ </a>
+{% endfor %}
+</div>

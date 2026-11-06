@@ -1,0 +1,94 @@
+{% if product.vendor == 'CLOGZ' %}
+{% if product.type == 'Pack de sabots' %}
+<section class="clogz-page-space clogz-pack-landing" aria-labelledby="clogz-pack-heading"><div class="clogz-container"><div class="clogz-breadcrumb"><a href="{{ routes.root_url }}">Accueil</a> / <a href="/pages/packs">Mes Packs</a></div><div class="clogz-pack-landing__layout"><div class="clogz-pack-landing__image">{% if product.featured_image %}<img src="{{ product.featured_image | image_url: width: 1200 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="800" height="800" loading="eager">{% endif %}</div><div class="clogz-pack-landing__text"><p class="clogz-eyebrow">COMPOSE TON PACK</p><h1 id="clogz-pack-heading">{{ product.title | escape }}</h1><p class="clogz-product__price">{% render 'clogz-price', amount: product.price %}</p><p>Choisis la couleur et la pointure de chaque paire. Le prix affiché s'applique à l'ensemble du pack.</p><a class="clogz-pill clogz-pill--green" href="/pages/packs">PERSONNALISER MON PACK</a><p class="clogz-muted">Chaque paire doit être configurée avant la commande.</p></div></div></div></section>
+{% else %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+{%- capture cz_name -%}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{%- endcapture -%}
+{%- capture cz_hook -%}{% render 'clogz-color-name', handle: product.handle, title: product.title, field: 'hook' %}{%- endcapture -%}
+{%- if cz_hook != blank -%}{%- assign cz_display_title = cz_name | prepend: 'Sabots CLOGZ ' -%}{%- else -%}{%- assign cz_display_title = product.title -%}{%- endif -%}
+{%- assign cz_key = '' -%}{%- if cz_hook != blank -%}{%- assign cz_key = product.handle | remove_first: 'sabots-clogz-' | remove: '-pins-offerts' -%}{%- endif -%}
+<script type="application/ld+json">{{ product | structured_data }}</script>
+<div class="clogz-pair-theme clogz-pair-theme--{{ product.handle }}"><div class="clogz-container"><div class="clogz-breadcrumb"><a href="{{ routes.root_url }}">Accueil</a> / <a href="{{ routes.collections_url }}">Les coloris</a> / {{ cz_display_title | escape }}</div>
+<div class="clogz-product">
+ <div class="clogz-product__gallery{% if cz_key != blank %} cz-newgal{% endif %}" data-product-gallery>
+  <div class="clogz-product__mainmedia">
+   {% if cz_key != blank %}{% render 'clogz-new-gallery', key: cz_key, title: cz_display_title, part: 'main' %}{% endif %}
+   {% if product.media.size > 0 %}
+    {% if cz_key != blank %}{% assign cz_old = product.featured_media | default: product.media.first %}<div data-cz-old hidden><img src="{{ cz_old.preview_image | image_url: width: 1300 }}" alt="{{ cz_old.alt | default: cz_display_title | escape }}" width="{{ cz_old.preview_image.width }}" height="{{ cz_old.preview_image.height }}" loading="lazy"></div>{% else %}
+    {% for media in product.media %}<div data-media-id="{{ media.id }}" {% unless forloop.first %}hidden{% endunless %}>
+    {% case media.media_type %}
+    {% when 'image' %}<img src="{{ media.preview_image | image_url: width: 1300 }}" srcset="{{ media.preview_image | image_url: width: 500 }} 500w, {{ media.preview_image | image_url: width: 900 }} 900w, {{ media.preview_image | image_url: width: 1300 }} 1300w" sizes="(max-width: 850px) 90vw, 50vw" alt="{{ media.alt | default: cz_display_title | escape }}" width="{{ media.preview_image.width }}" height="{{ media.preview_image.height }}" {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}>
+    {% else %}{{ media | media_tag: image_size: '1000x', controls: true }}
+    {% endcase %}
+    </div>{% endfor %}{% endif %}
+   {% elsif cz_key == blank %}<div style="padding:14%;color:#b8a7ed">{% render 'clog-icon' %}</div>{% endif %}
+  </div>
+  {% if cz_key != blank %}{% render 'clogz-new-gallery', key: cz_key, title: cz_display_title, part: 'thumbs' %}{% elsif product.media.size > 1 %}<div class="clogz-product__thumbs" aria-label="Galerie produit">{% for media in product.media %}<button type="button" data-media-thumb="{{ media.id }}" aria-label="Voir visuel {{ forloop.index }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"><img src="{{ media.preview_image | image_url: width: 180 }}" alt="{{ media.alt | default: cz_display_title | escape }}" width="90" height="90" loading="lazy"></button>{% endfor %}</div>{% endif %}
+ </div>
+ <div class="clogz-product__info">
+  {% if product.vendor != blank %}<div class="clogz-eyebrow clogz-pair-theme__eyebrow">{{ product.vendor | escape }} · TON MODÈLE</div>{% endif %}
+  <h1>{{ cz_display_title | escape }}</h1>
+  <div class="clogz-product__price-wrap"><div class="clogz-product__price" data-product-price>{% render 'clogz-price', amount: current_variant.price %}</div><s class="clogz-price-was" data-product-compare-price {% unless current_variant.compare_at_price > current_variant.price %}hidden{% endunless %}>{% if current_variant.compare_at_price > current_variant.price %}{% render 'clogz-price', amount: current_variant.compare_at_price %}{% endif %}</s></div><p class="clogz-availability">{% if product.available %}Choisis ta pointure, on te confirme ta commande sur WhatsApp.{% else %}Ce modèle est actuellement indisponible.{% endif %}</p><p class="clogz-product__cod"><strong>Paiement à la livraison</strong><span>Cash, Wave ou Orange Money</span></p>
+  <form class="clogz-product__form" data-product-form data-stock-threshold="{{ section.settings.low_stock_threshold }}" action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" value="{% if product.selected_variant != blank %}{{ product.selected_variant.id }}{% elsif product.has_only_default_variant %}{{ current_variant.id }}{% endif %}">
+    {% unless product.has_only_default_variant %}
+     {% for option in product.options_with_values %}
+      {% assign size_option_name = option.name | downcase %}
+      {% assign size_option = false %}
+      {% if size_option_name contains 'pointure' or size_option_name contains 'taille' or size_option_name contains 'size' %}{% assign size_option = true %}{% endif %}
+      <fieldset class="clogz-product__option" data-option-position="{{ option.position }}"><legend>{{ option.name | escape }}{% if size_option %} <a href="#guide-pointures" class="cz4-size-guide-link" data-cz4-size-guide>Trouver ma pointure</a>{% endif %}</legend><div class="clogz-product__option-values">
+        {% for value in option.values %}<label><input type="radio" name="option-{{ option.position }}" value="{{ value | escape }}" {% if size_option %}required{% endif %}{% if option.selected_value == value %}{% unless size_option and product.selected_variant == blank %}checked{% endunless %}{% endif %}><span>{{ value | escape }}</span></label>{% endfor %}
+      </div></fieldset>
+     {% endfor %}
+    {% endunless %}
+    <div class="clogz-inline-form"><label for="Quantity-{{ section.id }}">Quantité</label><input id="Quantity-{{ section.id }}" name="quantity" type="number" min="1" value="1" style="width:84px"></div>
+    <p class="clogz-product__stock" data-variant-stock role="status" aria-live="polite"></p>
+    <button type="submit" name="add" class="clogz-pill clogz-pill--green clogz-product__atc" {% if product.selected_variant == blank and product.has_only_default_variant == false or current_variant.available == false %}disabled{% endif %}>{% if product.available %}{% if product.has_only_default_variant or product.selected_variant != blank %}Je la veux{% else %}Choisis ta pointure{% endif %}{% else %}Épuisé{% endif %}</button>
+    <div class="clogz-product-guarantees" aria-label="Les avantages de ta commande"><span>Livraison gratuite partout à Dakar</span><span>Tu paies à la livraison : cash, Wave ou OM</span><span>Pins offerts</span></div>
+  </form>
+  {% render 'clogz-guide-pointures' %}
+  <script type="application/json" data-product-variants>{{ product.variants | json }}</script>
+  {% if section.settings.size_guide != blank %}<p style="margin-top:20px"><a href="{{ section.settings.size_guide.url }}" style="text-decoration:underline">Guide des tailles</a></p>{% endif %}
+  {% if cz_hook != blank %}
+  <div class="clogz-product__description cz4-product-copy" style="margin-top:30px">
+    <p class="cz4-product-copy__hook"><strong>{{ cz_hook }}</strong></p>
+    <ul>
+      <li>Léger, tu le portes toute la journée</li>
+      <li>Se nettoie à l’eau en quelques secondes</li>
+      <li>À personnaliser avec tes pins offerts</li>
+    </ul>
+  </div>
+  {% elsif product.description != blank %}<div class="clogz-product__description" style="margin-top:30px">{{ product.description }}</div>{% endif %}
+  <section class="cz4-product-details" aria-labelledby="Cz4ProductDetails">
+    <h2 id="Cz4ProductDetails">Le pratique</h2>
+    <ul>
+      <li><strong>Pointures :</strong> 36 à 46.</li>
+      <li><strong>Conseil taille :</strong> consulte « Trouver ma pointure » avant de choisir.</li>
+      <li><strong>Livraison :</strong> gratuite partout à Dakar.</li>
+      <li><strong>Paiement :</strong> à la livraison, en cash, Wave ou Orange Money.</li>
+      <li><strong>Entretien :</strong> un chiffon doux et un peu d’eau suffisent.</li>
+      <li><strong>Matière :</strong> demande la composition exacte à CLOGZ si tu en as besoin.</li>
+    </ul>
+  </section>
+ </div>
+</div></div>
+<div class="clogz-sticky-atc"><div class="clogz-sticky-atc__label">{{ cz_display_title | escape }}<br><span class="clogz-muted">Pointure au choix</span></div><button type="button" class="clogz-pill clogz-pill--green" data-sticky-product-button {% unless product.available %}disabled{% endunless %}>{% if product.has_only_default_variant or product.selected_variant != blank %}Je la veux{% else %}Choisis ta pointure{% endif %}</button></div>
+</div>
+{% assign cz4_other_colors = collections['clogz-tous-les-sabots'] %}
+{% if cz4_other_colors != blank %}
+<section class="clogz-section cz4-complete-look" aria-labelledby="Cz4CompleteLookTitle">
+ <div class="clogz-container">
+  <div class="clogz-headrow"><h2 id="Cz4CompleteLookTitle" class="clogz-heading">COMPLÈTE TON LOOK.</h2></div>
+  <div class="clogz-grid">{% assign cz4_shown = 0 %}{% for cz4_other in cz4_other_colors.products %}{% if cz4_other.id != product.id and cz4_other.vendor == 'CLOGZ' and cz4_other.type == 'Sabots' and cz4_shown < 4 %}{% render 'product-card', product: cz4_other %}{% assign cz4_shown = cz4_shown | plus: 1 %}{% endif %}{% endfor %}</div>
+  <p class="cz4-complete-look__packs"><a href="/pages/packs">Découvrir les packs DUO et TRIO</a></p>
+ </div>
+</section>
+{% endif %}
+{% if section.settings.upsell_collection != blank %}<section class="clogz-section" style="background:#f8f8fa"><div class="clogz-container"><div class="clogz-headrow"><h2 class="clogz-heading">{{ section.settings.upsell_title | escape }}</h2></div><div class="clogz-grid">{% for item in section.settings.upsell_collection.products limit: 4 %}{% unless item.id == product.id %}{% if item.vendor == 'CLOGZ' %}{% render 'product-card', product: item %}{% endif %}{% endunless %}{% endfor %}</div></div></section>{% endif %}
+{% endif %}
+{% else %}
+<section class="clogz-page-space"><div class="clogz-container"><h1 class="clogz-page-title">Article non proposé sur CLOGZ</h1><p>Découvre nos sabots et accessoires sur la boutique CLOGZ.</p><a class="clogz-pill" href="/collections/clogz-tous-les-sabots">Voir les sabots CLOGZ</a></div></section>
+{% endif %}
+{% schema %}
+{"name":"Fiche produit premium","settings":[{"type":"range","id":"low_stock_threshold","label":"Seuil alerte stock réel","min":1,"max":10,"step":1,"default":3,"info":"Affiche les quantités uniquement si elles sont suivies par Shopify."},{"type":"page","id":"size_guide","label":"Page guide des tailles"},{"type":"collection","id":"upsell_collection","label":"Collection complémentaire (charms)"},{"type":"text","id":"upsell_title","label":"Titre des suggestions","default":"Ajoute ta touche perso."}]}
+{% endschema %}

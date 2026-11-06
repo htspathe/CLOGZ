@@ -1,0 +1,48 @@
+{% comment %}
+  CLOGZ catalogue: static previews only for draft/unpublished products.
+  When a product is accessible from the Online Store, use its real availability, variants and cart.
+{% endcomment %}
+{% liquid
+  assign all_clogz_handles = 'sabots-clogz-rose-bonbon-pins-offerts|sabots-clogz-bleu-ciel|sabots-clogz-lilas|sabots-clogz-noir|sabots-clogz-rouge|sabots-clogz-blanc|sabots-clogz-beige|sabots-clogz-vert-foret|sabots-clogz-orange|sabots-clogz-gris'
+  assign pastel_clogz_handles = 'sabots-clogz-rose-bonbon-pins-offerts|sabots-clogz-bleu-ciel|sabots-clogz-lilas'
+  assign essential_clogz_handles = 'sabots-clogz-noir|sabots-clogz-rouge|sabots-clogz-blanc|sabots-clogz-beige|sabots-clogz-vert-foret|sabots-clogz-orange|sabots-clogz-gris'
+  if catalog_filter == 'pastels'
+    assign clogz_handles = pastel_clogz_handles | split: '|'
+  elsif catalog_filter == 'essentiels'
+    assign clogz_handles = essential_clogz_handles | split: '|'
+  else
+    assign clogz_handles = all_clogz_handles | split: '|'
+  endif
+%}
+<div class="clogz-grid clogz-grid--catalog">
+{% for clogz_handle in clogz_handles %}
+  {% assign clogz_product = all_products[clogz_handle] %}
+  {% if clogz_product != blank %}
+    {% render 'product-card', product: clogz_product %}
+  {% else %}
+    {% assign preview_slot = forloop.index %}
+    {% case clogz_handle %}
+      {% when 'sabots-clogz-rose-bonbon-pins-offerts' %}{% assign preview_label = 'Rose bonbon' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rose-badge.png?v=1792779566' %}
+      {% when 'sabots-clogz-bleu-ciel' %}{% assign preview_label = 'Bleu ciel' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804' %}
+      {% when 'sabots-clogz-lilas' %}{% assign preview_label = 'Lilas' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-lilas-badge.png?v=1792779578' %}
+      {% when 'sabots-clogz-noir' %}{% assign preview_label = 'Noir' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-noir-badge.png?v=1792779583' %}
+      {% when 'sabots-clogz-rouge' %}{% assign preview_label = 'Rouge' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-rouge-badge.png?v=1792779589' %}
+      {% when 'sabots-clogz-blanc' %}{% assign preview_label = 'Blanc' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-blanc-badge.png?v=1792779595' %}
+      {% when 'sabots-clogz-beige' %}{% assign preview_label = 'Beige' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-beige-badge.png?v=1792779600' %}
+      {% when 'sabots-clogz-vert-foret' %}{% assign preview_label = 'Vert forêt' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-vert-foret-badge.png?v=1792779606' %}
+      {% when 'sabots-clogz-orange' %}{% assign preview_label = 'Orange' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabot-orange-v1.png?v=1792854700' %}
+      {% when 'sabots-clogz-gris' %}{% assign preview_label = 'Gris' %}{% assign preview_image = 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849' %}
+    {% endcase %}
+    <article class="clogz-card clogz-card--editorial clogz-card--preview clogz-pair-theme--{{ clogz_handle }}" aria-label="Sabots CLOGZ {{ preview_label | escape }} — fiche en préparation">
+  <div class="clogz-card__photo">
+    <img src="{{ preview_image }}" alt="Sabots {{ preview_label | escape }}" width="650" height="650" loading="lazy">
+    <span class="clogz-card__badge">Bientôt disponible</span>
+  </div>
+  <div class="clogz-card__body">
+    <span class="clogz-card__label">Sabots - Crocs</span>
+    <div class="clogz-card__info"><h3>{{ preview_label | escape }}</h3><span class="clogz-card__price">À venir</span></div>
+  </div>
+</article>
+  {% endif %}
+{% endfor %}
+</div>

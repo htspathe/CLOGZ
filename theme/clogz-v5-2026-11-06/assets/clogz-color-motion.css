@@ -1,0 +1,230 @@
+/* CLOGZ / Une couleur. Une attitude. — scoped, GPU-friendly motion.
+   Existing grid and .clogz-tile HTML/classes are preserved.
+   Transform & opacity animate; shadows appear immediately (no paint-heavy animation). */
+.clogz-color-motion{--clogz-ease:cubic-bezier(.22,1,.36,1)}
+.clogz-color-motion .clogz-collectiontiles{overflow:visible;isolation:isolate}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile{
+  position:relative;isolation:isolate;overflow:hidden;border-radius:28px;
+  z-index:0;transform:translate3d(0,0,0);opacity:1;
+  transition:transform var(--clogz-speed,.6s) var(--clogz-ease),
+    opacity var(--clogz-speed,.6s) ease;
+  background:var(--tile-bg,#ffe9dd);
+}
+/* Soft oval ground shadow, safely clipped inside the card. */
+.clogz-color-motion .clogz-tile::before{
+  content:"";display:block;position:absolute;inset:auto auto 19% 17%;
+  width:66%;height:11%;border-radius:50%;z-index:0;pointer-events:none;
+  background:rgba(35,22,27,.17);opacity:.4;
+  filter:blur(14px);
+  transform:scaleX(.78) scaleY(.7);
+  transition:transform var(--clogz-speed,.6s) var(--clogz-ease),
+             opacity var(--clogz-speed,.6s) ease;
+}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe{
+  position:absolute;inset:0 3% 50px;width:94%;height:calc(100% - 50px);
+  display:block;object-fit:contain;z-index:1;background:transparent;
+  will-change:transform;transform-origin:center;
+  transform:translate3d(0,0,0) rotate(0deg) scale(1);
+  transition:transform var(--clogz-speed,.6s) var(--clogz-ease);
+}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile h3{
+  position:relative;z-index:3;display:inline-flex;align-items:center;
+  justify-content:space-between;gap:12px;max-width:100%;
+  margin:0;padding:11px 15px;background:rgba(255,255,255,.92);
+  color:#0b0b0f;border-radius:999px;white-space:normal;text-shadow:none;
+  font-size:clamp(14px,1.4vw,19px);font-weight:900;line-height:1.15;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transform:scale(1);transform-origin:left bottom;
+  transition:transform var(--clogz-speed,.6s) var(--clogz-ease);
+}
+.clogz-color-motion .clogz-tile__arrow{
+  display:inline-block;line-height:1;flex-shrink:0;
+  transition:transform var(--clogz-speed,.6s) var(--clogz-ease);
+}
+/* Scroll reveal is enabled by JS only; no-JS users always see every card. */
+.clogz-color-motion.clogz-motion-ready .clogz-tile:not(.is-visible){
+  opacity:0;transform:translate3d(0,24px,0);
+}
+.clogz-color-motion.clogz-motion-ready .clogz-tile:not(.is-visible) img.clogz-tile__shoe{
+  transform:translate3d(0,0,0) scale(.9);
+}
+.clogz-color-motion.clogz-motion-ready .clogz-tile{
+  transition-delay:var(--clogz-delay,0ms);
+}
+@media(hover:hover) and (pointer:fine){
+  .clogz-color-motion .clogz-collectiontiles.is-highlighting .clogz-tile:not(:hover){
+    opacity:.7;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover{
+    z-index:5;transform:translate3d(0,-6px,0);
+    box-shadow:0 18px 40px -12px color-mix(in srgb,var(--tile-bg),#5b4241 34%);
+    transition-delay:0ms;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover img.clogz-tile__shoe{
+    transform:translate3d(var(--clogz-pointer-x,0px),calc(var(--clogz-pointer-y,0px) - 6px),0)
+      rotate(-5deg) scale(var(--clogz-zoom,1.18));
+    transition-delay:0ms;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover::before{
+    opacity:.68;transform:scaleX(1.28) scaleY(.95);
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover h3{
+    transform:scale(1.045);
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover .clogz-tile__arrow{
+    transform:rotate(45deg);
+  }
+}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile:focus-visible{
+  outline:3px solid #8c3a2c;outline-offset:3px;z-index:6;
+}
+/* Mobile/touch: first tap activates visual zoom, second tap follows the link. */
+@media(hover:none),(pointer:coarse){
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-centered:not(.is-active) img.clogz-tile__shoe{
+    transform:scale(1.06);
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active{
+    transform:translate3d(0,-6px,0);z-index:5;
+    box-shadow:0 18px 40px -12px color-mix(in srgb,var(--tile-bg),#5b4241 34%);
+  }
+  .clogz-color-motion .clogz-collectiontiles.is-highlighting .clogz-tile:not(.is-active){opacity:.7}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active img.clogz-tile__shoe{
+    transform:translate3d(0,-6px,0) rotate(-5deg) scale(var(--clogz-zoom,1.18));
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active::before{
+    opacity:.68;transform:scaleX(1.28) scaleY(.95);
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active h3{transform:scale(1.045)}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active .clogz-tile__arrow{transform:rotate(45deg)}
+}
+/* Prevent the white rectangular background of the original 3-shoe hero visual
+   from appearing against the peach background. */
+.clogz-hero .clogz-hero__photo{
+  mix-blend-mode:multiply!important;background:transparent!important;
+  filter:none!important;box-shadow:none!important;border:0!important;
+}
+/* Motion accessibility: no reveal hidden states, hover/scroll/parallax effects. */
+@media(prefers-reduced-motion:reduce){
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile,
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe,
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile h3,
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile__arrow,
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile::before{
+    animation:none!important;transition:none!important;
+    opacity:1!important;transform:none!important;
+    will-change:auto!important;
+  }
+  .clogz-color-motion.clogz-motion-ready .clogz-tile:not(.is-visible){opacity:1!important;transform:none!important}
+}
+
+/* CLOGZ Visual Refresh 2026-10-24 — break-out product zoom */
+/* The rounded, pastel background is its own layer, so the transparent shoe can
+   grow OUTSIDE its rectangle without losing rounded corners or pill labels. */
+.clogz-color-motion .clogz-container{overflow:visible}
+.clogz-color-motion .clogz-headrow{display:flex;flex-direction:column;align-items:center;text-align:center;gap:5px;margin-bottom:32px}
+.clogz-color-motion .clogz-headrow .clogz-eyebrow{color:#A44939!important;font-size:12px;font-weight:850;letter-spacing:.18em}
+.clogz-color-motion .clogz-headrow .clogz-heading{font-size:clamp(34px,4.65vw,76px);letter-spacing:-.065em;font-weight:900;margin:0;line-height:1.02}
+.clogz-color-motion .clogz-heading-accent{color:#B34E3C}
+.clogz-color-motion .clogz-headrow p{max-width:740px;margin:0;color:#756B67}
+.clogz-color-motion .clogz-collectiontiles{isolation:isolate;overflow:visible;gap:12px;row-gap:18px}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile{
+  overflow:visible!important; background:transparent!important;
+  border-radius:28px;isolation:isolate;padding:15px;
+  min-height:300px;transform:translate3d(0,0,0);
+  transition:transform var(--clogz-speed,.6s) cubic-bezier(.22,1,.36,1),
+             opacity var(--clogz-speed,.6s) ease;
+}
+/* Curved background stays exactly within the card. */
+.clogz-color-motion .clogz-tile__surface{
+  position:absolute;inset:0;border-radius:28px;z-index:1;pointer-events:none;
+  background:linear-gradient(155deg,rgba(255,255,255,.31),transparent 58%),var(--tile-bg,#ffe9dd);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.85),inset 0 -1px 0 rgba(255,255,255,.24);
+  overflow:hidden;
+}
+.clogz-color-motion .clogz-tile__surface::before{
+  content:"";position:absolute;inset:-20% -20% 35% -20%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.86),transparent 69%);
+  transform:translate3d(-8%,-5%,0);opacity:.36;pointer-events:none;
+  transition:opacity var(--clogz-speed,.6s) cubic-bezier(.22,1,.36,1);
+}
+.clogz-color-motion .clogz-tile__glow{
+  position:absolute;inset:-16px;z-index:0;border-radius:36px;
+  background:var(--tile-bg,#ffe9dd);filter:blur(19px);opacity:0;
+  pointer-events:none;
+  transition:opacity var(--clogz-speed,.6s) cubic-bezier(.22,1,.36,1);
+}
+/* Product shadow under the shoe; image remains above this layer. */
+.clogz-color-motion .clogz-tile::before{
+  display:block;content:"";position:absolute;
+  inset:auto auto 20% 16%;width:70%;height:11%;
+  z-index:2;pointer-events:none;border-radius:50%;
+  background:rgba(28,19,22,.18);filter:blur(13px);opacity:.36;
+  transform:scale(.75,.65);
+  transition:transform var(--clogz-speed,.6s) cubic-bezier(.22,1,.36,1),
+             opacity var(--clogz-speed,.6s) ease;
+}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe{
+  position:absolute;inset:-8px -8% 43px;width:116%;height:calc(100% - 35px);
+  z-index:3;pointer-events:none;object-fit:contain;object-position:center;
+  max-width:none;max-height:none;will-change:transform;overflow:visible;
+  filter:drop-shadow(0 10px 11px rgba(30,20,22,.18))!important;
+  transform:translate3d(0,0,0) rotate(0) scale(1);
+  transition:transform var(--clogz-speed,.6s) cubic-bezier(.22,1,.36,1);
+}
+.clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe--whiteback{
+  mix-blend-mode:multiply!important;
+}
+/* Pill stays pinned at bottom-left, above the shoe even during overflow. */
+.clogz-color-motion .clogz-collectiontiles .clogz-tile h3{
+  position:relative;z-index:5;margin:0;
+  padding:11px 14px;border-radius:999px;
+  background:rgba(255,255,255,.94);
+  box-shadow:0 3px 12px rgba(28,19,22,.04);
+  align-self:end;max-width:100%;gap:18px;
+}
+@media(hover:hover) and (pointer:fine){
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover{
+    transform:translate3d(0,-6px,0);z-index:30;
+    box-shadow:none;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover img.clogz-tile__shoe{
+    transform:translate3d(var(--clogz-pointer-x,0px),calc(var(--clogz-pointer-y,0px) - 7px),0)
+      rotate(-5deg) scale(var(--clogz-zoom,1.18));
+    filter:drop-shadow(0 22px 19px rgba(28,19,22,.31))!important;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover .clogz-tile__glow{
+    opacity:.84;
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover .clogz-tile__surface::before{opacity:.74}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover::before{
+    opacity:.59;transform:scale(1.28,.9);
+  }
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover h3{transform:scale(1.045)}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile:hover .clogz-tile__arrow{transform:rotate(45deg)}
+}
+@media(hover:none),(pointer:coarse){
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active{z-index:30;box-shadow:none}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active .clogz-tile__glow{opacity:.83}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active::before{opacity:.60;transform:scale(1.28,.9)}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile.is-active img.clogz-tile__shoe{
+    transform:translate3d(0,-7px,0) rotate(-5deg) scale(var(--clogz-zoom,1.18));
+    filter:drop-shadow(0 22px 19px rgba(28,19,22,.31))!important;
+  }
+}
+@media(max-width:1100px){.clogz-color-motion .clogz-collectiontiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:660px){
+  .clogz-color-motion .clogz-collectiontiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;row-gap:16px}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile{min-height:245px;padding:11px;border-radius:22px}
+  .clogz-color-motion .clogz-tile__surface{border-radius:22px}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile h3{font-size:14px;padding:9px 11px}
+}
+@media(prefers-reduced-motion:reduce){
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile,
+  .clogz-color-motion .clogz-tile__surface::before,
+  .clogz-color-motion .clogz-tile__glow,
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe{
+    transition:none!important;animation:none!important;
+  }
+  .clogz-color-motion .clogz-tile__glow{opacity:0!important}
+  .clogz-color-motion .clogz-collectiontiles .clogz-tile img.clogz-tile__shoe{transform:none!important}
+}

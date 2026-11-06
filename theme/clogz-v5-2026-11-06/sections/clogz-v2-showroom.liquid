@@ -1,0 +1,107 @@
+
+{% liquid
+  assign cv2_collection = section.settings.collection
+  if cv2_collection == blank
+    assign cv2_collection = collections['clogz-tous-les-sabots']
+  endif
+%}
+{{ 'clogz-v2.css' | asset_url | stylesheet_tag }}
+
+<section id="cv2-{{ section.id }}" class="cv2" data-cv2>
+  <div class="cv2-sky" id="cv2-decouvrir">
+    <div class="cv2-cloud cv2-cloud-1" aria-hidden="true"></div>
+    <div class="cv2-cloud cv2-cloud-2" aria-hidden="true"></div>
+    <div class="cv2-cloud cv2-cloud-3" aria-hidden="true"></div>
+    <div class="cv2-topline"><span class="cv2-chip"><span class="cv2-dot"></span> DAKAR · SENEGAL</span><span class="cv2-topline-right">DEY DAW REK</span></div>
+    <h1 class="cv2-title">LE STYLE <em>PREND</em><br>LA RUE<span class="cv2-title-dot">.</span></h1>
+    {% if cv2_collection != blank and cv2_collection.products_count > 0 %}
+      <div class="cv2-stage" role="region" aria-roledescription="carrousel" aria-label="Explorer les sabots CLOGZ" tabindex="0">
+        <div class="cv2-stage-track">
+          {% for product in cv2_collection.products limit: 10 %}
+            {%- capture cv2_color -%}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{%- endcapture -%}
+            <button class="cv2-shoe" type="button" data-cv2-shoe data-index="{{ forloop.index0 }}" data-slot="{{ forloop.index0 }}" aria-label="Voir le sabot {{ cv2_color | escape }}">
+              {% if product.featured_image != blank %}
+                <img src="{% if product.handle == 'sabots-clogz-orange' %}https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010&amp;width=720{% elsif product.handle == 'sabots-clogz-gris' %}https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-gris-clair-medaillon-noir-identique-fond-transparent_a71822cc-a067-4677-8735-1732156cbc57.png?v=1793161013&amp;width=720{% else %}{{ product.featured_image | image_url: width: 720 }}{% endif %}" alt="Sabot CLOGZ {{ cv2_color | escape }}" width="760" height="760" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" fetchpriority="{% if forloop.first %}high{% else %}auto{% endif %}">
+              {% else %}
+                <span class="cv2-no-image">{{ cv2_color | escape }}</span>
+              {% endif %}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="cv2-meta">
+        <div class="cv2-meta-left"><p class="cv2-eyebrow">LA PAIRE DU MOMENT</p><strong data-cv2-current-color>NOIR PLATEAU</strong><span>À partir de <b data-cv2-price>12 000 FCFA</b></span></div>
+        <div class="cv2-control"><button type="button" data-cv2-prev aria-label="Coloris précédent">←</button><span class="cv2-counter">FAIS DÉFILER</span><button type="button" data-cv2-next aria-label="Coloris suivant">→</button></div>
+        <button type="button" class="cv2-discover" data-cv2-open>EXPLORER L’UNIVERS </button>
+      </div>
+      <div class="cv2-hint">← GLISSE POUR EXPLORER →</div>
+      <p class="cv2-click-cue"> Clique sur une paire pour choisir ta pointure et commander</p>
+    {% else %}
+      <div class="cv2-empty"><p>Le showroom sera disponible dès que la collection sera configurée.</p><a href="{{ routes.all_products_collection_url }}">Voir tous les produits</a></div>
+    {% endif %}
+  </div>
+<section class="clogz-trust-strip" aria-label="Les avantages CLOGZ"><div class="clogz-container clogz-trust-strip__inner">
+  <div class="clogz-trust-strip__benefit"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v10H3zM7 12h2m4 0h4"/></svg><div><strong>12 000 FCFA</strong><span>La paire, tout compris</span></div></div>
+  <div class="clogz-trust-strip__benefit"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><div><strong>Livraison gratuite</strong><span>Partout à Dakar</span></div></div>
+  <div class="clogz-trust-strip__benefit"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></svg><div><strong>Paiement à la livraison</strong><span>Cash, Wave ou Orange Money</span></div></div>
+  <div class="clogz-trust-strip__benefit"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16v9H4zM12 12v9M2 8h20v4H2zM12 8C7-2 2 6 12 8zm0 0C17-2 22 6 12 8z"/></svg><div><strong>Pins offerts</strong><span>Avec chaque paire</span></div></div>
+</div></section>
+  <div class="cv2-ticker" aria-label="Ton mood, ta paire, tes règles, Dey Daw Rek">
+    <div class="cv2-ticker-track" aria-hidden="true">
+      {% for item in (1..6) %}<span>TON MOOD <i>✦</i> TA PAIRE <i>✦</i> TES RÈGLES <i>✦</i> DEY DAW REK <i>✦</i> </span>{% endfor %}
+    </div>
+  </div>
+  <section class="cv2-mood" id="cv2-collections">
+    <div class="cv2-section-head"><p class="cv2-eyebrow">DES COULEURS POUR CHAQUE ENVIE</p><h2>CHOISIS TON <em>MOOD.</em></h2><span>10 COLORIS · UN SEUL PRIX : 12 000 FCFA</span></div>
+    <div class="cv2-filters" role="group" aria-label="Filtrer les coloris"><button type="button" class="is-active" data-cv2-filter="tous" aria-pressed="true">TOUS</button><button type="button" data-cv2-filter="essentiels" aria-pressed="false">LES ESSENTIELS</button><button type="button" data-cv2-filter="pastels" aria-pressed="false">LES PASTELS</button></div>
+    <div class="cv2-grid">
+      {% for product in cv2_collection.products limit: 10 %}
+        {% assign cv2_pastel = false %}
+        {% if product.tags contains 'CLOGZ-PASTELS' %}{% assign cv2_pastel = true %}{% endif %}
+        {%- capture cv2_color -%}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{%- endcapture -%}
+        <article class="cv2-product-card clogz-pair-theme--{{ product.handle }}" data-cv2-category="{% if cv2_pastel %}pastels{% else %}essentiels{% endif %}">
+          <button type="button" class="cv2-card-image" data-cv2-card="{{ forloop.index0 }}" aria-label="Découvrir le sabot {{ cv2_color | escape }}">
+            {% if product.featured_image != blank %}<img src="{% if product.handle == 'sabots-clogz-orange' %}https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010&amp;width=560{% elsif product.handle == 'sabots-clogz-gris' %}https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-gris-clair-medaillon-noir-identique-fond-transparent_a71822cc-a067-4677-8735-1732156cbc57.png?v=1793161013&amp;width=560{% else %}{{ product.featured_image | image_url: width: 560 }}{% endif %}" alt="Sabot CLOGZ {{ cv2_color | escape }}" width="520" height="520" loading="lazy">{% endif %}
+            <span class="cv2-card-view">VOIR LA PAIRE</span>
+          </button>
+          <div class="cv2-card-info"><div><h3>{{ cv2_color | escape }}</h3></div><span class="cv2-card-price">{% render 'clogz-price', amount: product.price %}</span></div>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="cv2-explore-all"><a href="{{ cv2_collection.url }}">VOIR TOUTES LES PAIRES</a></div>
+  </section>
+  {% if cv2_collection != blank and cv2_collection.products_count > 0 %}
+  <div class="cv2-backdrop" data-cv2-backdrop hidden></div>
+  <aside class="cv2-detail" data-cv2-detail hidden role="dialog" aria-modal="true" aria-label="Détail de la paire">
+    <button type="button" class="cv2-close" data-cv2-close aria-label="Fermer le détail">✕</button>
+    <div class="cv2-detail-image"><img data-cv2-detail-img alt="" width="800" height="800"><span class="cv2-gallery-note">PHOTO PRODUIT · COLLECTION CLOGZ</span></div>
+    <div class="cv2-detail-info"><p class="cv2-eyebrow">CLOGZ / COLLECTION 01</p><h2 data-cv2-detail-name></h2><p class="cv2-detail-price" data-cv2-detail-price></p><p class="cv2-detail-desc">Ta paire à personnaliser avec tes pins offerts.</p>
+      <p class="cv2-detail-label">TON COLORIS</p><div class="cv2-swatches" data-cv2-swatches></div>
+      <p class="cv2-detail-label">TA POINTURE</p><div class="cv2-sizes" data-cv2-sizes></div>
+      <div class="cv2-status" data-cv2-status role="status" aria-live="polite">Choisis ta pointure.</div>
+      <form data-cv2-form action="{{ routes.cart_add_url }}" method="post"><input type="hidden" name="id" data-cv2-variant><button class="cv2-add" data-cv2-add type="submit" disabled>CHOISIS TA POINTURE</button></form>
+      <p class="cv2-order-help">Choisis ton coloris et ta pointure. Tu peux encore modifier ton panier avant de valider.</p>
+      <div class="cv2-accordion"><details><summary>DÉTAILS DU PRODUIT <span>+</span></summary><p>Sabot à bride arrière, léger, à personnaliser avec tes pins offerts. Pointures 36 à 46.</p></details><details><summary>LIVRAISON ET PAIEMENT <span>+</span></summary><p>Livraison gratuite partout à Dakar. Tu paies à la livraison : cash, Wave ou OM. Hors Dakar, écris-nous avant de commander.</p></details><details><summary>PERSONNALISATION <span>+</span></summary><p>Choisis tes pins et crée ton style.</p></details></div>
+      <a data-cv2-full-link class="cv2-full-link" href="{{ cv2_collection.url }}">VOIR LA FICHE COMPLÈTE</a>
+    </div>
+  </aside>
+  <div class="cv2-cart-backdrop" data-cv2-cart-backdrop hidden></div>
+  <aside class="cv2-cart" data-cv2-cart hidden role="dialog" aria-modal="true" aria-label="Ton panier CLOGZ">
+    <div class="cv2-cart-top"><div><p class="cv2-eyebrow">TA SÉLECTION</p><span class="cv2-cart-heading">Ton panier</span></div><button type="button" class="cv2-close" data-cv2-cart-close aria-label="Fermer le panier">✕</button></div>
+    <div class="cv2-cart-items" data-cv2-cart-items></div>
+    <div class="cv2-cart-bottom"><div class="cv2-cart-subtotal">SOUS-TOTAL <b data-cv2-cart-total>0 FCFA</b></div><p>Livraison gratuite partout à Dakar. Tu paies à la livraison : cash, Wave ou OM.</p><div class="cv2-cart-return-actions"><a href="/pages/packs" data-cv2-edit-pack hidden>Modifier mon pack</a><button type="button" data-cv2-continue>Continuer mes achats</button></div><a href="{{ routes.cart_url }}" class="cv2-add">VOIR MON PANIER</a></div>
+  </aside>
+  <script id="cv2-catalog-{{ section.id }}" type="application/json">[
+  {% for product in cv2_collection.products limit: 10 %}
+    {%- capture cv2_json_color -%}{% render 'clogz-color-name', handle: product.handle, title: product.title %}{%- endcapture -%}
+    {"id":{{ product.id | json }},"title":{{ cv2_json_color | prepend: 'Sabot CLOGZ ' | json }},"color":{{ cv2_json_color | json }},"handle":{{ product.handle | json }},"url":{{ product.url | json }},"image":{% if product.handle == 'sabots-clogz-orange' %}{{ 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010' | json }}{% elsif product.handle == 'sabots-clogz-gris' %}{{ 'https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-gris-clair-medaillon-noir-identique-fond-transparent_a71822cc-a067-4677-8735-1732156cbc57.png?v=1793161013' | json }}{% else %}{{ product.featured_image | image_url: width: 1100 | json }}{% endif %},"price":{{ product.price | json }},"available":{{ product.available | json }},"variants":[
+      {% for variant in product.variants %}{"id":{{ variant.id | json }},"title":{{ variant.title | json }},"available":{{ variant.available | json }},"price":{{ variant.price | json }}}{% unless forloop.last %},{% endunless %}{% endfor %}
+    ]}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]</script>
+  {% endif %}
+</section>
+<script src="{{ 'clogz-v2.js' | asset_url }}" defer></script>
+{% schema %}
+{"name":"CLOGZ V2 Showroom","tag":"section","class":"clogz-v2-shopify","settings":[{"type":"collection","id":"collection","label":"Collection CLOGZ pour le showroom"}],"presets":[{"name":"CLOGZ V2 Showroom"}]}
+{% endschema %}

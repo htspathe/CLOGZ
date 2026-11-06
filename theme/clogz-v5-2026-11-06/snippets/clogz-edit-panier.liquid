@@ -1,0 +1,36 @@
+{% comment %}
+ CLOGZ Cart Change - only before native checkout, for simple CLOGZ clogs.
+ Packs preserve their own edit link and cannot be edited through this interface.
+ AJAX update changes the cart only, never an existing Shopify order.
+{% endcomment %}
+{% if item.product.vendor == 'CLOGZ' and item.product.type == 'Sabots' %}
+<details class="cz-cart-choice" data-cz-cart-choice data-cz-original-key="{{ item.key | escape }}">
+ <summary>✏️ Modifier ma pointure ou ma couleur</summary>
+ <div class="cz-cart-choice__panel">
+  <label>Couleur
+   <select data-cz-color aria-label="Choisir un nouveau coloris">
+    <option value="{{ item.product.handle | escape }}" selected>{{ item.product.title | remove: 'Sabots CLOGZ - Crocs ' | escape }}</option>
+    {% assign cz_colors_collection = collections['clogz-tous-les-sabots'] %}
+    {% if cz_colors_collection != blank %}
+      {% for cz_model in cz_colors_collection.products %}
+        {% if cz_model.vendor == 'CLOGZ' and cz_model.type == 'Sabots' and cz_model.handle != item.product.handle %}
+          <option value="{{ cz_model.handle | escape }}">{{ cz_model.title | remove: 'Sabots CLOGZ - Crocs ' | escape }}</option>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+   </select>
+  </label>
+  <label>Pointure
+   <select data-cz-size aria-label="Choisir une nouvelle pointure">
+    {% for cz_size in (36..46) %}
+      {% assign cz_size_text = cz_size | append: '' %}
+      <option value="{{ cz_size }}" {% if item.variant.title == cz_size_text %}selected{% endif %}>{{ cz_size }}</option>
+    {% endfor %}
+   </select>
+  </label>
+  <button type="button" class="cz-cart-choice__save" data-cz-apply-choice>Enregistrer mon nouveau choix</button>
+  <p class="cz-cart-choice__help">Cette modification concerne uniquement ton panier. Pour une commande déjà validée, fais une demande auprès de CLOGZ. Les choix restent soumis à disponibilité.</p>
+  <p class="cz-cart-choice__feedback" data-cz-choice-feedback role="alert" hidden></p>
+ </div>
+</details>
+{% endif %}

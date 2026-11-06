@@ -1,0 +1,211 @@
+/* CLOGZ — brand palette refresh, 25 Oct 2026.
+   Uses the current sky-blue/orange CLOGZ logo. Keep each shoe's own colour treatments. */
+:root {
+  --ink:#18344C;
+  --green:#8ACCF0;
+  --cream:#F8FCFF;
+  --pastel:#E7F5FE;
+  --ce-ink:#18344C;
+  --ce-light:#F8FCFF;
+  --ce-peach:#FBE7D8;
+  --ce-coral:#F58B52;
+  --clogz-sky:#8ACCF0;
+  --clogz-sky-soft:#E7F5FE;
+  --clogz-orange:#F58B52;
+  --clogz-orange-dark:#A74419;
+  --clogz-navy:#18344C;
+  --clogz-border:#D8E8F2;
+}
+html {accent-color:var(--clogz-orange)}
+body,.clogz-template-index main {background:var(--cream);color:var(--ink)}
+:focus-visible {outline:3px solid var(--clogz-orange);outline-offset:3px}
+.clogz-announcement {background:#0B0B0F!important;color:#FFFFFF!important;border-bottom:1px solid #0B0B0F!important}
+.clogz-announcement a {color:inherit!important}
+.clogz-header {background:#FFFFFF!important;border-bottom:1px solid var(--clogz-border)!important;box-shadow:0 8px 26px rgba(24,52,76,.03)!important}
+.clogz-header .clogz-nav a,.clogz-header .clogz-iconbutton,.clogz-header .clogz-logo {color:var(--clogz-navy)!important}
+.clogz-header .clogz-nav a:hover,.clogz-header .clogz-nav a:focus-visible {color:var(--clogz-orange-dark)!important}
+.clogz-mobile-menu {background:#FFFFFF!important;color:var(--clogz-navy)!important}
+.clogz-editorial {color:var(--clogz-navy);background:var(--cream)}
+.clogz-editorial__hero {background:radial-gradient(ellipse at 74% 38%,#FFF5EA 0%,#ECF8FF 46%,#D7EEFC 100%)!important}
+.clogz-editorial__hero-copy h1,.clogz-editorial__discover h2,.clogz-editorial__discover-top h2,.clogz-collections__intro h1 {color:var(--clogz-navy)}
+.clogz-editorial__hero h1 em,.clogz-editorial__discover h2 em,.clogz-collections__intro h1 em {color:var(--clogz-orange-dark)!important}
+.clogz-editorial__hero-copy p,.clogz-editorial__discover-copy p {color:#476075}
+.clogz-editorial__card,.clogz-card,.clogz-curated-card {box-shadow:0 14px 38px rgba(24,52,76,.055)}
+.clogz-editorial__card-arrow,.clogz-curated-card__arrow {background:#DFF1FC!important;color:var(--clogz-navy)!important}
+.clogz-editorial__btn,.clogz-pill:not(.clogz-pill--light):not(.clogz-pill--line),.clogz-card--navigate .clogz-card__add {
+  background:var(--clogz-orange)!important;border-color:var(--clogz-orange)!important;color:#18344C!important;
+  border-radius:999px;
+}
+.clogz-editorial__btn:hover,.clogz-pill:not(.clogz-pill--light):not(.clogz-pill--line):hover,.clogz-card--navigate .clogz-card__add:hover {
+  background:#FFAB7E!important;border-color:#FFAB7E!important;color:#18344C!important
+}
+.clogz-pill--line {background:transparent!important;border-color:#18344C!important;color:#18344C!important}
+.clogz-pill--light {background:#FFFFFF!important;border-color:#FFFFFF!important;color:#18344C!important}
+.clogz-collections {--clogz-collection-ink:#18344C;--clogz-collection-peach:#DFF1FC;background:#F8FCFF}
+.clogz-collections__eyebrow,.clogz-collections__group-link {color:var(--clogz-orange-dark)!important}
+.clogz-collections__nav a {border-color:#D3E6F2!important;color:#18344C!important}
+.clogz-collections__nav a:hover,.clogz-collections__nav a:focus-visible,.clogz-collections__nav a:first-child {
+  background:#18344C!important;border-color:#18344C!important;color:#FFFFFF!important
+}
+.clogz-collections__group--essentiels {background:#F8FCFF}
+.clogz-collections__group--pastels {background:#FBFDFF}
+.clogz-collections__foot {background:#EAF6FD}
+.clogz-univers {--cu-ink:#18344C;--cu-cream:#F8FCFF;--cu-peach:#E6F4FE;--cu-coral:#F58B52;--cu-muted:#52677B}
+.clogz-univers__ticker {background:#18344C!important;color:#FFFFFF!important}
+.clogz-univers__hero {background:radial-gradient(ellipse at 78% 28%,#FFF5EA 0%,#E9F7FE 61%,#D7EEFC 100%)!important}
+.clogz-univers__eyebrow {color:#A74419!important}
+.clogz-univers__button--dark {background:#18344C!important;color:#FFFFFF!important;border-color:#18344C!important}
+.clogz-univers__button--light {background:#FFFFFF!important;color:#18344C!important;border-color:#BCDDEC!important}
+.clogz-page-title,.clogz-collection-intro {color:#18344C}
+.clogz-footer {background:#18344C!important;color:#EFF8FF!important}
+.clogz-footer a,.clogz-footer h3,.clogz-footer p {color:inherit}
+.clogz-footer a:hover {color:#FFB78E!important}
+.clogz-footer__bottom {border-color:rgba(255,255,255,.2)!important}
+input:focus-visible,select:focus-visible,textarea:focus-visible {outline:2px solid var(--clogz-orange)!important;outline-offset:2px}
+@media (max-width:850px) {
+ .clogz-header {background:#FFFFFF!important}
+ .clogz-header .clogz-nav {background:#FFFFFF!important}
+ .clogz-editorial__hero {background:linear-gradient(160deg,#E5F5FF 0%,#FFF4EB 100%)!important}
+ .clogz-univers__hero {background:linear-gradient(160deg,#E5F5FF 0%,#FFF4EB 100%)!important}
+}
+/* Product-colour tile backgrounds, Spider-Man artwork and paired colour themes intentionally untouched. */
+
+/* Keep the three words of the Wolof signature together at every breakpoint. */
+.clogz-editorial__discover-top .clogz-editorial__slogan-nowrap { white-space:nowrap; display:inline-block; }
+
+/* CLOGZ / invitation Notre univers — directly below the first hero CTA. */
+.clogz-editorial__about-invite{
+  max-width:440px;
+  margin-top:22px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.clogz-editorial__about-pitch{
+  max-width:410px;
+  margin:0 0 14px!important;
+  color:#0B0B0F!important;
+  font-size:14px;
+  line-height:1.55;
+  font-weight:600;
+}
+.clogz-editorial__about-button{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  max-width:100%;
+  min-height:45px;
+  padding:10px 18px;
+  border:1px solid var(--clogz-navy);
+  border-radius:999px;
+  background:var(--clogz-navy);
+  color:#FFFFFF!important;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.3;
+  text-align:center;
+  text-decoration:none!important;
+  transition:background-color .2s ease,transform .2s ease;
+}
+.clogz-editorial__about-button:hover{
+  background:#31516B;
+  border-color:#31516B;
+  transform:translateY(-1px);
+}
+.clogz-editorial__about-button:focus-visible{
+  outline:3px solid var(--clogz-orange);
+  outline-offset:3px;
+}
+@media(max-width:850px){
+  .clogz-editorial__about-invite{margin-top:18px;padding:15px 16px 16px;max-width:100%}
+  .clogz-editorial__about-pitch{font-size:13px;line-height:1.5}
+  .clogz-editorial__about-button{min-height:46px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  .clogz-editorial__about-button{transition:none}
+}
+
+/* CLOGZ: secondary hero heading at EXACTLY the same sizes as the first heading.
+   The old “Confort culte...” subtitle is removed to leave room for this statement. */
+.clogz-editorial__hero-copy .clogz-editorial__brand-signature {
+  display:block;
+  max-width:100%;
+  margin:0 0 26px!important;
+  color:#18344C!important;
+  font-family:Instrument Sans,Instrument Sans,sans-serif!important;
+  font-size:clamp(51px,5.4vw,91px)!important;
+  line-height:.92!important;
+  letter-spacing:-.065em!important;
+  font-weight:900!important;
+  text-transform:none!important;
+  overflow-wrap:normal;
+}
+.clogz-editorial__hero-copy h1 {margin-bottom:20px!important}
+.clogz-editorial__brand-signature .clogz-editorial__signature-line {display:block;color:#18344C}
+.clogz-editorial__brand-signature .clogz-editorial__signature-line--english {
+  display:block;
+  white-space:nowrap;
+  font-size:clamp(22px,3vw,43px)!important;
+  line-height:1.15!important;
+  letter-spacing:-.055em!important;
+  margin-top:.12em;
+}
+.clogz-editorial__brand-signature .clogz-editorial__english-core {white-space:nowrap;color:#18344C}
+.clogz-editorial__brand-signature em {
+  font-style:normal;
+  color:#A74419;
+  font-weight:900;
+}
+@media(max-width:749px) {
+  .clogz-editorial__hero-copy .clogz-editorial__brand-signature {
+    font-size:clamp(47px,10.8vw,78px)!important;
+    line-height:.95!important;
+    letter-spacing:-.06em!important;
+    margin:0 0 20px!important;
+  }
+  .clogz-editorial__hero-copy h1 {margin-bottom:16px!important}
+}
+@media(max-width:359px) {
+  .clogz-editorial__hero-copy .clogz-editorial__brand-signature {font-size:45px!important}
+}
+
+/* Walkway brand typography — CLOGZ. GemFonts Walkway, licensed for commercial use.
+   Display typeface for headings, CTA and cards; keep Instrument Sans for text paragraphs. */
+:root{--clogz-display:'Walkway Bold','Walkway Black',Instrument Sans,Instrument Sans,sans-serif;--clogz-display-strong:'Walkway Black','Walkway Bold',Instrument Sans,Instrument Sans,sans-serif;}
+.clogz-editorial__hero-copy h1,
+.clogz-editorial__hero-copy .clogz-editorial__brand-signature,
+.clogz-editorial__discover-top h2,
+.clogz-page-title,
+.clogz-product h1,
+.clogz-product__title,
+.clogz-collections__intro h1,
+.clogz-collections__group-top h2,
+.clogz-editorial__promo h2,
+.clogz-engagements h2 {font-family:var(--clogz-display)!important;letter-spacing:-.015em!important;}
+.clogz-card h3,.clogz-card h3 a,.clogz-curated-card__details strong,.clogz-editorial__card-bottom strong,.clogz-spider-card__details strong,.clogz-header .clogz-nav a,.clogz-mobile-menu a,.clogz-pill,.clogz-editorial__btn,.clogz-editorial__about-button,.clogz-engagements__action,.clogz-engagements__secondary{font-family:var(--clogz-display-strong)!important;}
+.clogz-card h3,.clogz-card h3 a{line-height:1.3;overflow-wrap:break-word;}
+.clogz-header .clogz-nav a{letter-spacing:0!important;}
+
+/* Nos engagements, transparent customer commitments. */
+.clogz-engagements{max-width:1120px;margin-inline:auto;color:#18344C;}
+.clogz-engagements__eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;color:#A74419!important;margin:0 0 12px!important;}
+.clogz-engagements__intro{font-size:clamp(17px,2vw,23px)!important;line-height:1.5!important;max-width:780px;margin:0 0 30px!important;font-weight:600;color:#244258!important;}
+.clogz-engagements__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:30px 0 34px;}
+.clogz-engagements__item{border:1px solid #D8E8F2;background:#FFF;padding:clamp(20px,3vw,32px);border-radius:24px;box-shadow:0 12px 28px rgba(24,52,76,.05);}
+.clogz-engagements__number{color:#A74419;font-size:11px;font-weight:900;letter-spacing:.16em;}
+.clogz-engagements__item h2{font-size:clamp(23px,2.4vw,33px)!important;line-height:1.15!important;color:#18344C!important;margin:13px 0!important;}
+.clogz-engagements__item p{font-size:15px!important;line-height:1.67!important;color:#38536A!important;margin:0!important;}
+.clogz-engagements__cta{background:linear-gradient(120deg,#DFF2FC,#FFF0E5);border-radius:26px;padding:clamp(24px,4vw,44px);margin:0 0 24px;}
+.clogz-engagements__cta-kicker{color:#A74419!important;font-size:12px!important;font-weight:800!important;letter-spacing:.12em;}
+.clogz-engagements__cta h2{color:#18344C!important;font-size:clamp(30px,3vw,45px)!important;margin:6px 0 14px!important;}
+.clogz-engagements__cta p{color:#28465C!important;}
+.clogz-engagements__action,.clogz-engagements__secondary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;padding:12px 21px!important;text-decoration:none!important;font-weight:800;font-size:14px;margin:8px 8px 0 0;}
+.clogz-engagements__action{background:#F58B52!important;color:#18344C!important;}
+.clogz-engagements__secondary{background:transparent!important;color:#18344C!important;border:1px solid #18344C!important;}
+.clogz-engagements__action:hover{background:#FFAF86!important;}
+.clogz-engagements__secondary:hover{background:#E7F5FE!important;}
+.clogz-engagements__legal{color:#526779!important;font-size:12px!important;line-height:1.6!important;max-width:960px;}
+@media(max-width:680px){.clogz-engagements__grid{grid-template-columns:1fr;gap:13px;margin:22px 0}.clogz-engagements__item{padding:20px;border-radius:19px}.clogz-engagements__intro{font-size:17px!important}.clogz-engagements__cta{border-radius:20px}.clogz-engagements__action,.clogz-engagements__secondary{width:100%;margin:8px 0 0}}

@@ -1,0 +1,45 @@
+<style>
+.cz4-packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
+.cz4-pack{display:flex;flex-direction:column;gap:10px;padding:clamp(22px,3vw,32px);border-radius:24px;background:#fff;border:1px solid #eadfd6;text-decoration:none!important;color:#191817!important;transition:transform .15s ease,box-shadow .15s ease}
+.cz4-pack:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(25,24,23,.08)}
+.cz4-pack--trio{background:#191817;color:#fff!important;border-color:#191817}
+.cz4-pack__tag{align-self:flex-start;font-size:12px;font-weight:800;letter-spacing:.1em;padding:6px 12px;border-radius:999px;background:#ffe9dc;color:#c4402f}
+.cz4-pack--trio .cz4-pack__tag{background:#EE4A3D;color:#fff}
+.cz4-pack h3{font-family:"Anton",sans-serif;font-weight:800;font-size:clamp(28px,4vw,40px);line-height:1;margin:4px 0 0}
+.cz4-pack__price{font-family:"Anton",sans-serif;font-weight:800;font-size:24px}
+.cz4-pack__unit{font-size:15px;opacity:.85}
+.cz4-pack__cta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;background:#EE4A3D;color:#fff;font-family:"Anton",sans-serif;font-weight:800}
+</style>
+<div class="clogz-collections">
+<div class="clogz-collections__hero">
+<div class="clogz-container">
+ <header class="clogz-collections__intro"><p class="clogz-collections__eyebrow">CLOGZ · Dakar · Les coloris</p><h1>Une paire.<br><em>Tous tes styles.</em></h1><p>Les 10 coloris, les Pastels, les Essentiels, le drop Spider-Man et les packs : tout est ici, au même endroit.</p></header>
+ <nav class="clogz-collections__nav" aria-label="Explorer les familles CLOGZ"><a href="#les-10-modeles">10 coloris</a><a href="#pastels">Pastels</a><a href="#essentiels">Essentiels</a><a href="#spider-man">Spider-Man</a><a href="#packs">Packs</a></nav>
+</div>
+</div>
+<section class="clogz-collections__group" id="les-10-modeles" aria-labelledby="all-clogz"><div class="clogz-container">
+ <div class="clogz-collections__group-top"><div><span class="clogz-collections__count">COLLECTION COMPLÈTE</span><h2 id="all-clogz">Les 10 coloris</h2><p>Un seul prix : 12 000 FCFA la paire, pins offerts. Choisis ton coloris, puis ta pointure.</p></div><a href="/collections/clogz-tous-les-sabots" class="clogz-collections__group-link">Voir toutes les paires</a></div>
+ {% render 'clogz-catalog-grid' %}
+</div></section>
+<section class="clogz-collections__group clogz-collections__group--pastels" id="pastels" aria-labelledby="pastels-clogz"><div class="clogz-container">
+ <div class="clogz-collections__group-top"><div><span class="clogz-collections__count">3 COLORIS</span><h2 id="pastels-clogz">Pastels</h2><p>Rose Lac Rose, Bleu Corniche et Lilas Almadies. Doux, frais, légers.</p></div><a href="/collections/sabots-clogz-pastels-1" class="clogz-collections__group-link">Tous les Pastels</a></div>
+ {% render 'clogz-collection-mini', group: 'pastels' %}
+</div></section>
+<section class="clogz-collections__group clogz-collections__group--essentiels" id="essentiels" aria-labelledby="essentiels-clogz"><div class="clogz-container">
+ <div class="clogz-collections__group-top"><div><span class="clogz-collections__count">7 COLORIS</span><h2 id="essentiels-clogz">Les Essentiels</h2><p>Noir Plateau, Rouge Sandaga, Blanc Ngor, Sable Lompoul, Vert Casamance, Orange Saly et Gris Médina : pour tous les jours.</p></div><a href="/collections/sabots-clogz-les-essentiels" class="clogz-collections__group-link">Tous les Essentiels</a></div>
+ {% render 'clogz-collection-mini', group: 'essentiels' %}
+</div></section>
+<section class="clogz-collections__group clogz-collections__group--spider" id="spider-man" aria-labelledby="spider-clogz"><div class="clogz-container">
+ <div class="clogz-collections__group-top"><div><span class="clogz-collections__count">ÉDITION SPÉCIALE</span><h2 id="spider-clogz">Le drop Spider-Man</h2><p>Rouge, noir ou bleu. 22 500 FCFA la paire.</p></div><a href="/collections/clogz-spider-man" class="clogz-collections__group-link">Voir le drop</a></div>
+ {% render 'clogz-collection-mini', group: 'spider' %}
+</div></section>
+<section class="clogz-collections__group clogz-collections__group--packs" id="packs" aria-labelledby="packs-clogz"><div class="clogz-container">
+ <div class="clogz-collections__group-top"><div><span class="clogz-collections__count">À PLUSIEURS, C’EST MIEUX</span><h2 id="packs-clogz">Mes Packs</h2><p>Compose ton pack : tu choisis le coloris et la pointure de chaque paire. Pins offerts avec chaque paire.</p></div><a href="/pages/packs" class="clogz-collections__group-link">Composer mon pack</a></div>
+ <div class="cz4-packs">
+  <a class="cz4-pack" href="/pages/packs"><span class="cz4-pack__tag">2 PAIRES</span><h3>PACK DUO</h3><span class="cz4-pack__price">21 000 FCFA</span><span class="cz4-pack__unit">Soit 10 500 FCFA la paire</span><span class="cz4-pack__cta">Composer mon DUO</span></a>
+  <a class="cz4-pack cz4-pack--trio" href="/pages/packs"><span class="cz4-pack__tag">3 PAIRES</span><h3>PACK TRIO</h3><span class="cz4-pack__price">30 000 FCFA</span><span class="cz4-pack__unit">Soit 10 000 FCFA la paire</span><span class="cz4-pack__cta">Composer mon TRIO</span></a>
+ </div>
+</div></section>
+<div class="clogz-collections__foot"><div class="clogz-container"><div class="clogz-collections__foot-inner"><p>Une question sur les pointures ou la livraison ?</p><a class="clogz-pill" href="/pages/aide">Voir l’aide</a></div></div></div>
+</div>
+{% schema %}{"name":"Collections CLOGZ","settings":[]}{% endschema %}

@@ -1,0 +1,654 @@
+
+/* CLOGZ V5 — Global storefront design system (every Shopify theme page)
+   Excludes the external Shopify hosted checkout and app-owned iframes.
+   Deliberately scoped to .clogz-zine so the published V4 is unchanged. */
+body.clogz-zine{
+ --cz4-display:"Anton","Arial Narrow",Impact,sans-serif;
+ --cz4-body:"Instrument Sans",Arial,sans-serif;
+ --clogz-display:"Anton","Arial Narrow",Impact,sans-serif;
+ --clogz-display-strong:"Anton","Arial Narrow",Impact,sans-serif;
+ --clogz-body:"Instrument Sans",Arial,sans-serif;
+ --z-display:"Anton","Arial Narrow",Impact,sans-serif;
+ --z-note:"Permanent Marker",cursive;
+ --z-body:"Instrument Sans",Arial,sans-serif;
+ --z-paper:var(--cream,#FFF8F1);
+ --z-peach:var(--pastel,#FBE2D5);
+ --z-red:var(--green,#EE4A3D);
+ --z-ink:var(--ink,#191817);
+ color:var(--z-ink);
+ background:var(--z-paper);
+ font-family:var(--z-body)!important;
+}
+html body.clogz-zine #MainContent :is(h1,h2,h3,h4,h5,h6),
+html body.clogz-zine :is(#ClogzDrawer,.clogz-footer,.czine-sidebar,.czine-menu-overlay) :is(h1,h2,h3,h4,h5,h6){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-style:normal;
+ letter-spacing:-.016em!important;
+ line-height:.98;
+ text-transform:uppercase;
+}
+html body.clogz-zine #MainContent :is(p,li,small,dd,dt,blockquote,caption,td,th,figcaption,legend,input,textarea,select),
+html body.clogz-zine :is(#ClogzDrawer,.clogz-footer,.czine-sidebar,.czine-menu-overlay) :is(p,small,li,td,th,input,textarea,select){
+ font-family:var(--z-body)!important;
+}
+html body.clogz-zine #MainContent :is(.czine-script,.czine-marker,.czine-hero-note,.czine-hero-foot .czine-script,.czine-sticker,.czine-step-num,.czine-pins-copy .czine-script),
+html body.clogz-zine .czine-menu-overlay > .czine-script{
+ font-family:var(--z-note)!important;
+ font-weight:400!important;
+ text-transform:none!important;
+}
+html body.clogz-zine #MainContent :is(button,.clogz-pill,.clogz-product__atc,.clogz-card__view,.clogz-card__title,.clogz-card__name,.czine-pill,.czine-product-details h3,.czine-card-action,.czine-product-card h3,.czine-filters button,.czine-hero-pair-info a,.clogz-order-submit,.cz4-intl-btn,.cz4-pack__cta,.cz-merci__btn,.cz-track__btn,.cz-track__submit,.cz-change__submit,.cz-help__btn,.clogz-contact-submit),
+html body.clogz-zine :is(#ClogzDrawer,.clogz-footer,.czine-sidebar,.czine-menu-overlay) :is(button,.clogz-pill,.czine-wa,.czine-menu-big a,.czine-side-links a){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ letter-spacing:.016em!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-product__price,.clogz-order-cost,.clogz-cart-total,.cz4-pack__price) {
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+
+/* Preserve display text inside decorative spans and navigation labels. */
+html body.clogz-zine #MainContent :is(.czine-marquee-track span,.czine-tape-banner span,.czine-drop-name,.czine-drop-price strong,.czine-card-view,.czine-section-title .czine-kicker){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #MainContent :is(.czine-hero-stamp,.czine-small-meta,.czine-kicker,.czine-micro){
+ font-family:var(--z-body)!important;
+ font-weight:850!important;
+}
+
+html body.clogz-zine #MainContent :is(.clogz-eyebrow,.clogz-contact-eyebrow,.cz-track__eyebrow,.cz-help__eyebrow,.cz-merci__eyebrow,.cz-change__eyebrow,.clogz-collections__eyebrow,.clogz-univers__eyebrow,.clogz-pair-theme__eyebrow){
+ font-family:var(--z-body)!important;
+ font-weight:850!important;
+ font-size:12px;
+ letter-spacing:.14em;
+ text-transform:uppercase;
+ color:var(--z-red)!important;
+}
+html body.clogz-zine #MainContent :is(h1,.clogz-page-title,.clogz-heading,.cz-help__hero h1,.cz-track__heading h1,.cz-merci__hero h1,.cz-change__hero h1,.clogz-order-header h1){
+ font-size:clamp(3rem,7vw,8.2rem)!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ line-height:.9!important;
+ letter-spacing:-.025em!important;
+}
+html body.clogz-zine #MainContent :is(h1,h2,h3,h4) em {
+ color:var(--z-red)!important;
+ font-family:inherit!important;
+ font-weight:inherit!important;
+ font-style:normal!important;
+}
+html body.clogz-zine #MainContent :is(.czine-paper,.clogz-page-space,.clogz-order-page,.cz-track,.cz-merci,.cz-help,.cz-change,.clogz-richtext,.clogz-collections,.clogz-univers){
+ background-color:var(--z-paper)!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-page-space,.clogz-collections,.clogz-order-page,.cz-track,.cz-merci,.cz-help,.cz-change){
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-container,.cz-track__container,.cz-merci .clogz-container,.cz-help .clogz-container,.cz-change__wrap){
+ max-width:1250px;
+}
+html body.clogz-zine #MainContent :is(.clogz-breadcrumb,.clogz-page-intro,.clogz-order-back,.clogz-contact-back){
+ font-family:var(--z-body)!important;
+ font-size:12px;
+ letter-spacing:.055em;
+}
+html body.clogz-zine #MainContent :is(.clogz-order-back,.clogz-contact-back,.cz-change__back,.clogz-breadcrumb,.cz-track__eyebrow){
+ text-decoration-thickness:2px;
+ text-underline-offset:3px;
+}
+
+/* Paper-cut headers and magazine-like panels: page, product, contact, order, tracking, help. */
+html body.clogz-zine #MainContent :is(.clogz-order-header,.clogz-contact-hero,.cz-track__hero,.cz-merci__hero,.cz-change__hero,.cz-help__hero,.clogz-collections__hero,.clogz-collection-intro,.cz4-intl-cta:not(.cz4-intl-cta--dark)){
+ background:var(--z-peach)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:2px!important;
+ box-shadow:7px 8px 0 rgba(25,24,23,.13);
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-collection-intro,.clogz-order-header){
+ padding:clamp(22px,4vw,48px)!important;
+ margin-bottom:32px;
+}
+html body.clogz-zine #MainContent .clogz-collection-intro{border-bottom:3px dashed var(--z-ink)!important}
+html body.clogz-zine #MainContent :is(.clogz-order-header,.cz-track__hero,.cz-merci__hero,.cz-help__hero,.cz-change__hero) p{
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.cz-track__hero,.cz-help__hero,.cz-merci__hero,.cz-change__hero) h1{
+ color:var(--z-ink)!important;
+}
+/* Shared dashed dividers and white-paper cards. */
+html body.clogz-zine #MainContent :is(.cz-help__group,.cz-track__card,.cz-merci__card,.cz-change__form,.clogz-order-form-card,.clogz-order-summary-card,.clogz-contact-info-card,.clogz-contact-form-shell,.clogz-collections__group,.clogz-richtext .rte){
+ border-color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.cz-help__tile,.cz-help__q,.cz-track__card,.cz-merci__card,.cz-merci__step,.cz-change__form,.cz-change__notice,.clogz-order-form-card,.clogz-order-summary-card,.clogz-contact-info-card,.clogz-contact-form-shell){
+ background:var(--z-paper)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:3px!important;
+ box-shadow:5px 6px 0 rgba(25,24,23,.10);
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.cz-merci__step,.cz-help__tile,.clogz-contact-info-card){
+ transition:transform .22s,box-shadow .22s;
+}
+@media(hover:hover){
+ html body.clogz-zine #MainContent :is(.cz-merci__step,.cz-help__tile,.clogz-contact-info-card):hover{
+  transform:translateY(-3px) rotate(-.35deg);
+  box-shadow:7px 9px 0 rgba(25,24,23,.17);
+ }
+}
+html body.clogz-zine #MainContent :is(.cz-help__group h2,.cz-track__heading h2,.cz-merci h2,.cz-change__form h2,.clogz-order-step h2,.clogz-order-summary h2){
+ font-size:clamp(1.8rem,3.2vw,3.4rem)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #MainContent :is(.cz-help__tile strong,.cz-merci__step strong,.cz-track__card h2,.cz-change__card h2,.clogz-order-summary h3) {
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ text-transform:uppercase;
+ font-size:clamp(1.25rem,2vw,1.9rem);
+}
+html body.clogz-zine #MainContent :is(.cz-help__q,.cz4-cart-accordion,.cz-faq__item) {
+ border-bottom:2px dashed var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.cz-help__q summary,.cz4-cart-accordion summary,.cz-faq__item summary){
+ font-family:var(--z-display)!important;
+ font-size:clamp(1.35rem,2.3vw,2rem)!important;
+ font-weight:400!important;
+ letter-spacing:.01em;
+ text-transform:uppercase;
+}
+html body.clogz-zine #MainContent :is(.cz-help__q[open],.cz-faq__item[open]) summary{
+ color:var(--z-red)!important;
+}
+html body.clogz-zine #MainContent :is(.cz-merci__num,.clogz-order-step__number,.clogz-order-step__num){
+ background:var(--z-red)!important;
+ color:white!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+
+/* Forms and order/customer operations: preserve all functionality while unifying surface design. */
+html body.clogz-zine #MainContent :is(.cz-change,.cz-track,.cz-help,.clogz-order-page,.clogz-contact-section,.clogz-richtext) :is(input:not([type="checkbox"]):not([type="radio"]),textarea,select),
+html body.clogz-zine #MainContent .clogz-product__form :is(input:not([type="radio"]),select){
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:8px!important;
+ font-family:var(--z-body)!important;
+ font-weight:500!important;
+ min-height:44px;
+}
+html body.clogz-zine #MainContent :is(input,textarea,select,button,a):focus-visible{
+ outline:3px solid var(--z-red)!important;
+ outline-offset:3px!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-pill--green,.cz-track__submit,.cz-track__btn:not(.cz-track__btn--wa),.cz-merci__btn:not(.cz-merci__btn--line),.cz-change__submit,.cz-help__btn,.clogz-order-submit,.clogz-contact-submit,.cz4-intl-btn:not(.cz4-intl-btn--line),.clogz-product__atc:not(:disabled),.cz4-pack__cta,.clogz-cart-actions .clogz-pill--green){
+ color:#fff!important;
+ background:var(--z-red)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:999px!important;
+ min-height:48px;
+ padding-inline:18px;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(1rem,1.6vw,1.3rem);
+ letter-spacing:.01em;
+}
+html body.clogz-zine #MainContent :is(.clogz-pill--green,.cz-track__submit,.cz-change__submit,.clogz-order-submit,.clogz-contact-submit,.clogz-product__atc:not(:disabled)):hover{
+ background:var(--z-ink)!important;
+ color:#fff!important;
+}
+html body.clogz-zine #MainContent :is(button:disabled,.clogz-product__atc:disabled){
+ cursor:not-allowed;
+ opacity:.65;
+}
+html body.clogz-zine #MainContent :is(.cz-track__whatsapp,.cz-merci__btn--wa,.cz-change__back,.cz-track__btn--wa){
+ background:var(--z-ink)!important;
+ color:#fff!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:999px!important;
+ min-height:48px;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-pill--line,.cz4-intl-btn--line,.cz-merci__btn--line){
+ background:transparent!important;
+ color:var(--z-ink)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:999px!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #MainContent .clogz-product__option-values label span{
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ background:var(--z-paper);
+ border:2px solid var(--z-ink);
+ color:var(--z-ink);
+}
+html body.clogz-zine #MainContent .clogz-product__option-values input:checked+span{
+ background:var(--z-red)!important;
+ color:#fff!important;
+ border-color:var(--z-red)!important;
+}
+html body.clogz-zine #MainContent .clogz-product__info{
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+ border:2px dashed var(--z-ink)!important;
+ border-radius:3px!important;
+ box-shadow:5px 6px 0 rgba(25,24,23,.10)!important;
+ padding:clamp(20px,3vw,40px)!important;
+}
+html body.clogz-zine #MainContent .clogz-product__gallery{
+ border:2px solid var(--z-ink)!important;
+ border-radius:3px!important;
+}
+html body.clogz-zine #MainContent .clogz-product__gallery img{
+ object-fit:contain;
+}
+html body.clogz-zine #MainContent :is(.cz4-size-guide-link,.clogz-guide-link){
+ font-family:var(--z-body)!important;
+ font-weight:700!important;
+}
+
+/* Collections, packs, searches and editorial pages. */
+html body.clogz-zine #MainContent :is(.clogz-card,.clogz-curated-card,.cz4-pack,.czpack .pair){
+ border:2px solid var(--z-ink)!important;
+ border-radius:3px!important;
+ box-shadow:5px 6px 0 rgba(25,24,23,.1);
+}
+html body.clogz-zine #MainContent :is(.clogz-card__info h3,.clogz-curated-card strong,.cz4-pack h3,.czpack .pair h3){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ text-transform:uppercase;
+}
+html body.clogz-zine #MainContent :is(.cz4-pack:not(.cz4-pack--trio),.czpack .pair,.clogz-card,.clogz-curated-card){
+ background:var(--z-paper)!important;
+ color:var(--z-ink);
+}
+html body.clogz-zine #MainContent .cz4-pack--trio{
+ background:var(--z-ink)!important;
+ color:var(--z-paper)!important;
+}
+html body.clogz-zine #MainContent :is(.clogz-collections__group,.clogz-univers__story,.clogz-univers__collections,.clogz-collections__foot,.clogz-page-space){
+ border-top-color:var(--z-ink);
+}
+html body.clogz-zine #MainContent :is(.clogz-collections__group-top,.clogz-collections__nav,.clogz-collection-links){
+ border-bottom:2px dashed var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .czpack{
+ --ink:var(--z-ink);
+ --red:var(--z-red);
+ --peach:var(--z-peach);
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent :is(.czpack h1,.czpack h2,.czpack h3,.czpack .tab,.czpack .cta,.czpack .summary .total){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ text-transform:uppercase;
+}
+html body.clogz-zine #MainContent .czpack .tab.active{
+ color:#fff!important;
+ background:var(--z-red)!important;
+ border-color:var(--z-red)!important;
+}
+html body.clogz-zine #MainContent .clogz-univers__hero{
+ background:var(--z-peach)!important;
+ color:var(--z-ink)!important;
+ border-bottom:3px dashed var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .clogz-univers__section-intro h2{
+ font-size:clamp(2.6rem,6vw,6rem)!important;
+}
+html body.clogz-zine #MainContent .clogz-richtext .rte{
+ background:var(--z-paper)!important;
+ border-top:3px dashed var(--z-ink)!important;
+ padding-top:32px;
+}
+html body.clogz-zine #MainContent .clogz-richtext .rte :is(h2,h3){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ margin-block:24px 12px;
+}
+
+/* Panier : shopping-cart page plus AJAX drawer. Preserve quantity/update/checkout JS. */
+html body.clogz-zine #MainContent [data-clogz-page-cart]{
+ background:var(--z-paper)!important;
+ color:var(--z-ink);
+}
+html body.clogz-zine #MainContent [data-clogz-page-cart] .clogz-page-title{
+ padding-bottom:17px;
+ border-bottom:3px dashed var(--z-ink);
+}
+html body.clogz-zine #MainContent :is(.clogz-cart-table,.clogz-cart-total,.cz4-cart-quick-actions,.clogz-cart-support){
+ font-family:var(--z-body)!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-table{
+ border:2px solid var(--z-ink);
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-table thead{
+ background:var(--z-ink)!important;
+ color:var(--z-paper)!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-table th{
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ text-transform:uppercase;
+ letter-spacing:.06em;
+}
+html body.clogz-zine #MainContent .clogz-cart-table tbody tr{
+ background:var(--z-paper)!important;
+ border-bottom:2px dashed var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-total{
+ border-top:2px dashed var(--z-ink);
+ padding-top:20px;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(1.5rem,3vw,2.6rem);
+}
+html body.clogz-zine #MainContent .cz4-cart-trust{
+ background:var(--z-peach)!important;
+ border:2px dashed var(--z-ink)!important;
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .cz4-cart-accordion{
+ border:2px dashed var(--z-ink)!important;
+ border-radius:3px!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-qty-controls :is(input,button){
+ border:2px solid var(--z-ink)!important;
+ border-radius:4px!important;
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .clogz-cart-remove-cell button{
+ font-family:var(--z-body)!important;
+ font-weight:800!important;
+ color:var(--z-red)!important;
+ text-decoration:underline;
+}
+html body.clogz-zine #ClogzDrawer{
+ font-family:var(--z-body)!important;
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+ border-left:3px solid var(--z-ink)!important;
+}
+html body.clogz-zine #ClogzDrawer .clogz-drawer__head{
+ border-bottom:3px dashed var(--z-ink)!important;
+ background:var(--z-peach)!important;
+}
+html body.clogz-zine #ClogzDrawer .clogz-drawer__head h2{
+ font:400 clamp(2.1rem,5vw,3.2rem)/.98 var(--z-display)!important;
+ text-transform:uppercase;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__items,.clogz-drawer__bottom){
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__item,.clogz-drawer__total,.clogz-drawer__buttons){
+ border-color:var(--z-ink)!important;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__checkout,.clogz-pill--green){
+ background:var(--z-red)!important;
+ border:2px solid var(--z-ink)!important;
+ color:#fff!important;
+ border-radius:999px!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ text-transform:uppercase;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__fullcart,.clogz-pill--line){
+ background:transparent!important;
+ border:2px solid var(--z-ink)!important;
+ color:var(--z-ink)!important;
+ border-radius:999px!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__shipping,.clogz-cod-checkout-notice){
+ background:var(--z-peach)!important;
+ color:var(--z-ink)!important;
+ border:2px dashed var(--z-ink)!important;
+ border-radius:3px!important;
+}
+html body.clogz-zine #ClogzDrawer :is(.clogz-drawer__total strong,.clogz-cart-empty strong){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(1.4rem,2.5vw,2rem);
+}
+html body.clogz-zine .clogz-toast{
+ color:var(--z-paper);
+ font-family:var(--z-body)!important;
+}
+html body.clogz-zine .czine-bottom-nav{
+ background:var(--z-paper)!important;
+ border-top:2px dashed var(--z-ink)!important;
+}
+html body.clogz-zine .czine-bottom-nav :is(a,button){
+ font-family:var(--z-display)!important;
+}
+/* Footer, newsletter and remaining modules. */
+html body.clogz-zine .clogz-footer{
+ background:var(--z-ink)!important;
+ color:var(--z-paper)!important;
+ border-top:8px solid var(--z-red)!important;
+}
+html body.clogz-zine .clogz-footer :is(h2,h3,h4){
+ color:var(--z-paper)!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine .clogz-footer :is(a,p,small,li){
+ color:var(--z-paper)!important;
+ font-family:var(--z-body)!important;
+}
+html body.clogz-zine .clogz-footer :is(.clogz-footlinks,.clogz-footer__grid){
+ border-color:var(--z-paper);
+}
+html body.clogz-zine .clogz-footer a:hover{
+ color:#ffb2a4!important;
+}
+html body.clogz-zine #MainContent .clogz-newsletter{
+ background:var(--z-peach)!important;
+ border:2px solid var(--z-ink)!important;
+ border-radius:3px!important;
+ box-shadow:7px 9px 0 var(--z-ink)!important;
+}
+html body.clogz-zine #MainContent .clogz-newsletter :is(h2,h3){
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+}
+html body.clogz-zine #MainContent .clogz-newsletter input{
+ border:2px solid var(--z-ink)!important;
+ border-radius:999px!important;
+}
+@media(max-width:900px){
+ html body.clogz-zine #MainContent :is(.clogz-page-space,.cz-help,.cz-merci,.cz-track,.cz-change,.clogz-order-page){
+  padding-top:24px!important;
+ }
+ html body.clogz-zine #MainContent :is(.clogz-order-header,.cz-track__hero,.cz-merci__hero,.cz-help__hero,.cz-change__hero){
+  box-shadow:4px 5px 0 rgba(25,24,23,.13);
+ }
+}
+@media(max-width:640px){
+ html body.clogz-zine #MainContent :is(h1,.clogz-page-title,.cz-help__hero h1,.cz-merci__hero h1,.cz-track__heading h1,.cz-change__hero h1){
+  font-size:clamp(2.7rem,10.8vw,5.1rem)!important;
+ }
+ html body.clogz-zine #MainContent :is(.cz-help__hero,.cz-track__hero,.cz-merci__hero,.cz-change__hero,.clogz-order-header,.clogz-contact-hero){
+  padding:22px!important;
+ }
+ html body.clogz-zine #MainContent .clogz-cart-table{border:0!important}
+ html body.clogz-zine #MainContent .clogz-cart-table tbody tr{
+  border:2px dashed var(--z-ink)!important;
+  background:var(--z-paper)!important;
+  border-radius:4px;
+  margin-bottom:12px;
+ }
+ html body.clogz-zine #MainContent .czpack .wrap{
+  max-width:100%;min-width:0;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ html body.clogz-zine #MainContent :is(.clogz-card,.cz4-pack,.cz-help__tile,.cz-merci__step) {transition:none!important;transform:none!important;}
+}
+
+
+/* Monument-only hero. Carousel markup and handlers removed rather than hidden. */
+.czine-hero.czine-hero-monument.czine-hero-no-shoes{
+ min-height:clamp(640px,82svh,830px)!important;
+ display:flex;
+ flex-direction:column;
+ justify-content:flex-start;
+ position:relative;
+ padding:clamp(26px,3vw,42px) 4% 45px!important;
+ overflow:hidden;
+}
+.czine-hero-no-shoes .czine-hero-monument-image{
+ object-fit:cover;
+ object-position:69% 50%;
+}
+.czine-hero-no-shoes .czine-hero-stamp{
+ position:relative;z-index:4;
+ align-self:flex-start;
+ background:var(--z-paper)!important;
+ color:var(--z-ink)!important;
+ box-shadow:5px 5px 0 rgba(25,24,23,.34);
+}
+.czine-hero-no-shoes .czine-hero-head{
+ position:relative;
+ z-index:3;
+ padding-top:clamp(32px,5vw,66px);
+ max-width:min(1140px,95%);
+}
+.czine-hero-no-shoes .czine-hero-head h1{
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(68px,8.5vw,148px)!important;
+ line-height:.91!important;
+ white-space:normal!important;
+ letter-spacing:-.03em!important;
+ margin:0;
+ color:var(--z-paper)!important;
+ text-shadow:0 5px 25px rgba(0,0,0,.36);
+}
+.czine-hero-no-shoes .czine-hero-head h1 em{color:var(--z-red)!important}
+.czine-hero-no-shoes .czine-hero-head>p{
+ margin-top:22px!important;
+ max-width:460px;
+ color:var(--z-paper)!important;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(18px,2vw,26px)!important;
+}
+.czine-hero-no-shoes .czine-hero-note{top:-12px;right:2%;color:var(--z-paper)}
+.czine-hero-no-shoes .czine-hero-foot{
+ position:relative!important;
+ inset:auto!important;
+ margin-top:auto;
+ padding-top:45px;
+ display:flex;
+ align-items:end;
+ justify-content:space-between;
+ gap:28px;
+ z-index:5;
+}
+.czine-hero-no-shoes .czine-hero-foot .czine-script{
+ margin:0!important;
+ max-width:340px;
+ transform:rotate(-3deg);
+ font:clamp(18px,2vw,24px)/1.4 var(--z-note)!important;
+ color:var(--z-paper)!important;
+ text-shadow:0 2px 12px rgba(0,0,0,.55);
+}
+.czine-hero-no-shoes .czine-hero-foot .czine-pill{
+ margin:0!important;
+ min-height:54px;
+ flex:none;
+ font-family:var(--z-display)!important;
+ font-weight:400!important;
+ font-size:clamp(18px,1.6vw,24px);
+}
+.czine-hero-no-shoes .czine-hero-scribble{
+ position:absolute;
+ top:20%;
+ right:5%;
+ z-index:2;
+ pointer-events:none;
+}
+@media(max-width:900px){
+ .czine-hero.czine-hero-monument.czine-hero-no-shoes{
+  min-height:clamp(600px,80svh,765px)!important;
+ }
+ .czine-hero-no-shoes .czine-hero-head h1{font-size:clamp(60px,9.3vw,110px)!important}
+ .czine-hero-no-shoes .czine-hero-monument-image{object-position:73% 50%}
+}
+@media(max-width:640px){
+ .czine-hero.czine-hero-monument.czine-hero-no-shoes{
+  min-height:clamp(600px,80svh,770px)!important;
+  padding:25px 5% 35px!important;
+ }
+ .czine-hero-no-shoes .czine-hero-head{padding-top:55px;max-width:100%}
+ .czine-hero-no-shoes .czine-hero-head h1{
+  font-size:clamp(54px,12.8vw,82px)!important;
+  line-height:.91!important;
+ }
+ .czine-hero-no-shoes .czine-hero-head h1 br{display:initial!important}
+ .czine-hero-no-shoes .czine-hero-note{font-size:15px;top:10px;right:0}
+ .czine-hero-no-shoes .czine-hero-head>p{
+  margin-top:17px!important;font-size:17px!important;
+ }
+ .czine-hero-no-shoes .czine-hero-foot{
+  gap:20px;
+  padding-top:35px;
+  flex-direction:column;
+  align-items:flex-start;
+ }
+ .czine-hero-no-shoes .czine-hero-foot .czine-script{
+  font-size:17px!important;
+  line-height:1.35;
+  max-width:260px;
+ }
+ .czine-hero-no-shoes .czine-hero-foot .czine-pill{
+  width:auto;
+  max-width:100%;
+  font-size:18px!important;
+ }
+}
+
+
+@media(min-width:901px){
+  body.clogz-zine.clogz-template-index main#MainContent{
+    padding-top:0!important;
+  }
+}
+
+
+.czine-promo-prices,.clogz-spider-promo-price,.clogz-spider-card__price,.clogz-product__price-wrap{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;
+}
+.czine-drop-price .czine-promo-prices strong,
+.clogz-spider-promo-price strong,.clogz-spider-card__price strong{
+  font-family:var(--z-display,"Anton",Impact,sans-serif);
+  font-weight:400;
+  font-size:clamp(23px,2.5vw,34px);
+  color:var(--z-red,#EE4A3D);
+}
+.czine-drop-price .czine-promo-prices strong{color:#191817}
+.clogz-price-was{
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+  color:#867c74;
+  font-family:var(--z-body,"Instrument Sans",Arial,sans-serif);
+  font-size:clamp(13px,1.5vw,16px);
+  font-weight:700;
+}
+.czine-drop .clogz-price-was{color:#6f625b}
+.clogz-product__price-wrap{margin:4px 0 18px}
+.clogz-product__price-wrap .clogz-product__price{margin:0}
+.clogz-card__price .clogz-price-was{display:block;margin-top:4px;font-size:12px}
+.clogz-spider-product__foot .clogz-price-was{display:block;margin-top:4px}

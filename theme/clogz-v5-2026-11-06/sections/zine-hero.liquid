@@ -1,0 +1,66 @@
+{% assign zine_carousel_handles = 'sabots-clogz-rouge|sabots-clogz-noir|sabots-clogz-bleu-ciel|sabots-clogz-gris|sabots-clogz-blanc|sabots-clogz-beige|sabots-clogz-vert-foret|sabots-clogz-rose-bonbon-pins-offerts|sabots-clogz-lilas|sabots-clogz-orange' | split: '|' %}
+{% assign zine_initial_pair = all_products['sabots-clogz-noir'] %}
+{% assign zine_slide_count = 0 %}
+<section class="czine-hero czine-hero-monument czine-v5-hero" id="zine-accueil" aria-labelledby="ZineHeroTitle-{{ section.id }}">
+  <img class="czine-hero-monument-image" src="{{ section.settings.monument_image_url | escape }}" alt="" width="1672" height="941" fetchpriority="high" loading="eager" decoding="async">
+  <span class="czine-hero-stamp">DAKAR · SÉNÉGAL / DEY DAW REK</span>
+  <div class="czine-hero-head">
+    <span class="czine-script czine-hero-note">Ici, c'est Dakar</span>
+    <h1 id="ZineHeroTitle-{{ section.id }}">LE STYLE <em>PREND</em><br>LA RUE<span class="czine-red-dot">.</span></h1>
+    <p>10 COLORIS. UN MOOD : LE TIEN.</p>
+  </div>
+  <div class="czine-v5-stage" role="region" aria-roledescription="carrousel" aria-label="Découvre les paires CLOGZ : utilise les flèches ou glisse pour changer de coloris" data-zine-v5-stage tabindex="0">
+    {% for pair_handle in zine_carousel_handles %}
+      {% assign pair = all_products[pair_handle] %}
+      {% if pair != blank and pair.vendor == 'CLOGZ' %}
+        {% capture zine_pair_color %}{% render 'clogz-color-name', handle: pair.handle, title: pair.title %}{% endcapture %}
+        {% capture zine_pair_price %}{% render 'clogz-price', amount: pair.price %}{% endcapture %}
+        {% assign zine_first_position = zine_slide_count | minus: 1 %}
+        <a class="czine-v5-shoe" href="{{ pair.url }}" data-zine-v5-shoe data-zine-v5-position="{{ zine_first_position }}" data-zine-v5-color="{{ pair.handle }}" data-zine-v5-name="{{ zine_pair_color | strip | escape }}" data-zine-v5-price="{{ zine_pair_price | strip | escape }}" aria-label="Voir {{ pair.title | escape }} et choisir une pointure" {% unless zine_first_position == 0 %}tabindex="-1"{% endunless %}>
+          {% if pair.handle == 'sabots-clogz-gris' %}
+            <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849" alt="Sabot CLOGZ gris ardoise foncé, écusson rond noir, fond transparent" width="1200" height="900" loading="lazy" decoding="async">
+          {% elsif pair.handle == 'sabots-clogz-bleu-ciel' %}
+            <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804" alt="{{ pair.title | escape }}" width="900" height="900" loading="lazy" decoding="async">
+          {% elsif pair.handle == 'sabots-clogz-orange' %}
+            <img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-orange-medaillon-noir-identique-fond-transparent_c4519549-e751-4ead-a2a8-f91d7e999c5b.png?v=1793161010" alt="{{ pair.title | escape }}" width="900" height="900" loading="lazy" decoding="async">
+          {% elsif pair.featured_image != blank %}
+            {% if pair.handle == 'sabots-clogz-noir' %}
+              {{ pair.featured_image | image_url: width: 1000 | image_tag: loading: 'eager', widths: '420, 680, 1000', sizes: '(min-width: 900px) 38vw, 84vw', alt: pair.title }}
+            {% else %}
+              {{ pair.featured_image | image_url: width: 880 | image_tag: loading: 'lazy', widths: '280, 520, 880', sizes: '(min-width: 900px) 32vw, 80vw', alt: pair.title }}
+            {% endif %}
+          {% endif %}
+        </a>
+        {% assign zine_slide_count = zine_slide_count | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if zine_slide_count > 0 %}
+    <div class="czine-v5-pair-meta" aria-live="polite" aria-atomic="true">
+      <strong data-zine-v5-current-name>{% if zine_initial_pair != blank %}{% render 'clogz-color-name', handle: zine_initial_pair.handle, title: zine_initial_pair.title %}{% else %}CLOGZ{% endif %}</strong>
+      <span data-zine-v5-current-price>{% if zine_initial_pair != blank %}{% render 'clogz-price', amount: zine_initial_pair.price %}{% endif %}</span>
+      <a data-zine-v5-current-link href="{% if zine_initial_pair != blank %}{{ zine_initial_pair.url }}{% else %}/collections/clogz-tous-les-sabots{% endif %}">CHOISIR MA POINTURE</a>
+    </div>
+  {% endif %}
+  <div class="czine-hero-foot czine-v5-hero-foot">
+    <p class="czine-script">Ta paire. Ton mood. Tes règles.</p>
+    <div class="czine-v5-hero-actions">
+      <div class="czine-v5-controls" aria-label="Faire défiler les coloris">
+        <button type="button" data-zine-v5-prev aria-label="Paire précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span><b data-zine-v5-index>02</b> / {{ zine_slide_count }}</span>
+        <button type="button" data-zine-v5-next aria-label="Paire suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <a class="czine-pill czine-pill-red czine-v5-explore" href="#zine-coloris">EXPLORER LES COLORIS <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+<section class="czine-trust" aria-label="Ce qu'on te promet">
+  <div><span aria-hidden="true">+</span><strong>12 000 FCFA</strong><small>LA PAIRE CLASSIQUE</small></div>
+  <div><span aria-hidden="true">→</span><strong>LIVRAISON GRATUITE</strong><small>PARTOUT À DAKAR</small></div>
+  <div><span aria-hidden="true">+</span><strong>TU PAIES À LA LIVRAISON</strong><small>CASH / WAVE / OM</small></div>
+  <div><span aria-hidden="true">+</span><strong>PINS OFFERTS</strong><small>TA PAIRE, TA SIGNATURE</small></div>
+</section>
+<div class="czine-marquee" aria-label="Ton mood, ta paire, tes règles, Dey daw rek"><div class="czine-marquee-track" aria-hidden="true">{% for i in (1..6) %}<span>TON MOOD ✦ TA PAIRE ✦ TES RÈGLES ✦ DEY DAW REK ✦&nbsp;</span>{% endfor %}</div></div>
+{% schema %}
+{"name":"Zine Hero CLOGZ","settings":[{"type":"text","id":"monument_image_url","label":"Image Monument de la Renaissance (URL)","default":"https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-dakar-monument-renaissance-coucher-de-soleil-20261025.webp?v=1792944302"}],"presets":[{"name":"Zine Hero CLOGZ"}]}
+{% endschema %}

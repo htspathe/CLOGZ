@@ -1,0 +1,130 @@
+{% comment %}
+  CLOGZ / Centre d'aide « On t'aide ». Réponses basées uniquement sur les informations confirmées de la boutique.
+{% endcomment %}
+{%- assign cz_wa = 'https://wa.me/221788770615?text=Salut%20CLOGZ%2C%20j%27ai%20besoin%20d%27aide.' -%}
+<style>
+.cz-help{padding:clamp(28px,5vw,64px) 0 clamp(40px,6vw,80px)}
+.cz-help__hero{background:linear-gradient(160deg,#ffe9dc,#fff8f1);border:1px solid #f0dccf;border-radius:28px;padding:clamp(26px,5vw,56px)}
+.cz-help__eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;color:#191817;margin:0 0 12px;text-transform:uppercase}
+html body .cz-help :is(h1,h2){font-family:"Anton",sans-serif!important;font-weight:900!important;text-transform:uppercase!important;letter-spacing:-.055em!important;line-height:1!important;color:#191817}
+html body .cz-help :is(h1,h2) em{font-style:normal!important;color:#ED4B39!important}
+.cz-help h1{font-size:clamp(44px,8vw,96px);margin:0 0 14px}
+.cz-help__dot{color:#ED4B39}
+.cz-help__lead{font-size:17px;max-width:560px;margin:0 0 22px;color:#32302e}
+.cz-help__search{position:relative;max-width:560px}
+.cz-help__search input{width:100%;min-height:54px;border:1px solid #e3d3c8;border-radius:999px;padding:0 20px 0 50px;font-size:16px;background:#fff}
+.cz-help__search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#8a7468}
+.cz-help__tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:26px 0 0}
+.cz-help__tile{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:18px;background:#fff;border:1px solid #efe2d8;text-decoration:none!important;color:#191817!important;min-height:110px;transition:transform .15s ease,box-shadow .15s ease}
+.cz-help__tile:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(25,24,23,.07)}
+.cz-help__tile svg{width:26px;height:26px;color:#EE4A3D}
+.cz-help__tile strong{font-family:"Anton",sans-serif;font-size:16px}
+.cz-help__tile span{font-size:13px;color:#5b4f48}
+.cz-help__group{margin-top:48px;scroll-margin-top:90px}
+.cz-help__group h2{font-size:clamp(28px,4vw,44px);margin:0 0 16px}
+.cz-help__q{border:1px solid #eadfd6;border-radius:16px;background:#fff;margin:0 0 10px}
+.cz-help__q summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:700;font-size:16px;min-height:54px}
+.cz-help__q summary::-webkit-details-marker{display:none}
+.cz-help__q summary::after{content:"+";font-size:22px;color:#EE4A3D;flex:none}
+.cz-help__q[open] summary::after{content:"−"}
+.cz-help__q div{padding:0 18px 16px;color:#32302e;font-size:15px;line-height:1.6}
+.cz-help__q a{text-decoration:underline;text-underline-offset:3px}
+.cz-help__empty{margin-top:24px;font-weight:700}
+.cz-help__contact{margin-top:48px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:#242321;color:#fff;border-radius:24px;padding:clamp(22px,4vw,40px)}
+html body .cz-help .cz-help__contact h2{font-size:clamp(28px,4vw,44px);margin:0 0 8px;color:#fff!important}
+.cz-help__contact p{margin:0;color:#eee8e2!important}
+.cz-help__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;background:#1f8f4e;color:#fff!important;font-family:"Anton",sans-serif;font-weight:800;text-decoration:none!important;white-space:nowrap}
+.cz-help__btn:hover{background:#18763f}
+.cz-help__btn svg{width:20px;height:20px}
+@media(max-width:600px){.cz-help__btn{width:100%}.cz-help__tiles{grid-template-columns:1fr 1fr}}
+</style>
+<section class="cz-help" aria-labelledby="CzHelpTitle">
+ <div class="clogz-container">
+  <div class="cz-help__hero">
+   <p class="cz-help__eyebrow">CLOGZ · DAKAR · ON T’AIDE</p>
+   <h1 id="CzHelpTitle">ON T’<em>AIDE</em><span class="cz-help__dot">.</span></h1>
+   <p class="cz-help__lead">Commande, livraison, paiement, pointure : trouve ta réponse en quelques secondes.</p>
+   <div class="cz-help__search" role="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15.5 15.5 6 6"/></svg>
+    <label class="clogz-sr-only" for="CzHelpSearch">Rechercher une question</label>
+    <input id="CzHelpSearch" type="search" placeholder="Ex. livraison, Wave, pointure…" autocomplete="off" data-cz-help-search>
+   </div>
+   <nav class="cz-help__tiles" aria-label="Raccourcis">
+    <a class="cz-help__tile" href="/pages/suivi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 8-9-5-9 5v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><strong>Où est ma paire ?</strong><span>Suivre ma commande</span></a>
+    <a class="cz-help__tile" href="/pages/modifier-commande"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m14 6 4 4"/></svg><strong>Modifier ma commande</strong><span>Pointure ou couleur</span></a>
+    <a class="cz-help__tile" href="#aide-pointures"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15 15 3l6 6L9 21z"/><path d="m7 11 2 2M10 8l2 2M13 5l2 2"/></svg><strong>Trouver ma pointure</strong><span>Correspondances US / EU</span></a>
+    <a class="cz-help__tile" href="#aide-livraison"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg><strong>Livraison</strong><span>Gratuite à Dakar</span></a>
+    <a class="cz-help__tile" href="#aide-paiement"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h5"/></svg><strong>Paiement</strong><span>Cash, Wave ou OM</span></a>
+    <a class="cz-help__tile" href="#aide-echanges"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13l-3-3M20 15H7l3 3"/></svg><strong>Échanges</strong><span>Pointure qui ne va pas</span></a>
+   </nav>
+  </div>
+
+  <div data-cz-help-list>
+  <section class="cz-help__group" id="aide-commande" aria-labelledby="AideCommande">
+   <h2 id="AideCommande">Commander<em>.</em></h2>
+   <details class="cz-help__q"><summary>Comment je commande ?</summary><div>Choisis ton coloris et ta pointure, ajoute la paire au panier, puis valide ta commande. On te la confirme ensuite sur WhatsApp.</div></details>
+   <details class="cz-help__q"><summary>Combien coûte une paire ?</summary><div>12 000 FCFA la paire classique, pins offerts. Le drop Spider-Man est à 22 500 FCFA la paire.</div></details>
+   <details class="cz-help__q"><summary>Combien coûtent les packs DUO et TRIO ?</summary><div>PACK DUO : 21 000 FCFA les deux paires. PACK TRIO : 30 000 FCFA les trois. Tu choisis couleurs et pointures dans le <a href="/pages/packs">configurateur de packs</a>.</div></details>
+   <details class="cz-help__q"><summary>Les pins sont-ils vraiment offerts ?</summary><div>Oui, avec chaque paire, packs compris. Trouve des idées dans <a href="/pages/idees-de-personnalisation">l’univers CLOGZ</a>.</div></details>
+  </section>
+
+  <section class="cz-help__group" id="aide-livraison" aria-labelledby="AideLivraison">
+   <h2 id="AideLivraison">Livraison<em>.</em></h2>
+   <details class="cz-help__q"><summary>La livraison est-elle gratuite ?</summary><div>Oui, partout à Dakar. On te confirme ta commande sur WhatsApp, puis on te livre.</div></details>
+   <details class="cz-help__q"><summary>Vous livrez hors de Dakar ?</summary><div>Écris-nous avant de commander : les frais et délais hors Dakar se fixent au cas par cas.</div></details>
+   <details class="cz-help__q"><summary>Je vis à l’étranger, je peux commander ?</summary><div>Oui. On livre gratuitement ton proche ou ton GP à Dakar, et il paie à la réception. <a href="/pages/commandes-internationales">Commander depuis l’étranger</a>.</div></details>
+   <details class="cz-help__q"><summary>Comment suivre ma commande ?</summary><div>Va sur <a href="/pages/suivi">Où est ta paire ?</a>, entre ton nom et envoie le message prérempli sur WhatsApp.</div></details>
+  </section>
+
+  <section class="cz-help__group" id="aide-paiement" aria-labelledby="AidePaiement">
+   <h2 id="AidePaiement">Paiement<em>.</em></h2>
+   <details class="cz-help__q"><summary>Comment je paie ?</summary><div>À la livraison : en cash, par Wave ou par Orange Money. Rien à payer en ligne.</div></details>
+   <details class="cz-help__q"><summary>Mon proche paie à ma place ?</summary><div>Oui. Si tu commandes pour quelqu’un à Dakar, c’est la personne qui reçoit qui paie à la livraison.</div></details>
+  </section>
+
+  <section class="cz-help__group" id="aide-pointures" aria-labelledby="AidePointures">
+   <h2 id="AidePointures">Pointures<em>.</em></h2>
+   <details class="cz-help__q"><summary>Quelles pointures proposez-vous ?</summary><div>Du 36 au 46. Les pointures disponibles s’affichent sur chaque fiche produit.</div></details>
+   {% render 'clogz-guide-pointures' %}
+  </section>
+
+  <section class="cz-help__group" id="aide-echanges" aria-labelledby="AideEchanges">
+   <h2 id="AideEchanges">Modifs &amp; échanges<em>.</em></h2>
+   <details class="cz-help__q"><summary>Je peux changer de pointure ou de couleur ?</summary><div>Avant de valider, directement dans ton panier. Après, <a href="/pages/modifier-commande">envoie une demande de changement</a> avant l’expédition.</div></details>
+   <details class="cz-help__q"><summary>La pointure ne me va pas, je peux échanger ?</summary><div>Oui, dans les 24 heures suivant la réception, pour une paire non portée dehors et avec ses étiquettes. Les frais de cet échange sont à ta charge, et tes droits légaux restent inchangés. <a href="/pages/politique-retours-clogz">Politique de retours</a>.</div></details>
+  </section>
+  <p class="cz-help__empty" data-cz-help-empty hidden>Pas de réponse pour ça ici. Écris-nous sur WhatsApp, on te répond.</p>
+  </div>
+
+  <section class="cz-help__contact" aria-labelledby="AideContact">
+   <div><h2 id="AideContact">Pas trouvé <em>?</em></h2><p>Écris-nous, on te répond directement sur WhatsApp.</p></div>
+   <a class="cz-help__btn" href="{{ cz_wa }}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.35 11.7a8.35 8.35 0 0 1-12.3 7.3l-4.4 1.2 1.22-4.25a8.36 8.36 0 1 1 15.48-4.25Z"/></svg>Écris-nous sur WhatsApp</a>
+  </section>
+  <p style="margin-top:18px;font-size:14px"><a href="/pages/politique-livraison-clogz" style="text-decoration:underline">Livraison</a> · <a href="/pages/politique-retours-clogz" style="text-decoration:underline">Retours</a> · <a href="/pages/conditions-generales-clogz" style="text-decoration:underline">Conditions de vente</a></p>
+ </div>
+</section>
+<script>
+(function(){
+  var input=document.querySelector('[data-cz-help-search]');
+  var list=document.querySelector('[data-cz-help-list]');
+  if(!input||!list)return;
+  var empty=list.querySelector('[data-cz-help-empty]');
+  var norm=function(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')};
+  input.addEventListener('input',function(){
+    var q=norm(input.value.trim());
+    var shown=0;
+    list.querySelectorAll('.cz-help__group').forEach(function(g){
+      var any=false;
+      g.querySelectorAll('.cz-help__q, .cz-size-ref').forEach(function(d){
+        var hit=!q||norm(d.textContent).indexOf(q)>-1||norm(g.querySelector('h2').textContent).indexOf(q)>-1;
+        d.hidden=!hit;
+        if(q&&hit&&d.tagName==='DETAILS')d.open=true;
+        if(!q&&d.tagName==='DETAILS')d.open=false;
+        if(hit){any=true;shown++}
+      });
+      g.hidden=!any;
+    });
+    empty.hidden=shown>0;
+  });
+})();
+</script>

@@ -1,0 +1,81 @@
+{% comment %}
+ CLOGZ post-order modification REQUEST only. This page never updates Shopify order, payments, inventory or fulfillment.
+ Customer must explicitly send WhatsApp message. CLOGZ staff confirms change and stock before fulfillment.
+{% endcomment %}
+<style>
+.cz-change{background:#fffdfa;color:#282320;padding:clamp(28px,6vw,70px) 0}
+.cz-change *{box-sizing:border-box}
+.cz-change__wrap{width:min(100% - 30px,790px);margin:auto}
+.cz-change__hero{border:1px solid #ebd7cd;background:linear-gradient(128deg,#fff2e9,#ffe7dc 65%,#fff8f4);padding:clamp(22px,5vw,42px);border-radius:24px}
+.cz-change__eyebrow{font-weight:800;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#a75b46}
+.cz-change h1{font-family:'Anton',sans-serif;font-weight:800;letter-spacing:-.037em;line-height:1.08;font-size:clamp(30px,5vw,47px);margin:13px 0 12px;color:#28221f}
+.cz-change__intro{font-size:15px;line-height:1.65;color:#6b554c;margin:0 0 20px}
+.cz-change__alert{background:#fff;border:1px solid #e9d2c7;padding:14px 16px;border-radius:13px;font-size:13px;line-height:1.6;color:#795242}
+.cz-change__form{margin:23px 0 0;border:1px solid #eee0d7;padding:clamp(20px,5vw,32px);background:#fff;border-radius:21px;display:grid;gap:17px;box-shadow:0 8px 25px rgba(91,51,34,.05)}
+.cz-change__form h2{font-family:'Anton',sans-serif;font-size:23px;letter-spacing:-.025em;margin:0}
+.cz-change__field{display:grid;gap:7px;font-size:13px;font-weight:750;color:#322a26}
+.cz-change__field input,.cz-change__field select{background:#fff;color:#282322;border:1.5px solid #dcc9bf;border-radius:11px;width:100%;min-height:49px;padding:11px 13px;font-family:inherit;font-size:16px}
+.cz-change__field input:focus,.cz-change__field select:focus{outline:3px solid #fbe0d3;border-color:#bc7660}
+.cz-change__two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cz-change__hint{font-weight:400;color:#74645e;font-size:12px;line-height:1.5}
+.cz-change__submit{background:#24201e;color:#fff;border:0;border-radius:12px;padding:14px 18px;font:inherit;font-weight:800;min-height:52px;cursor:pointer}
+.cz-change__submit:hover{background:#a45a48}
+.cz-change__error{background:#fff0eb;color:#922e25;padding:11px 13px;border-radius:8px;line-height:1.5;font-size:13px}
+.cz-change__notice{font-size:12px;color:#76625a;line-height:1.6;margin:0}
+.cz-change__back{display:inline-block;margin:22px 0 0;color:#975340;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:750}
+@media(max-width:650px){.cz-change__two{grid-template-columns:1fr}.cz-change__hero,.cz-change__form{border-radius:17px}.cz-change__form{gap:15px}}
+</style>
+<section class="cz-change" aria-labelledby="cz-change-title" data-cz-change-request>
+ <div class="cz-change__wrap">
+  <div class="cz-change__hero">
+   <span class="cz-change__eyebrow">CLOGZ · SERVICE APRÈS COMMANDE</span>
+   <h1 id="cz-change-title">Change d'avis, pas de style. 👟</h1>
+   <p class="cz-change__intro">Tu souhaites changer la pointure ou la couleur d'une commande déjà validée ? Transmets-nous ton nouveau choix : inutile de passer une deuxième commande.</p>
+   <div class="cz-change__alert"><strong>Avant l'expédition uniquement.</strong> Ta demande ne modifie pas automatiquement ta commande. Notre équipe vérifiera la disponibilité et te confirmera si le changement est possible.</div>
+  </div>
+  <form class="cz-change__form" data-cz-change-form novalidate>
+   <h2>Modifier mon choix</h2>
+   <label class="cz-change__field" for="CzChangeReference">Numéro de suivi ou numéro de commande
+     <input id="CzChangeReference" name="order_reference" type="text" placeholder="CZ-XXXXX ou #1004" maxlength="24" autocomplete="off" autocapitalize="characters" required>
+     <span class="cz-change__hint">Utilise ton code CLOGZ ou le numéro reçu lors de ta commande. Tu n'as besoin d'aucun compte.</span>
+   </label>
+   <label class="cz-change__field" for="CzChangeProduct">Paire concernée (facultatif si une seule paire)
+     <input id="CzChangeProduct" name="original_choice" type="text" placeholder="Ex. Sabots rouges, pointure 41" maxlength="120">
+   </label>
+   <label class="cz-change__field" for="CzChangeType">Ce que tu souhaites modifier
+     <select id="CzChangeType" name="change_type" required>
+       <option value="size">Changer la pointure</option>
+       <option value="color">Changer la couleur</option>
+       <option value="both">Changer les deux</option>
+     </select>
+   </label>
+   <div class="cz-change__two">
+     <label class="cz-change__field" for="CzChangeSize" data-cz-change-size-wrap>Nouvelle pointure
+       <select id="CzChangeSize" name="new_size" required>
+         <option value="">Choisir une pointure</option>
+         {% for size in (36..46) %}<option value="{{ size }}">{{ size }}</option>{% endfor %}
+       </select>
+     </label>
+     <label class="cz-change__field" for="CzChangeColor" data-cz-change-color-wrap hidden>Nouvelle couleur
+       <select id="CzChangeColor" name="new_color" disabled>
+         <option value="">Choisir une couleur</option>
+         {% assign cz_color_list = collections['clogz-tous-les-sabots'] %}
+         {% if cz_color_list != blank %}
+           {% for model in cz_color_list.products %}
+             {% if model.vendor == 'CLOGZ' and model.type == 'Sabots' %}
+               <option value="{{ model.title | remove: 'Sabots CLOGZ - Crocs ' | escape }}">{{ model.title | remove: 'Sabots CLOGZ - Crocs ' | escape }}</option>
+             {% endif %}
+           {% endfor %}
+         {% endif %}
+         <option value="Autre coloris (à préciser par message)">Autre coloris (à préciser)</option>
+       </select>
+     </label>
+   </div>
+   <p class="cz-change__error" data-cz-change-error role="alert" hidden></p>
+   <button class="cz-change__submit" type="submit">Envoyer ma demande sur WhatsApp ↗</button>
+   <p class="cz-change__notice">Nous préparons ton message pour WhatsApp. Il te restera à <strong>appuyer sur « Envoyer »</strong> dans l'application. Notre équipe vérifiera ta demande et te répondra après consultation de la commande.</p>
+  </form>
+  <a class="cz-change__back" href="/pages/suivi">← Revenir au suivi CLOGZ</a>
+ </div>
+</section>
+<script src="{{ 'clogz-change-request.js' | asset_url }}" defer></script>

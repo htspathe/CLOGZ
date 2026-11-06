@@ -1,0 +1,45 @@
+{% if page.handle == 'modifier-commande' %}
+{% render 'clogz-modifier-commande' %}
+{% elsif page.handle == 'merci' %}
+{% render 'clogz-merci' %}
+{% elsif page.handle == 'suivi' %}
+{% render 'clogz-espace-client' %}
+{% elsif page.handle == 'aide' %}
+{% render 'clogz-aide' %}
+{% elsif page.handle == 'commandes-internationales' %}
+<style>
+.cz4-intl-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin:22px 0;padding:clamp(20px,3vw,30px);border-radius:22px;background:#fff;border:1px solid #eadfd6}
+.cz4-intl-cta--dark{background:#191817;border-color:#191817}
+.cz4-intl-cta h2{font-family:"Anton",sans-serif;font-weight:800;font-size:clamp(22px,3vw,30px);line-height:1.1;margin:0 0 6px;color:#191817}
+.cz4-intl-cta p{margin:0;color:#3a3938;font-size:15px}
+.cz4-intl-cta--dark h2{color:#fff}
+.cz4-intl-cta--dark p{color:#eee8e2!important}
+.cz4-intl-cta__btns{display:flex;flex-wrap:wrap;gap:10px}
+.cz4-intl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;background:#EE4A3D;color:#fff!important;font-family:"Anton",sans-serif!important;font-weight:800;font-size:16px;text-decoration:none!important;white-space:nowrap}
+.cz4-intl-btn:hover{background:#d63b2f}
+.cz4-intl-btn--line{background:transparent;color:#fff!important;border:2px solid #fff}
+.cz4-intl-btn--line:hover{background:#fff;color:#191817!important}
+.cz4-intl-btn svg{width:20px;height:20px}
+@media(max-width:600px){.cz4-intl-btn{width:100%}.cz4-intl-cta__btns{width:100%}}
+</style>
+<section class="clogz-page-space"><div class="clogz-container clogz-richtext">
+ <h1 class="clogz-page-title">{{ page.title | escape }}</h1>
+ <div class="cz4-intl-cta">
+  <div><h2>Offre une paire à Dakar.</h2><p>Choisis le coloris et la pointure, on livre ton proche gratuitement.</p></div>
+  <a class="cz4-intl-btn" href="/collections/clogz-tous-les-sabots">Choisir mes paires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+ </div>
+ <div class="rte">{{ page.content }}</div>
+ <div class="cz4-intl-cta cz4-intl-cta--dark">
+  <div><h2>Prêt à commander ?</h2><p>10 coloris à 12 000 FCFA, ou un pack DUO / TRIO pour toute la famille.</p></div>
+  <div class="cz4-intl-cta__btns">
+   <a class="cz4-intl-btn" href="/collections/clogz-tous-les-sabots">Choisir mes paires <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <a class="cz4-intl-btn cz4-intl-btn--line" href="/pages/packs">Voir les packs</a>
+  </div>
+ </div>
+</div></section>
+{% elsif page.handle contains 'kroza' %}
+<section class="clogz-page-space"><div class="clogz-container"><h1>Page non proposée sur CLOGZ</h1><a class="clogz-pill" href="/collections/clogz-tous-les-sabots">Voir nos sabots</a></div></section>
+{% else %}
+<section class="clogz-page-space"><div class="clogz-container clogz-richtext"><h1 class="clogz-page-title">{{ page.title | escape }}</h1><div class="rte">{{ page.content }}</div></div></section>
+{% endif %}
+{% schema %}{"name":"Page de contenu","settings":[]}{% endschema %}

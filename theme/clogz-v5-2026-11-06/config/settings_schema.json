@@ -1,0 +1,73 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "CLOGZ Street / Dakar",
+    "theme_author": "CLOGZ Custom",
+    "theme_version": "1.0.2",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://help.shopify.com"
+  },
+  {
+    "name": "Identité visuelle CLOGZ",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Marine CLOGZ",
+        "default": "#18344C"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Orange CLOGZ",
+        "default": "#F58B52"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Fond clair",
+        "default": "#F8FCFF"
+      },
+      {
+        "type": "color",
+        "id": "color_pastel",
+        "label": "Bleu ciel doux",
+        "default": "#E7F5FE"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon personnalisé"
+      },
+      {
+        "type": "color",
+        "id": "color_copper",
+        "label": "Cuivre du nouveau logo",
+        "default": "#C77859"
+      },
+      {
+        "type": "text",
+        "id": "clogz_monogram_url",
+        "label": "Emblème CZ — URL du monogramme",
+        "default": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-new-monogram-cuivre-20261025.webp?v=1792944291"
+      },
+      {
+        "type": "text",
+        "id": "clogz_logo_url",
+        "label": "Logo CLOGZ — URL commune header et footer",
+        "default": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-new-logo-wordmark-peche-20261025.webp?v=1792944286"
+      }
+    ]
+  },
+  {
+    "name": "Suivi CLOGZ",
+    "settings": [
+      {
+        "type": "url",
+        "id": "clogz_tracking_api_url",
+        "label": "URL HTTPS du service de suivi (vide tant que non activé)",
+        "info": "L'URL doit pointer vers un backend privé CLOGZ, avec limitation des tentatives. Ne mets jamais de jeton API ici."
+      }
+    ]
+  }
+]

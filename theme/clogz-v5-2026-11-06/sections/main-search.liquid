@@ -1,0 +1,36 @@
+<section class="clogz-page-space"><div class="clogz-container">
+  <h1 class="clogz-page-title">Rechercher sur CLOGZ</h1>
+  <form action="{{ routes.search_url }}" method="get" role="search" style="margin-bottom:35px;display:flex;gap:10px;max-width:600px">
+    <label class="clogz-sr-only" for="ClogzSearch">Rechercher un sabot CLOGZ</label>
+    <input id="ClogzSearch" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Couleur, modèle, pointure..." style="width:100%">
+    <input type="hidden" name="type" value="product">
+    <button class="clogz-pill" type="submit">Rechercher</button>
+  </form>
+  {% if search.performed %}
+    {% paginate search.results by 24 %}
+      {% assign count_clogz = 0 %}
+      <div class="clogz-grid">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' and item.vendor == 'CLOGZ' %}
+          {% render 'product-card', product: item %}
+          {% assign count_clogz = count_clogz | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      </div>
+      {% if count_clogz == 0 %}
+        <p class="clogz-placeholder">Aucun produit CLOGZ correspondant. Explore les dix coloris.</p>
+        <a href="/collections/clogz-tous-les-sabots" class="clogz-pill">Voir tous les sabots</a>
+      {% else %}
+        <p class="clogz-muted">Modèles CLOGZ trouvés sur cette page : {{ count_clogz }}</p>
+      {% endif %}
+      {% if paginate.pages > 1 %}
+        <nav class="clogz-pagination" aria-label="Pagination de recherche">
+          {% if paginate.previous %}<a href="{{ paginate.previous.url }}">Précédent</a>{% endif %}
+          <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+          {% if paginate.next %}<a href="{{ paginate.next.url }}">Suivant </a>{% endif %}
+        </nav>
+      {% endif %}
+    {% endpaginate %}
+  {% endif %}
+</div></section>
+{% schema %}{"name":"Recherche produits CLOGZ","settings":[]}{% endschema %}

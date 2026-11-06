@@ -1,0 +1,77 @@
+{% comment %}
+CLOGZ / Suivi de commande — en attendant le suivi automatique par code CZ-XXXXX,
+le client entre son nom et envoie une demande de suivi préremplie sur WhatsApp.
+Aucune donnée n'est enregistrée par le site : le message part depuis le WhatsApp du client.
+{% endcomment %}
+{{ 'clogz-tracking.css' | asset_url | stylesheet_tag }}
+{%- assign cz_wa_number = '221788770615' -%}
+<style>
+.cz-track__wa-row{display:flex;gap:10px;flex-wrap:wrap}
+.cz-track__wa-row input{flex:1 1 240px;min-height:52px;text-transform:none!important}
+.cz-track__wa-row input::placeholder{text-transform:none!important}
+.cz-track__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 24px;border:0;border-radius:999px;font-family:"Anton","Instrument Sans",sans-serif!important;font-weight:800;font-size:15px;line-height:1.1;text-decoration:none!important;cursor:pointer;white-space:nowrap;transition:transform .15s ease,background .15s ease}
+.cz-track__btn:hover{transform:translateY(-1px)}
+.cz-track__btn svg{width:20px;height:20px;flex:none}
+.cz-track__btn--wa{background:#1f8f4e;color:#fff!important}
+.cz-track__btn--wa:hover{background:#18763f}
+.cz-track__btn--dark{background:#2a2523;color:#fff!important}
+.cz-track__btn--dark:hover{background:#000}
+.cz-track__wa-optional{margin-top:12px}
+.cz-track__wa-optional label{font-weight:700}
+.cz-track__art svg{width:56px;height:56px;color:#c77859}
+.cz-track__card{margin:20px 0 0;padding:22px;border:1px solid #ecd5c9;border-radius:19px;background:#fff6f1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+.cz-track__card h2{font-size:20px;margin:0 0 5px;font-family:"Anton",sans-serif;color:#191817}
+.cz-track__card p{font-size:15px;line-height:1.55;color:#3a3938;margin:0}
+@media(max-width:600px){.cz-track__btn{width:100%}}
+</style>
+<section class="cz-track" aria-labelledby="cz-track-title">
+  <div class="cz-track__container">
+    <div class="cz-track__hero">
+      <span class="cz-track__eyebrow">CLOGZ · SUIVI DE COMMANDE</span>
+      <div class="cz-track__heading"><div><h1 id="cz-track-title">Où est ta paire ?</h1><p>Entre ton nom, on te répond sur WhatsApp avec le statut de ta commande. Simple et rapide.</p></div><div class="cz-track__art" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></div></div>
+      <div class="cz-track__form-wrap">
+        <form data-cz-wa-track novalidate>
+          <label for="ClogzTrackName">Ton nom</label>
+          <div class="cz-track__wa-row">
+            <input id="ClogzTrackName" name="name" type="text" placeholder="Ex. Aminata Diop" maxlength="60" autocomplete="name" required aria-describedby="ClogzTrackHelp">
+          </div>
+          <div class="cz-track__wa-optional">
+            <label for="ClogzTrackOrder">Numéro de commande <span style="font-weight:400">(si tu l’as)</span></label>
+            <div class="cz-track__wa-row"><input id="ClogzTrackOrder" name="order" type="text" placeholder="Ex. #1024" maxlength="20" autocomplete="off"></div>
+          </div>
+          <div style="margin-top:16px"><button type="submit" class="cz-track__btn cz-track__btn--wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.35 11.7a8.35 8.35 0 0 1-12.3 7.3l-4.4 1.2 1.22-4.25a8.36 8.36 0 1 1 15.48-4.25Z"/></svg>Suivre ma paire sur WhatsApp</button></div>
+          <p id="ClogzTrackHelp" class="cz-track__help">WhatsApp s’ouvre avec ton message déjà écrit. Tu n’as plus qu’à l’envoyer.</p>
+          <p class="cz-track__error" data-cz-wa-error role="alert" hidden>Entre ton nom pour suivre ta paire.</p>
+        </form>
+      </div>
+    </div>
+    <section class="cz-track__card" aria-label="Modifier ma commande">
+      <div><h2>Changer de pointure ou de couleur ?</h2><p>Demande-le avant l’expédition, on te confirme tout de suite.</p></div>
+      <a href="/pages/modifier-commande" class="cz-track__btn cz-track__btn--dark">Modifier ma commande</a>
+    </section>
+    <section class="cz-track__card" aria-label="Contacter CLOGZ">
+      <div><h2>Une autre question ?</h2><p>Pointure, livraison, paiement : on te répond sur WhatsApp.</p></div>
+      <a href="https://wa.me/{{ cz_wa_number }}?text=Salut%20CLOGZ%2C%20j%27ai%20une%20question%20sur%20ma%20commande." target="_blank" rel="noopener noreferrer" class="cz-track__btn cz-track__btn--wa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.35 11.7a8.35 8.35 0 0 1-12.3 7.3l-4.4 1.2 1.22-4.25a8.36 8.36 0 1 1 15.48-4.25Z"/></svg>Écris-nous sur WhatsApp</a>
+    </section>
+  </div>
+</section>
+<script>
+(function(){
+  var form=document.querySelector('[data-cz-wa-track]');
+  if(!form)return;
+  var nameField=form.querySelector('#ClogzTrackName');
+  var orderField=form.querySelector('#ClogzTrackOrder');
+  var error=form.querySelector('[data-cz-wa-error]');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=(nameField.value||'').trim();
+    if(!name){error.hidden=false;nameField.setAttribute('aria-invalid','true');nameField.focus();return;}
+    error.hidden=true;nameField.removeAttribute('aria-invalid');
+    var order=(orderField.value||'').trim();
+    var msg='Salut CLOGZ, je m’appelle '+name+'. Je voudrais suivre ma commande'+(order?' '+order:'')+'. Merci !';
+    var url='https://wa.me/{{ cz_wa_number }}?text='+encodeURIComponent(msg);
+    var win=window.open(url,'_blank','noopener');
+    if(!win){window.location.href=url;}
+  });
+})();
+</script>

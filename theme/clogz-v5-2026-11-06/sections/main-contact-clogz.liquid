@@ -1,0 +1,130 @@
+{% comment %}
+CLOGZ native Shopify contact page. Form posts through Shopify's 'contact' Liquid form tag.
+Never include a fake business telephone/address. Configure public information in theme settings.
+{% endcomment %}
+<section class="clogz-contact-section clogz-page-space" id="ClogzContact-{{ section.id }}">
+  <div class="clogz-container">
+    <nav class="clogz-breadcrumb" aria-label="Fil d’Ariane"><a href="{{ routes.root_url }}">Accueil</a> / Contact</nav>
+    <div class="clogz-contact-hero">
+      <p data-clogz-intl-header hidden><strong>🌍 Commande depuis l’étranger</strong> — La remise à Dakar est gratuite même pour un GP ou un proche. Pour une destination hors Sénégal, frais, délais et paiement restent à confirmer. Cette demande ne constitue pas une commande définitive.</p>
+      <span class="clogz-contact-eyebrow">CLOGZ • DAKAR</span>
+      <h1>Parlons de <span>ta commande.</span></h1>
+      <p>Une question sur une pointure, un modèle, ta livraison ou le paiement à la réception ? Envoie-nous un message avec le formulaire ci-dessous.</p>
+    </div>
+    <div class="clogz-contact-layout">
+      <div class="clogz-contact-aside">
+        <div class="clogz-contact-info-card">
+          <span class="clogz-contact-info-card__icon" aria-hidden="true">📦</span>
+          <h2>Commandes & pointures</h2>
+          <p>Indique ton numéro de commande si tu en as un, ainsi que le coloris et la pointure concernés.</p>
+        </div>
+        <div class="clogz-contact-info-card">
+          <span class="clogz-contact-info-card__icon" aria-hidden="true">📍</span>
+          <h2>Livraison à Dakar</h2>
+          <p>Indique ton quartier et l’adresse de remise. Tu peux également partager la position du lieu de livraison depuis le panier.</p>
+        </div>
+        <div class="clogz-contact-info-card">
+          <span class="clogz-contact-info-card__icon" aria-hidden="true">💵</span>
+          <h2>Paiement à la livraison</h2>
+          <p>Tu peux régler à la réception lorsque cette option est disponible. Nous sommes à ton écoute pour toute précision.</p>
+        </div>
+        <a class="clogz-contact-back" href="{{ routes.cart_url }}">Retourner à mon panier</a>
+      </div>
+      <div class="clogz-contact-form-shell">
+        <div class="clogz-contact-form-heading">
+          <p class="clogz-eyebrow">ÉCRIS-NOUS</p>
+          <h2>Comment peut-on t’aider ?</h2>
+          <p>Indique tes coordonnées pour cette demande. Elles peuvent être différentes de celles d'une précédente commande.</p>
+        </div>
+        {% form 'contact', id: 'ClogzContactForm', class: 'clogz-contact-form' %}
+          {% if form.posted_successfully? %}
+            <div class="clogz-contact-success" role="status" tabindex="-1">
+              <strong>✓ Message envoyé !</strong>
+              <p>Merci de nous avoir contactés. L’équipe CLOGZ a reçu ta demande.</p>
+              <a href="/collections/clogz-tous-les-sabots">Retour aux sabots</a>
+            </div>
+          {% else %}
+            {% if form.errors %}
+              <div class="clogz-contact-error" role="alert">
+                <p>Vérifie les informations du formulaire et réessaie.</p>
+                {{ form.errors | default_errors }}
+              </div>
+            {% endif %}
+            <div class="clogz-contact-fields">
+              <div class="clogz-contact-field">
+                <label for="ClogzContactName">Nom complet <span aria-hidden="true">*</span></label>
+                <input id="ClogzContactName" type="text" name="contact[name]" value="{{ form.name | escape }}" placeholder="Ton prénom et ton nom" autocomplete="name" required>
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactEmail">Adresse e-mail <span aria-hidden="true">*</span></label>
+                <input id="ClogzContactEmail" type="email" name="contact[email]" value="{{ form.email | escape }}" placeholder="tonemail@exemple.com" autocomplete="email" required>
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactPhone">Numéro de téléphone <span aria-hidden="true">*</span></label>
+                <input id="ClogzContactPhone" type="tel" name="contact[phone]" value="{{ form.phone | escape }}" placeholder="+221 77 000 00 00" autocomplete="tel" inputmode="tel" required>
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactWhatsApp">Numéro WhatsApp <span class="clogz-contact-optional">(uniquement s’il est différent)</span></label>
+                <input id="ClogzContactWhatsApp" type="tel" name="contact[WhatsApp si différent]" placeholder="+221 78 000 00 00" inputmode="tel" autocomplete="off">
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactSubject">Objet <span aria-hidden="true">*</span></label>
+                <select id="ClogzContactSubject" name="contact[Objet]" required>
+                  <option value="" selected disabled>Choisis le motif de ton message</option>
+                  <option value="Commande internationale — devis">Commande depuis l’étranger / Internationale</option>
+                  <option value="Commande en cours">Commande en cours</option>
+                  <option value="Pointure ou disponibilité">Pointure ou disponibilité</option>
+                  <option value="Livraison à Dakar">Livraison à Dakar</option>
+                  <option value="Paiement à la livraison">Paiement à la livraison</option>
+                  <option value="Autre demande">Autre demande</option>
+                </select>
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactOrder">Numéro de commande <span class="clogz-contact-optional">(facultatif)</span></label>
+                <input id="ClogzContactOrder" type="text" name="contact[Numéro de commande]" placeholder="Ex. #1001">
+              </div>
+              <div class="clogz-contact-field">
+                <label for="ClogzContactZone">Quartier de Dakar <span class="clogz-contact-optional">(requis pour une remise à Dakar)</span></label>
+                <input id="ClogzContactZone" type="text" name="contact[Quartier]" placeholder="Ex. Sacré-Cœur 3" autocomplete="address-level2">
+              </div>
+              <div class="clogz-contact-field clogz-contact-field--wide" data-clogz-intl-delivery-mode hidden>
+                <label for="ClogzIntlDeliveryMode">Lieu de remise du colis <span aria-hidden="true">*</span></label>
+                <select id="ClogzIntlDeliveryMode" name="contact[Type de remise]">
+                  <option value="Dakar — GP / transporteur">Dakar — à un GP ou transporteur</option>
+                  <option value="Dakar — proche / destinataire">Dakar — à un proche / destinataire sénégalais</option>
+                  <option value="Hors Sénégal — expédition internationale">Directement hors du Sénégal</option>
+                </select>
+                <p class="clogz-muted">La remise est gratuite à Dakar, y compris pour une commande passée depuis l'étranger. Tu choisis librement ton proche ou ton GP et organises directement avec lui toute étape de transport après Dakar. Nous assurons la remise au destinataire désigné.</p>
+              </div>
+              <div class="clogz-contact-field" data-clogz-intl-recipient hidden>
+                <label for="ClogzIntlRecipient">Nom du destinataire ou du GP à Dakar <span aria-hidden="true">*</span></label>
+                <input id="ClogzIntlRecipient" type="text" name="contact[Destinataire ou GP à Dakar]" maxlength="120" placeholder="Nom du proche ou du GP">
+              </div>
+              <div class="clogz-contact-field" data-clogz-intl-recipient-phone hidden>
+                <label for="ClogzIntlRecipientPhone">Téléphone du destinataire à Dakar <span aria-hidden="true">*</span></label>
+                <input id="ClogzIntlRecipientPhone" type="tel" name="contact[Téléphone destinataire à Dakar]" maxlength="30" inputmode="tel" placeholder="+221 …">
+              </div>
+              <div class="clogz-contact-field" data-clogz-intl-country hidden>
+                <label for="ClogzIntlCountry">Pays de livraison hors Sénégal <span aria-hidden="true">*</span></label>
+                <input id="ClogzIntlCountry" type="text" name="contact[Pays de livraison]" autocomplete="country-name" placeholder="Ex. France, Canada, Maroc" maxlength="80">
+              </div>
+              <div class="clogz-contact-field" data-clogz-intl-city hidden>
+                <label for="ClogzIntlCity">Ville de livraison hors Sénégal <span aria-hidden="true">*</span></label>
+                <input id="ClogzIntlCity" type="text" name="contact[Ville de livraison]" autocomplete="address-level2" placeholder="Ex. Paris, Montréal" maxlength="80">
+              </div>
+              <div class="clogz-contact-field clogz-contact-field--wide">
+                <label for="ClogzContactBody">Ton message <span aria-hidden="true">*</span></label>
+                <textarea id="ClogzContactBody" name="contact[body]" rows="6" placeholder="Décris ta demande ici..." required>{{ form.body | escape }}</textarea>
+              </div>
+            </div>
+            <button type="submit" class="clogz-contact-submit" id="ClogzContactSubmit">Envoyer mon message </button>
+            <p class="clogz-contact-privacy">Ces coordonnées sont utilisées pour répondre à ta demande et, le cas échéant, organiser la remise du colis. Consulte notre politique de confidentialité.</p>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"Page contact CLOGZ","settings":[],"presets":[{"name":"Page contact CLOGZ"}]}
+{% endschema %}

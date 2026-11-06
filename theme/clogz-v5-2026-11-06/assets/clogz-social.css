@@ -1,0 +1,15 @@
+.clogz-footer .clogz-social{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px 32px;padding:26px 0;margin:28px 0 0;border-top:1px solid rgba(255,255,255,.2)}
+.clogz-footer .clogz-social__heading{max-width:410px}
+.clogz-footer .clogz-social__eyebrow{display:block;color:#ffb98f;font-weight:800;font-size:.74rem;letter-spacing:.18em;margin-bottom:7px}
+.clogz-footer .clogz-social__heading h3{font-size:clamp(1.1rem,2.5vw,1.5rem);line-height:1.2;font-weight:800;color:#fff;margin:0 0 7px}
+.clogz-footer .clogz-social__heading p{font-size:.86rem;line-height:1.5;color:#d6dde5;margin:0}
+.clogz-footer .clogz-social__links{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+.clogz-footer .clogz-social__link{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 14px;min-height:46px;border:1px solid rgba(255,255,255,.3);border-radius:99px;background:rgba(255,255,255,.09);text-decoration:none;font-size:.85rem;font-weight:750;white-space:nowrap;color:#fff!important;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+.clogz-footer .clogz-social__link:hover{background:rgba(255,183,142,.22);border-color:#ffb98f;transform:translateY(-2px);color:#fff!important}
+.clogz-footer .clogz-social__link:focus-visible{outline:3px solid #ffb98f;outline-offset:3px}
+.clogz-footer .clogz-social__icon{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;flex-shrink:0}
+.clogz-footer .clogz-social__icon svg{display:block;width:21px;height:21px}
+.clogz-footer .clogz-social__link--whatsapp{background:#236c54;border-color:#3d9c79}
+.clogz-footer .clogz-social__link--whatsapp:hover{background:#2a8565;border-color:#7de4b4}
+@media(max-width:700px){.clogz-footer .clogz-social{display:block;margin-top:26px}.clogz-footer .clogz-social__links{margin-top:19px;gap:8px}.clogz-footer .clogz-social__link{flex:1 1 auto;min-width:116px}}
+@media(prefers-reduced-motion:reduce){.clogz-footer .clogz-social__link{transition:none}.clogz-footer .clogz-social__link:hover{transform:none}}

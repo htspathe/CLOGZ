@@ -1,0 +1,58 @@
+
+{% assign cz_wa_direct = section.settings.whatsapp_url | default: 'https://wa.me/221788770615?text=Salut%20CLOGZ%2C%20je%20veux%20commander%20une%20paire.' %}
+<header class="czine-header" id="CzineHeader">
+  <div class="czine-announce" role="region" aria-label="Les avantages CLOGZ"><div class="czine-announce-track" aria-hidden="true">{% for i in (1..6) %}<span>✦ LIVRAISON GRATUITE À DAKAR &nbsp; ✦ CASH · WAVE · ORANGE MONEY &nbsp; ✦ PINS OFFERTS &nbsp;</span>{% endfor %}</div></div>
+  <aside class="czine-sidebar" aria-label="Navigation CLOGZ">
+    <a class="czine-brand" href="{{ routes.root_url }}" aria-label="CLOGZ — Accueil">{% render 'clogz-brand-mark', eager: true %}</a>
+    <span class="czine-small-meta">DAKAR / SENEGAL <span>✳</span> 221</span>
+    <nav class="czine-side-links" aria-label="Navigation principale">
+      <a href="{{ routes.root_url }}">ACCUEIL <span aria-hidden="true">→</span></a>
+      <a href="/collections/clogz-tous-les-sabots">LES COLORIS <span aria-hidden="true">→</span></a>
+      <a href="/pages/packs">PACKS DUO / TRIO <span aria-hidden="true">→</span></a>
+      <a href="/pages/idees-de-personnalisation">UNIVERS <span aria-hidden="true">→</span></a>
+      <a href="/pages/aide">ON T'AIDE <span aria-hidden="true">→</span></a>
+      <button type="button" data-open-cart>PANIER <b data-cart-count>{{ cart.item_count }}</b></button>
+    </nav>
+    <div class="czine-sidebar-bottom">
+      <a class="czine-wa" href="{{ cz_wa_direct | escape }}" target="_blank" rel="noopener noreferrer">COMMANDER SUR WHATSAPP <span aria-hidden="true">→</span></a>
+      <p class="czine-sidebar-note">Livraison gratuite à Dakar !</p>
+      <nav class="czine-social" aria-label="Nos réseaux">
+        <a title="Instagram" aria-label="Instagram" href="https://www.instagram.com/clogz221" target="_blank" rel="noopener noreferrer">IG</a>
+        <a title="TikTok" aria-label="TikTok" href="https://www.tiktok.com/@clogz221" target="_blank" rel="noopener noreferrer">TK</a>
+        <a title="Facebook" aria-label="Facebook" href="https://www.facebook.com/share/1eSisoRogM/" target="_blank" rel="noopener noreferrer">FB</a>
+        <a title="Threads" aria-label="Threads" href="https://www.threads.com/@clogz221" target="_blank" rel="noopener noreferrer">TH</a>
+        <a title="WhatsApp" aria-label="Chaîne WhatsApp" href="https://whatsapp.com/channel/0029VbDsqB4EAKWLtyW1gc33" target="_blank" rel="noopener noreferrer">WA</a>
+      </nav>
+      <small>© {{ 'now' | date: '%Y' }} CLOGZ / DEY DAW REK</small>
+    </div>
+  </aside>
+  <div class="czine-mobile-head">
+    <a class="czine-mobile-logo" href="{{ routes.root_url }}" aria-label="CLOGZ accueil">{% render 'clogz-brand-mark', eager: true %}</a>
+
+
+    <button class="czine-menu-open" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="CzineMobileMenu" data-zine-menu-open>MENU</button>
+  </div>
+  <div class="czine-menu-overlay" id="CzineMobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation CLOGZ" hidden>
+    <div class="czine-menu-top"><span>CLOGZ / DAKAR</span><button type="button" class="czine-menu-close" data-zine-menu-close aria-label="Fermer le menu">FERMER ×</button></div>
+    <p class="czine-script">où tu veux aller ?</p><h2>OÙ TU VEUX<br>ALLER <em>?</em></h2>
+    <nav class="czine-menu-big" aria-label="Navigation mobile">
+      <a href="{{ routes.root_url }}">ACCUEIL <span aria-hidden="true">→</span></a>
+      <a href="/collections/clogz-tous-les-sabots">LES COLORIS <span aria-hidden="true">→</span></a>
+      <a href="/pages/packs">LES PACKS <span aria-hidden="true">→</span></a>
+      <a href="/collections/clogz-spider-man">SPIDER DROP <span aria-hidden="true">→</span></a>
+      <a href="/pages/idees-de-personnalisation">UNIVERS <span aria-hidden="true">→</span></a>
+      <a href="/pages/aide">ON T'AIDE <span aria-hidden="true">→</span></a>
+      <a href="/pages/suivi">SUIVRE MA COMMANDE <span aria-hidden="true">→</span></a>
+      <a href="{{ routes.cart_url }}">PANIER ({{ cart.item_count }}) <span aria-hidden="true">→</span></a>
+    </nav>
+    <div class="czine-menu-bottom"><a class="czine-wa" href="{{ cz_wa_direct | escape }}" target="_blank" rel="noopener noreferrer">COMMANDER SUR WHATSAPP ↗</a>
+      <div class="czine-social">
+        <a href="https://www.instagram.com/clogz221" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a><a href="https://www.tiktok.com/@clogz221" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TK</a><a href="https://www.facebook.com/share/1eSisoRogM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a><a href="https://www.threads.com/@clogz221" target="_blank" rel="noopener noreferrer" aria-label="Threads">TH</a><a href="https://whatsapp.com/channel/0029VbDsqB4EAKWLtyW1gc33" target="_blank" rel="noopener noreferrer" aria-label="Chaîne WhatsApp">WA</a>
+      </div>
+    </div>
+  </div>
+
+</header>
+{% schema %}
+{"name":"CLOGZ Zine navigation","settings":[{"type":"url","id":"whatsapp_url","label":"Lien WhatsApp direct pour les commandes"}]}
+{% endschema %}

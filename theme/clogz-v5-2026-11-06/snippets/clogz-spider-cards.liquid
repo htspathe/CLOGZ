@@ -1,0 +1,33 @@
+{% comment %}CLOGZ Spider-Man — 3 coloris : rouge, noir, bleu. Photos seules pour les cartes ; la photo 4 vues est réservée à la fiche produit.{% endcomment %}
+{% assign sp_red = all_products['sabots-clogz-spider-man-rouge'] %}
+{% assign sp_black = all_products['sabots-clogz-spider-man-noir'] %}
+{% assign sp_blue = all_products['sabots-clogz-spider-man-bleu'] %}
+<div class="clogz-spider-grid" aria-label="Les trois coloris Spider-Man en promotion">
+<a class="clogz-spider-card clogz-spider-card--red" href="{% if sp_red != blank %}{{ sp_red.url }}{% else %}/collections/clogz-spider-man{% endif %}" aria-label="Découvrir Spider-Man Rouge au prix promotionnel">
+ <div class="clogz-spider-card__media"><img loading="lazy" width="1498" height="1050" src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446 1498w" sizes="(max-width:720px) 92vw, 33vw" alt="Sabots CLOGZ Spider-Man Rouge">
+  <span class="clogz-spider-card__status">VOIR LA PAIRE</span>
+ </div>
+ <div class="clogz-spider-card__details">
+  <div><span class="clogz-spider-card__eyebrow">ÉDITION SPÉCIALE</span><h3>Rouge</h3><p>Rouge iconique</p></div>
+  <span class="clogz-spider-card__price"><strong>{% render 'clogz-price', amount: sp_red.price %}</strong>{% if sp_red.compare_at_price_max > sp_red.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_red.compare_at_price_max %}</s>{% endif %}</span>
+ </div>
+</a>
+<a class="clogz-spider-card clogz-spider-card--black" href="{% if sp_black != blank %}{{ sp_black.url }}{% else %}/collections/clogz-spider-man{% endif %}" aria-label="Découvrir Spider-Man Noir au prix promotionnel">
+ <div class="clogz-spider-card__media"><img loading="lazy" width="1498" height="1050" src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359 1498w" sizes="(max-width:720px) 92vw, 33vw" alt="Sabots CLOGZ Spider-Man Noir">
+  <span class="clogz-spider-card__status">VOIR LA PAIRE</span>
+ </div>
+ <div class="clogz-spider-card__details">
+  <div><span class="clogz-spider-card__eyebrow">ÉDITION SPÉCIALE</span><h3>Noir</h3><p>Noir intense</p></div>
+  <span class="clogz-spider-card__price"><strong>{% render 'clogz-price', amount: sp_black.price %}</strong>{% if sp_black.compare_at_price_max > sp_black.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_black.compare_at_price_max %}</s>{% endif %}</span>
+ </div>
+</a>
+<a class="clogz-spider-card clogz-spider-card--blue" href="{% if sp_blue != blank %}{{ sp_blue.url }}{% else %}/collections/clogz-spider-man{% endif %}" aria-label="Découvrir Spider-Man Bleu au prix promotionnel">
+ <div class="clogz-spider-card__media"><img loading="lazy" width="1498" height="1050" src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160 1498w" sizes="(max-width:720px) 92vw, 33vw" alt="Sabots CLOGZ Spider-Man Bleu">
+  <span class="clogz-spider-card__status">VOIR LA PAIRE</span>
+ </div>
+ <div class="clogz-spider-card__details">
+  <div><span class="clogz-spider-card__eyebrow">ÉDITION SPÉCIALE</span><h3>Bleu</h3><p>Bleu électrique</p></div>
+  <span class="clogz-spider-card__price"><strong>{% render 'clogz-price', amount: sp_blue.price %}</strong>{% if sp_blue.compare_at_price_max > sp_blue.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_blue.compare_at_price_max %}</s>{% endif %}</span>
+ </div>
+</a>
+</div>

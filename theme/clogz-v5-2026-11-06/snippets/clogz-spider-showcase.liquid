@@ -1,0 +1,32 @@
+{{ 'clogz-spider-cta.css' | asset_url | stylesheet_tag }}
+{% comment %}CLOGZ Spider-Man — 3 coloris : rouge, noir, bleu. 22 500 FCFA la paire.{% endcomment %}
+{% assign sp_red = all_products['sabots-clogz-spider-man-rouge'] %}
+{% assign sp_black = all_products['sabots-clogz-spider-man-noir'] %}
+{% assign sp_blue = all_products['sabots-clogz-spider-man-bleu'] %}
+<div class="clogz-spider-gallery" aria-label="Les trois coloris Spider-Man">
+  <article class="clogz-spider-product clogz-spider-product--red">
+    <div class="clogz-spider-product__image"><img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/D36E1649-D4F3-49C6-A556-89E6A7D59A51.png?v=1793334446 1498w" sizes="(max-width:720px) 92vw, 33vw" loading="lazy" width="1498" height="1050" alt="Sabots CLOGZ Spider-Man Rouge"></div>
+    <div class="clogz-spider-product__body">
+      <h2>Spider-Man — Rouge</h2>
+      <p>Rouge profond et toile noire en relief. Le classique qui ne passe pas inaperçu.</p>
+      <div class="clogz-spider-product__foot"><span class="clogz-spider-promo-price"><strong>{% render 'clogz-price', amount: sp_red.price %}</strong>{% if sp_red.compare_at_price_max > sp_red.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_red.compare_at_price_max %}</s>{% endif %}</span><a class="clogz-pill clogz-pill--green" href="{{ sp_red.url | default: '/collections/clogz-spider-man' }}" aria-label="Choisir la pointure Spider-Man Rouge">Voir la paire</a></div>
+    </div>
+  </article>
+  <article class="clogz-spider-product clogz-spider-product--black">
+    <div class="clogz-spider-product__image"><img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/374D0B8A-EEB8-40E4-89B4-0EFBB8F5B104.png?v=1793334359 1498w" sizes="(max-width:720px) 92vw, 33vw" loading="lazy" width="1498" height="1050" alt="Sabots CLOGZ Spider-Man Noir"></div>
+    <div class="clogz-spider-product__body">
+      <h2>Spider-Man — Noir</h2>
+      <p>Noir intense, discret et graphique, avec la toile en relief.</p>
+      <div class="clogz-spider-product__foot"><span class="clogz-spider-promo-price"><strong>{% render 'clogz-price', amount: sp_black.price %}</strong>{% if sp_black.compare_at_price_max > sp_black.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_black.compare_at_price_max %}</s>{% endif %}</span><a class="clogz-pill clogz-pill--green" href="{{ sp_black.url | default: '/collections/clogz-spider-man' }}" aria-label="Choisir la pointure Spider-Man Noir">Voir la paire</a></div>
+    </div>
+  </article>
+  <article class="clogz-spider-product clogz-spider-product--blue">
+    <div class="clogz-spider-product__image"><img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=900" srcset="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=600 600w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160&amp;width=900 900w, https://cdn.shopify.com/s/files/1/0783/6398/3932/files/99FF32EF-0CB3-4023-AB08-A94819FEB89E.png?v=1793334160 1498w" sizes="(max-width:720px) 92vw, 33vw" loading="lazy" width="1498" height="1050" alt="Sabots CLOGZ Spider-Man Bleu"></div>
+    <div class="clogz-spider-product__body">
+      <h2>Spider-Man — Bleu</h2>
+      <p>Bleu électrique et toile noire : le coloris qui claque.</p>
+      <div class="clogz-spider-product__foot"><span class="clogz-spider-promo-price"><strong>{% render 'clogz-price', amount: sp_blue.price %}</strong>{% if sp_blue.compare_at_price_max > sp_blue.price %}<s class="clogz-price-was">{% render 'clogz-price', amount: sp_blue.compare_at_price_max %}</s>{% endif %}</span><a class="clogz-pill clogz-pill--green" href="{{ sp_blue.url | default: '/collections/clogz-spider-man' }}" aria-label="Choisir la pointure Spider-Man Bleu">Voir la paire</a></div>
+    </div>
+  </article>
+</div>
+<p class="clogz-spider-notice">Chaque coloris est à 20 000 FCFA (au lieu de 22 500 FCFA), pointures 36 à 46. Livraison gratuite partout à Dakar, et tu paies à la livraison : cash, Wave ou OM.</p>

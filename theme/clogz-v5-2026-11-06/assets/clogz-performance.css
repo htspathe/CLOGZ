@@ -1,0 +1,32 @@
+/* CLOGZ mobile performance: GPU blur fallback + reduced motion. */
+@media(max-width:850px){
+body.clogz-v2-unified .clogz-sticky-atc,
+body.clogz-v2-unified .cv2-benefits>div,
+body.clogz-v2-unified .clogz-collections__hero .clogz-collections__nav a,
+body.clogz-v2-unified .clogz-tile h3,
+body.clogz-v2-unified .clogz-hero__swatches,
+body.clogz-v2-unified #ClogzOverlay,
+body.clogz-v2-unified .cv2-backdrop,
+body.clogz-v2-unified .cv2-cart-backdrop{
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.clogz-v2-unified .cv2-backdrop,
+body.clogz-v2-unified .cv2-cart-backdrop,
+body.clogz-v2-unified #ClogzOverlay{background-color:rgba(23,24,27,.68)!important}
+}
+.clogz-perf-paused *, .clogz-perf-paused *::before, .clogz-perf-paused *::after{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){
+.cv2 *, .cv2 *::before, .cv2 *::after,
+.clogz-street-marquee *, .clogz-marquee *, .clogz-collectiontiles *{
+ animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* CLOGZ Spider-Man — coloris bleu et fiche produit avec la photo 4 vues uniquement (pleine image, sans recadrage). */
+.clogz-spider-card--blue,.clogz-spider-product--blue,.clogz-curated-grid--spider .clogz-pair-theme--sabots-clogz-spider-man-bleu{background:#c7d3f4!important}
+.clogz-spider-card--blue .clogz-spider-card__media,.clogz-spider-product--blue .clogz-spider-product__image{background:#0a1640}
+.clogz-pair-theme--sabots-clogz-spider-man-bleu{--pair-page:#c7d3f4;--pair-page-edge:#3a5cc4;--pair-bg:#2445b5;--pair-glow:#dde6fb;--pair-soft:#e2e9fb;--pair-accent:#1c3ca8;--pair-ink:#0f1f52}
+.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__gallery{background:linear-gradient(145deg,var(--pair-glow),var(--pair-bg));padding:0;overflow:hidden}
+.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__info{background:var(--pair-soft)}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__thumbs,.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__thumbs,.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__thumbs{display:none!important}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__mainmedia>[data-media-id]:not(:first-child),.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__mainmedia>[data-media-id]:not(:first-child),.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__mainmedia>[data-media-id]:not(:first-child){display:none!important}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__mainmedia>[data-media-id]:first-child,.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__mainmedia>[data-media-id]:first-child,.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__mainmedia>[data-media-id]:first-child{display:block!important}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__mainmedia img,.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__mainmedia img,.clogz-pair-theme--sabots-clogz-spider-man-bleu .clogz-product__mainmedia img{width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important}

@@ -1,0 +1,12 @@
+<section class="clogz-section clogz-photo-catalog" id="clogz-photos"><div class="clogz-container">
+<div class="clogz-headrow"><div><p class="clogz-eyebrow" style="color:#8C3A2C">{{ section.settings.eyebrow | escape }}</p><h2 class="clogz-heading">{{ section.settings.heading | escape }}</h2><p>{{ section.settings.description | escape }}</p></div></div>
+<div class="clogz-photo-grid">{% for block in section.blocks %}
+<article class="clogz-photo-item" {{ block.shopify_attributes }}>
+<div class="clogz-photo-item__image">{% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.image.alt | default: block.settings.label | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">{% elsif block.settings.image_url != blank %}<img src="{{ block.settings.image_url | escape }}" alt="{{ block.settings.label | escape }}" loading="lazy" width="420" height="520">{% else %}{% render 'clog-icon' %}{% endif %}</div>
+<div class="clogz-photo-item__info"><h3>{{ block.settings.label | escape }}</h3><p class="clogz-photo-item__price">12 000 FCFA</p><p>Pointures proposées : 36–46</p>
+{% if block.settings.product != blank and block.settings.product.available %}<a href="{{ block.settings.product.url }}">Choisir ma pointure </a>{% else %}<span class="clogz-photo-item__soon">Disponibilités à confirmer</span>{% endif %}
+</div></article>{% endfor %}</div>
+</div></section>
+{% schema %}
+{"name":"Photos CLOGZ","settings":[{"type":"text","id":"eyebrow","label":"Sur-titre","default":"LE DROP DAKAR"},{"type":"text","id":"heading","label":"Titre","default":"Choisis ton coloris."},{"type":"textarea","id":"description","label":"Description","default":"La paire à 12 000 FCFA. Livraison gratuite sous 24 h à Dakar, pins offerts. Tailles 36 à 46 selon stock disponible."}],"blocks":[{"type":"photo","name":"Photo d’un modèle","settings":[{"type":"text","id":"label","label":"Nom du coloris","default":"Sabot noir"},{"type":"image_picker","id":"image","label":"Photo réelle à choisir"},{"type":"text","id":"image_url","label":"Adresse du visuel provisoire","info":"Affichée quand aucune photo n’est sélectionnée dans Shopify."},{"type":"product","id":"product","label":"Produit associé (une fois actif)"}]}],"max_blocks":10,"presets":[{"name":"Photos CLOGZ"}]}
+{% endschema %}

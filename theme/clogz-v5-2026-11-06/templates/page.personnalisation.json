@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "clogz-inspiration-page",
+      "settings": {
+        "subtitle": "Des pins, des couleurs et des idées qui changent tout. Inspires-toi de nos looks et donne à ta paire ton propre caractère."
+      },
+      "blocks": {
+        "looks": {
+          "type": "idea",
+          "settings": {
+            "heading": "Looks colorés",
+            "caption": "Explore des associations de couleurs et de petits accessoires.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-sabots-decores-couleurs.jpg?v=1792776771"
+          }
+        },
+        "rose": {
+          "type": "idea",
+          "settings": {
+            "heading": "Pink mood",
+            "caption": "Des pins fun et pop pour accompagner un sabot rose.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-pins-roses-detail.jpg?v=1792776760"
+          }
+        },
+        "pins": {
+          "type": "idea",
+          "settings": {
+            "heading": "L'univers des pins",
+            "caption": "Personnages, formes et symboles selon les accessoires disponibles.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-pins-assortiment.jpg?v=1792776765"
+          }
+        },
+        "lifestyle": {
+          "type": "idea",
+          "settings": {
+            "heading": "Streetwear pastel",
+            "caption": "Comment porter tes sabots au quotidien avec ta propre touche.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-rose-pins-lifestyle.jpg?v=1792776754"
+          }
+        }
+      },
+      "block_order": [
+        "looks",
+        "rose",
+        "pins",
+        "lifestyle"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

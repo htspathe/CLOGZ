@@ -1,0 +1,116 @@
+{% comment %}Size optional editorial images only when hosted on Shopify CDN.{% endcomment %}
+{% liquid
+  assign clogz_perf_pattern_src = section.settings.pattern_url
+  if clogz_perf_pattern_src contains 'cdn.shopify.com'
+    if clogz_perf_pattern_src contains '?'
+      assign clogz_perf_pattern_src = clogz_perf_pattern_src | append: '&width=480'
+    else
+      assign clogz_perf_pattern_src = clogz_perf_pattern_src | append: '?width=480'
+    endif
+  endif
+  assign clogz_perf_hero_src = section.settings.hero_image_url
+  if clogz_perf_hero_src contains 'cdn.shopify.com'
+    if clogz_perf_hero_src contains '?'
+      assign clogz_perf_hero_src = clogz_perf_hero_src | append: '&width=960'
+    else
+      assign clogz_perf_hero_src = clogz_perf_hero_src | append: '?width=960'
+    endif
+  endif
+%}
+
+<section class="clogz-editorial" id="ClogzEditorial-{{ section.id }}" aria-label="Accueil CLOGZ">
+ <div class="clogz-editorial__hero">
+  <div class="clogz-editorial__patterns" aria-hidden="true">
+   {% if section.settings.pattern_url != blank %}
+    <img class="clogz-editorial__pattern clogz-editorial__pattern--a" src="{{ clogz_perf_pattern_src | escape }}" alt="" loading="lazy" width="447" height="447">
+    <img class="clogz-editorial__pattern clogz-editorial__pattern--b" src="{{ clogz_perf_pattern_src | escape }}" alt="" loading="lazy" width="447" height="447">
+    <img class="clogz-editorial__pattern clogz-editorial__pattern--c" src="{{ clogz_perf_pattern_src | escape }}" alt="" loading="lazy" width="447" height="447">
+    <img class="clogz-editorial__pattern clogz-editorial__pattern--d" src="{{ clogz_perf_pattern_src | escape }}" alt="" loading="lazy" width="447" height="447">
+   {% endif %}
+  </div>
+  <div class="clogz-editorial__hero-content">
+   <div class="clogz-editorial__hero-copy">
+    <p class="clogz-editorial__eyebrow">CLOGZ / DAKAR</p>
+    <h1>{{ section.settings.line_one | escape }}<br>{{ section.settings.line_two | escape }}<br>{{ section.settings.line_three | escape }}</h1>
+    <h2 class="clogz-editorial__brand-signature">
+      <span class="clogz-editorial__signature-line">{{ section.settings.brand_mood | escape }}</span>
+      <span class="clogz-editorial__signature-line">{{ section.settings.brand_pair | escape }}</span>
+      <span class="clogz-editorial__signature-line">{{ section.settings.brand_rules | escape }}</span>
+      <span class="clogz-editorial__signature-line clogz-editorial__signature-line--english"><span class="clogz-editorial__english-core">{{ section.settings.brand_english | escape }}</span>&nbsp;<em>{{ section.settings.brand_hi | escape }}</em></span>
+    </h2>
+    <a class="clogz-editorial__btn" href="{{ section.settings.primary_link | default: routes.collections_url }}">{{ section.settings.primary_label | escape }} </a>
+    <div class="clogz-editorial__about-invite">
+     <p class="clogz-editorial__about-pitch">{{ section.settings.universe_pitch | escape }}</p>
+     <a class="clogz-editorial__about-button" href="{{ section.settings.universe_link | default: '/pages/idees-de-personnalisation' }}">{{ section.settings.universe_button_label | escape }} </a>
+    </div>
+   </div>
+   <div class="clogz-editorial__hero-media clogz-editorial__hero-media--portrait">
+    {% if section.settings.hero_image_url != blank %}
+    <img class="clogz-editorial__shoe clogz-editorial__shoe--portrait" src="{{ clogz_perf_hero_src | escape }}"{% if section.settings.hero_image_url contains '?' %} srcset="{{ section.settings.hero_image_url | escape }}&amp;width=480 480w, {{ section.settings.hero_image_url | escape }}&amp;width=720 720w, {{ section.settings.hero_image_url | escape }}&amp;width=960 960w, {{ section.settings.hero_image_url | escape }}&amp;width=1248 1248w"{% endif %} sizes="(max-width: 749px) 94vw, (max-width: 1180px) 58vw, 700px" alt="CLOGZ : cinq paires de sabots sur des roches beiges, sous le logo bleu ciel et orange" width="1119" height="1405" decoding="async" fetchpriority="high">
+    {% endif %}
+   </div>
+   <p class="clogz-editorial__hero-note">Le confort<br> a du style.<span aria-hidden="true">〰</span></p>
+  </div>
+ </div>
+ <div class="clogz-editorial__discover">
+  <div class="clogz-editorial__main">
+   <div class="clogz-editorial__discover-top">
+    <div><p class="clogz-editorial__eyebrow">NOS PAIRES</p><h2>{{ section.settings.collection_heading | escape | replace: 'Dey Daw Rek', '<span class="clogz-editorial__slogan-nowrap">Dey Daw Rek</span>' }}</h2></div>
+    <p class="clogz-editorial__discover-copy">{{ section.settings.collection_description | escape }}</p>
+    <a class="clogz-editorial__all" href="{{ routes.collections_url }}">Voir toutes les collections </a>
+   </div>
+   <div class="clogz-editorial__cards">
+    {% assign clogz_collection = collections['clogz-tous-les-sabots'] %}
+    {% if clogz_collection != blank %}
+     {% for product in clogz_collection.products limit: 4 %}
+      {% if product.vendor == 'CLOGZ' %}
+       <a class="clogz-editorial__card clogz-pair-theme--{{ product.handle }}" href="{{ product.url }}" aria-label="Découvrir {{ product.title | escape }}">
+        <div class="clogz-editorial__card-image">
+         {% if product.featured_image != blank %}
+          <img src="{{ product.featured_image | image_url: width: 500 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="480" height="480" loading="lazy">
+         {% else %}<span>CLOGZ</span>{% endif %}
+        </div>
+        <div class="clogz-editorial__card-bottom"><div><strong>{{ product.title | remove: 'Sabots CLOGZ — ' | remove: 'Sabots CLOGZ ' | escape }}</strong><span>{% if product.price > 0 %}{% render 'clogz-price', amount: product.price %}{% else %}Prix à confirmer{% endif %}</span></div><span class="clogz-editorial__card-arrow" aria-hidden="true">›</span></div>
+       </a>
+      {% endif %}
+     {% endfor %}
+    {% else %}
+     <p>Découvre bientôt nos sabots CLOGZ.</p>
+    {% endif %}
+   </div>
+  </div>
+  <aside class="clogz-editorial__promo">
+   {% if section.settings.pattern_url != blank %}
+     <img src="{{ clogz_perf_pattern_src | escape }}" alt="" class="clogz-editorial__promo-texture" width="447" height="447" loading="lazy">
+   {% endif %}
+   <div class="clogz-editorial__promo-content"><span>UN STYLE CULTE</span><h2>{{ section.settings.promo_heading | escape }}</h2><a href="{{ section.settings.promo_link | default: '/collections/clogz-spider-man' }}">Explorer maintenant </a></div>
+  </aside>
+ </div>
+</section>
+{% schema %}
+{
+ "name":"Accueil editorial CLOGZ",
+ "settings":[
+ {"type":"text","id":"line_one","label":"Titre ligne 1","default":"Crocs."},
+ {"type":"text","id":"line_two","label":"Titre ligne 2","default":"Plus que"},
+ {"type":"text","id":"line_three","label":"Titre ligne 3","default":"des sabots."},
+ {"type":"text","id":"brand_mood","label":"Signature - ligne 1","default":"Ton mood"},
+ {"type":"text","id":"brand_pair","label":"Signature - ligne 2","default":"Ta paire"},
+ {"type":"text","id":"brand_rules","label":"Signature - ligne 3","default":"Tes règles"},
+ {"type":"text","id":"brand_english","label":"Signature - ligne 4","default":"we are CLOGZ"},
+ {"type":"text","id":"brand_hi","label":"Signature - HI","default":"HI!!"},
+ {"type":"text","id":"hero_image_url","label":"URL image de sabots"},
+ {"type":"text","id":"pattern_url","label":"URL du motif décoratif (fond)"},
+ {"type":"text","id":"primary_label","label":"Bouton principal","default":"Découvrir la collection"},
+ {"type":"url","id":"primary_link","label":"Lien bouton principal"},
+ {"type":"textarea","id":"universe_pitch","label":"Accroche Notre univers","default":"Derrière chaque paire, il y a une attitude. Découvre les inspirations et l'esprit CLOGZ qui font toute la différence."},
+ {"type":"text","id":"universe_button_label","label":"Bouton Notre univers","default":"Découvrir notre univers"},
+ {"type":"url","id":"universe_link","label":"Lien vers Notre univers"},
+ {"type":"text","id":"collection_heading","label":"Titre collections","default":"Des clogs pour toutes tes envies."},
+ {"type":"textarea","id":"collection_description","label":"Description collections","default":"Des classiques intemporels aux modèles les plus audacieux."},
+ {"type":"text","id":"promo_heading","label":"Titre promotion","default":"Confort toute l'année."},
+ {"type":"url","id":"promo_link","label":"Lien promotion"}
+ ],
+ "presets":[{"name":"Accueil editorial CLOGZ"}]
+}
+{% endschema %}

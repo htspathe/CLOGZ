@@ -1,0 +1,383 @@
+/* CLOGZ: dedicated product detail, color-specific environment + clean card navigation. */
+.clogz-card--navigate .clogz-card__actions{margin-top:auto;padding-top:14px}
+.clogz-card--navigate .clogz-card__add{display:flex;align-items:center;justify-content:center;gap:7px;min-height:46px;background:#173c32;border:1px solid #173c32;border-radius:999px;color:#fff;font-weight:750;text-decoration:none}
+.clogz-card--navigate .clogz-card__add:hover{background:#28574b;border-color:#28574b;color:#fff}
+.clogz-card--navigate .clogz-availability{font-size:12px;line-height:1.5;color:#70746f;margin:8px 0}
+.clogz-card--preview .clogz-card__add[aria-disabled=true]{background:#ece5e0;border-color:#ece5e0;color:#82746e;cursor:default;opacity:1}
+.clogz-card--preview .clogz-availability{font-size:12px;color:#81746e;margin-top:9px}
+.clogz-pair-theme{--pair-bg:#fce6dc;--pair-glow:#fff7f1;--pair-accent:#b96852;--pair-ink:#123e33;--pair-page:#fff1e9;--pair-page-edge:#f6dcca;--pair-soft:#fffbf7}
+.clogz-pair-theme--sabots-clogz-noir{--pair-bg:#caced0;--pair-glow:#f7f7f6;--pair-accent:#30363e;--pair-ink:#222930;--pair-page:#e4e5e6;--pair-page-edge:#c8ccd0;--pair-soft:#fafafa}
+.clogz-pair-theme--sabots-clogz-rouge{--pair-bg:#f4b7b0;--pair-glow:#fff0eb;--pair-accent:#ad2d38;--pair-ink:#7d1f2c;--pair-page:#ffe2dd;--pair-page-edge:#f7c8c1;--pair-soft:#fff6f4}
+.clogz-pair-theme--sabots-clogz-blanc{--pair-bg:#eeece5;--pair-glow:#ffffff;--pair-accent:#736c63;--pair-ink:#303b39;--pair-page:#f8f7f1;--pair-page-edge:#eae6db;--pair-soft:#ffffff}
+.clogz-pair-theme--sabots-clogz-beige{--pair-bg:#dfc7a7;--pair-glow:#fff8ed;--pair-accent:#916b42;--pair-ink:#624d35;--pair-page:#f5e9d9;--pair-page-edge:#e4d1b9;--pair-soft:#fffbf4}
+.clogz-pair-theme--sabots-clogz-vert-foret{--pair-bg:#bfd6c2;--pair-glow:#f0f8ed;--pair-accent:#285d42;--pair-ink:#234a35;--pair-page:#e1efe1;--pair-page-edge:#c5ddc7;--pair-soft:#f7fbf4}
+.clogz-pair-theme--sabots-clogz-rose-bonbon-pins-offerts{--pair-bg:#f1bed1;--pair-glow:#fff4f9;--pair-accent:#ab4773;--pair-ink:#792c54;--pair-page:#fde2ed;--pair-page-edge:#f6c9dc;--pair-soft:#fff9fc}
+.clogz-pair-theme--sabots-clogz-bleu-ciel{--pair-bg:#afd4f3;--pair-glow:#f4fbff;--pair-accent:#27679e;--pair-ink:#1d4f78;--pair-page:#e0f1fc;--pair-page-edge:#c3e0f7;--pair-soft:#f7fcff}
+.clogz-pair-theme--sabots-clogz-lilas{--pair-bg:#cbb9e8;--pair-glow:#f9f5ff;--pair-accent:#7453a1;--pair-ink:#533978;--pair-page:#ede4fa;--pair-page-edge:#dbcbf0;--pair-soft:#fbf8ff}
+.clogz-pair-theme--sabots-clogz-orange{--pair-bg:#ffc58e;--pair-glow:#fff1df;--pair-accent:#b95519;--pair-ink:#843c14;--pair-page:#ffe5c7;--pair-page-edge:#ffd0a1;--pair-soft:#fff7ed}
+.clogz-pair-theme--sabots-clogz-gris{--pair-bg:#cbd2d4;--pair-glow:#f8fbfa;--pair-accent:#63747a;--pair-ink:#344b51;--pair-page:#e9eff0;--pair-page-edge:#d4dddf;--pair-soft:#f9fbfb}
+.clogz-pair-theme .clogz-breadcrumb{padding:25px 0 19px;font-size:13px}
+.clogz-pair-theme .clogz-product{gap:clamp(25px,4vw,72px);align-items:start}
+.clogz-pair-theme .clogz-product__gallery{padding:clamp(12px,2vw,28px);border-radius:30px;background:radial-gradient(ellipse at 46% 29%,var(--pair-glow) 4%,var(--pair-bg) 85%);border:1px solid rgba(20,41,37,.07);position:relative}
+.clogz-pair-theme .clogz-product__gallery::before{content:"CLOGZ";position:absolute;top:17px;right:23px;font-family:Instrument Sans,sans-serif;font-size:clamp(14px,2vw,23px);font-weight:900;letter-spacing:-.05em;color:var(--pair-accent);opacity:.34;pointer-events:none;z-index:1}
+.clogz-pair-theme .clogz-product__mainmedia{background:transparent;border-radius:23px}
+.clogz-pair-theme .clogz-product__mainmedia img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+.clogz-pair-theme .clogz-product__thumbs button{background:var(--pair-glow)}
+.clogz-pair-theme .clogz-product__thumbs button[aria-pressed=true]{border-color:var(--pair-accent)}
+.clogz-pair-theme .clogz-product__info{padding-top:clamp(8px,2vw,25px)}
+.clogz-pair-theme .clogz-pair-theme__eyebrow{color:var(--pair-accent)!important;font-weight:850;letter-spacing:.16em}
+.clogz-pair-theme .clogz-product__info h1{color:var(--pair-ink);font-weight:900;line-height:1.07;letter-spacing:-.055em}
+.clogz-pair-theme .clogz-product__price{color:var(--pair-ink);font-size:clamp(25px,2.5vw,36px)}
+.clogz-pair-theme .clogz-product__cod{background:var(--pair-glow);border:1px solid color-mix(in srgb,var(--pair-accent),transparent 78%)}
+.clogz-pair-theme__instruction{font-size:15px;font-weight:780;color:#294d41;padding:13px 15px;border-left:3px solid var(--pair-accent);background:var(--pair-glow);border-radius:0 12px 12px 0;margin:15px 0}
+.clogz-pair-theme .clogz-product__option legend{color:#244538;font-size:15px}
+.clogz-pair-theme .clogz-product__option-values label span{border:1.5px solid #ded5cc;border-radius:12px;min-width:48px;min-height:48px;background:#fffdfa;transition:transform .18s,border-color .18s,background-color .18s}
+.clogz-pair-theme .clogz-product__option-values input:checked+span{color:#fff;background:var(--pair-ink);border-color:var(--pair-ink)}
+.clogz-pair-theme .clogz-product__option-values label:hover span{border-color:var(--pair-accent);transform:translateY(-2px)}
+.clogz-pair-theme .clogz-product__stock{color:#6d655f;min-height:19px;line-height:1.5}
+.clogz-pair-theme .clogz-product__atc{background:var(--pair-ink);border-color:var(--pair-ink);min-height:54px;font-weight:800}
+.clogz-pair-theme .clogz-product__atc:not(:disabled):hover{background:var(--pair-accent);border-color:var(--pair-accent)}
+.clogz-sticky-atc .clogz-pill--green{background:#173b32;border-color:#173b32;color:#fff}
+.clogz-drawer__buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.clogz-drawer__buttons .clogz-pill{display:flex;align-items:center;justify-content:center;min-height:49px;font-weight:800;white-space:normal;text-align:center;font-size:12.5px;line-height:1.3;padding:11px 12px}
+.clogz-drawer__buttons .clogz-pill--green{background:#173b32;border-color:#173b32;color:#fff}
+.clogz-drawer__buttons .clogz-pill--line{background:#fffaf4;border-color:#dfc8bc;color:#173b32}
+.clogz-drawer__checkout-note{font-size:11px;line-height:1.5;color:#706861;margin:0}
+.clogz-drawer__fullcart{font-size:12px;font-weight:750;color:#815644;text-decoration:underline;text-underline-offset:3px;justify-self:start}
+@media(max-width:850px){
+ .clogz-pair-theme .clogz-breadcrumb{padding:13px 0 14px;font-size:12px}
+ .clogz-pair-theme .clogz-product__gallery{padding:14px;border-radius:22px}
+ .clogz-pair-theme .clogz-product__info{padding-top:7px}
+ .clogz-pair-theme .clogz-product__option-values label span{min-width:46px;min-height:46px}
+ .clogz-pair-theme__instruction{font-size:13px}
+ .clogz-drawer__buttons{grid-template-columns:1fr 1fr}
+ .clogz-drawer__buttons .clogz-pill{min-height:49px;padding:9px 8px;font-size:12px}
+}
+@media(max-width:380px){
+ .clogz-drawer__buttons{grid-template-columns:1fr}
+ .clogz-drawer__buttons .clogz-pill{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .clogz-pair-theme .clogz-product__option-values label span{transition:none}
+}
+
+/* THEMING CLOGZ PRODUCT COLOR FULL PAGE */
+.clogz-pair-theme{background:radial-gradient(ellipse 85% 60% at 15% 8%,var(--pair-soft) 0%,transparent 77%),linear-gradient(148deg,var(--pair-page) 0%,var(--pair-page-edge) 100%);color:var(--pair-ink);min-height:calc(100vh - 150px);padding-bottom:clamp(38px,5vw,72px)}
+.clogz-pair-theme .clogz-breadcrumb,.clogz-pair-theme .clogz-breadcrumb a{color:var(--pair-ink)}
+.clogz-pair-theme .clogz-product__gallery{background:radial-gradient(ellipse at 48% 25%,var(--pair-glow),var(--pair-bg) 84%);box-shadow:0 15px 40px color-mix(in srgb,var(--pair-accent),transparent 86%)}
+.clogz-pair-theme .clogz-product__info{background:color-mix(in srgb,var(--pair-soft) 93%,transparent);border:1px solid color-mix(in srgb,var(--pair-accent),transparent 82%);border-radius:27px;padding:clamp(20px,3.2vw,37px);box-shadow:0 18px 44px color-mix(in srgb,var(--pair-accent),transparent 90%)}
+.clogz-pair-theme .clogz-pair-theme__instruction{color:var(--pair-ink)}
+.clogz-pair-theme .clogz-product__option legend,.clogz-pair-theme .clogz-product__price{color:var(--pair-ink)}
+.clogz-pair-theme .clogz-product__atc,.clogz-pair-theme .clogz-sticky-atc .clogz-pill--green{background:var(--pair-ink);border-color:var(--pair-ink);color:#fff}
+.clogz-pair-theme .clogz-product__atc:not(:disabled):hover,.clogz-pair-theme .clogz-sticky-atc .clogz-pill--green:not(:disabled):hover{background:var(--pair-accent);border-color:var(--pair-accent)}
+.clogz-card--navigate .clogz-card__photo{background:radial-gradient(ellipse at 46% 24%,var(--pair-glow,#fffaf6),var(--pair-bg,#f3e6df) 90%)}
+.clogz-card--navigate .clogz-card__add{background:var(--pair-ink,#173c32);border-color:var(--pair-ink,#173c32)}
+.clogz-card--navigate .clogz-card__add:hover{background:var(--pair-accent,#28574b);border-color:var(--pair-accent,#28574b)}
+.clogz-curated-card .clogz-curated-card__image{background:radial-gradient(ellipse at 46% 24%,var(--pair-glow,#fffaf6),var(--pair-bg,#f3e6df) 90%)}
+.clogz-editorial__cards .clogz-editorial__card .clogz-editorial__card-image{background:radial-gradient(ellipse at 46% 24%,var(--pair-glow,#fffaf6),var(--pair-bg,#f3e6df) 90%)}
+@media(max-width:850px){.clogz-pair-theme{min-height:0;padding-bottom:30px}.clogz-pair-theme .clogz-product__info{border-radius:21px;padding:19px}.clogz-pair-theme .clogz-product__gallery{box-shadow:0 9px 24px color-mix(in srgb,var(--pair-accent),transparent 88%)}}
+
+/* CLOGZ COLOR FIX 2026 OCT - no white blocks for Orange and Gray / Spider-Man full-bleed */
+
+/* Cohesive, saturated Orange presentation, including details card. */
+.clogz-pair-theme--sabots-clogz-orange{
+ --pair-page:#ffd4aa;--pair-page-edge:#ffae71;--pair-bg:#ffa95e;--pair-glow:#ffe1ba;
+ --pair-soft:#ffdab2;--pair-accent:#bd4a12;--pair-ink:#643012;
+}
+.clogz-pair-theme--sabots-clogz-gris{
+ --pair-page:#d9dedf;--pair-page-edge:#aeb8ba;--pair-bg:#bac3c6;--pair-glow:#e9edee;
+ --pair-soft:#d7dfe0;--pair-accent:#46585e;--pair-ink:#27353a;
+}
+/* Replace ivory/white-looking panels with the actual color of the selected pair. */
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__info,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__info{
+ background:linear-gradient(147deg,var(--pair-soft),var(--pair-page));
+ border-color:color-mix(in srgb,var(--pair-accent),transparent 74%);
+}
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__gallery,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__gallery{
+ background:radial-gradient(ellipse at 48% 26%,var(--pair-glow),var(--pair-bg) 87%);
+}
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__mainmedia,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__mainmedia{
+ background:transparent!important;
+}
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__mainmedia img,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__mainmedia img{
+ mix-blend-mode:multiply!important;
+ background:transparent!important;
+}
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__cod,
+.clogz-pair-theme--sabots-clogz-orange .clogz-pair-theme__instruction,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__cod,
+.clogz-pair-theme--sabots-clogz-gris .clogz-pair-theme__instruction{
+ background:color-mix(in srgb,var(--pair-glow),var(--pair-bg) 35%);
+ color:var(--pair-ink);
+}
+.clogz-pair-theme--sabots-clogz-orange .clogz-product__thumbs button,
+.clogz-pair-theme--sabots-clogz-gris .clogz-product__thumbs button{
+ background:var(--pair-bg);
+}
+/* White in original source imagery is neutralised by multiplication,
+   without changing original Shopify product photos. */
+.clogz-card--navigate.clogz-pair-theme--sabots-clogz-orange,
+.clogz-card--navigate.clogz-pair-theme--sabots-clogz-gris,
+.clogz-curated-card.clogz-pair-theme--sabots-clogz-orange,
+.clogz-curated-card.clogz-pair-theme--sabots-clogz-gris,
+.clogz-editorial__card.clogz-pair-theme--sabots-clogz-orange,
+.clogz-editorial__card.clogz-pair-theme--sabots-clogz-gris{
+ background:var(--pair-page)!important;
+ border-color:var(--pair-page-edge)!important;
+}
+.clogz-card--navigate.clogz-pair-theme--sabots-clogz-orange .clogz-card__photo img,
+.clogz-card--navigate.clogz-pair-theme--sabots-clogz-gris .clogz-card__photo img,
+.clogz-curated-card.clogz-pair-theme--sabots-clogz-orange .clogz-curated-card__image img,
+.clogz-curated-card.clogz-pair-theme--sabots-clogz-gris .clogz-curated-card__image img,
+.clogz-editorial__card.clogz-pair-theme--sabots-clogz-orange .clogz-editorial__card-image img,
+.clogz-editorial__card.clogz-pair-theme--sabots-clogz-gris .clogz-editorial__card-image img{
+ mix-blend-mode:multiply!important;
+ background:transparent!important;
+}
+.clogz-curated-grid--essentiels .clogz-curated-card.clogz-pair-theme--sabots-clogz-orange .clogz-curated-card__image,
+.clogz-curated-grid--essentiels .clogz-curated-card.clogz-pair-theme--sabots-clogz-gris .clogz-curated-card__image{
+ background:radial-gradient(ellipse at 45% 23%,var(--pair-glow),var(--pair-bg) 95%)!important;
+}
+.clogz-editorial__cards .clogz-editorial__card.clogz-pair-theme--sabots-clogz-orange .clogz-editorial__card-image,
+.clogz-editorial__cards .clogz-editorial__card.clogz-pair-theme--sabots-clogz-gris .clogz-editorial__card-image{
+ background:radial-gradient(ellipse at 45% 23%,var(--pair-glow),var(--pair-bg) 95%)!important;
+}
+/* Spider-themed products: full-width photo tiles plus a complete,
+   matching card background instead of a separate white details panel. */
+.clogz-spider-card,
+.clogz-spider-product,
+.clogz-curated-grid--spider .clogz-curated-card{
+ background:#efe7e8;
+ isolation:isolate;
+}
+.clogz-spider-card--red,.clogz-spider-product--red,
+.clogz-curated-grid--spider .clogz-pair-theme--sabots-clogz-spider-man-rouge{
+ background:#f2c6c5!important;
+}
+.clogz-spider-card--black,.clogz-spider-product--black,
+.clogz-curated-grid--spider .clogz-pair-theme--sabots-clogz-spider-man-noir{
+ background:#b9b7bf!important;
+}
+.clogz-spider-card--white,.clogz-spider-product--white,
+.clogz-curated-grid--spider .clogz-pair-theme--sabots-clogz-spider-man-blanc{
+ background:#e2e8ec!important;
+}
+.clogz-spider-card .clogz-spider-card__media,
+.clogz-spider-product .clogz-spider-product__image{
+ width:100%;aspect-ratio:1/1;height:auto;overflow:hidden;display:block;
+ background:transparent;
+}
+.clogz-spider-card .clogz-spider-card__media img,
+.clogz-spider-product .clogz-spider-product__image img{
+ display:block;width:100%;height:100%;aspect-ratio:1/1;
+ object-fit:cover;object-position:center center;
+}
+.clogz-spider-card .clogz-spider-card__details,
+.clogz-spider-product .clogz-spider-product__body,
+.clogz-curated-grid--spider .clogz-curated-card__details{
+ background:transparent!important;
+ color:#24272b;
+}
+.clogz-curated-grid--spider .clogz-curated-card__image{
+ width:100%;height:auto;aspect-ratio:1/1;
+ display:block;overflow:hidden;background:transparent!important;
+}
+.clogz-curated-grid--spider .clogz-curated-card__image img{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center;
+}
+/* Draft Spider-Man PDP preview colors; never changes listing availability. */
+.clogz-pair-theme--sabots-clogz-spider-man-rouge{
+ --pair-page:#f4c5c0;--pair-page-edge:#b85b65;--pair-bg:#cb6470;--pair-glow:#f8dedb;
+ --pair-soft:#f8d9d5;--pair-accent:#a23042;--pair-ink:#57212d;
+}
+.clogz-pair-theme--sabots-clogz-spider-man-noir{
+ --pair-page:#b9b9c2;--pair-page-edge:#777b8b;--pair-bg:#808492;--pair-glow:#e0dee3;
+ --pair-soft:#d0ced6;--pair-accent:#414559;--pair-ink:#252733;
+}
+.clogz-pair-theme--sabots-clogz-spider-man-blanc{
+ --pair-page:#e5eaed;--pair-page-edge:#c3cbd2;--pair-bg:#d0d9de;--pair-glow:#f8faf9;
+ --pair-soft:#edf1f1;--pair-accent:#526879;--pair-ink:#243644;
+}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__gallery,
+.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__gallery,
+.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-product__gallery{
+ background:linear-gradient(145deg,var(--pair-glow),var(--pair-bg));
+ padding:0;overflow:hidden;
+}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__mainmedia img,
+.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__mainmedia img,
+.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-product__mainmedia img{
+ width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;
+ mix-blend-mode:normal;
+}
+.clogz-pair-theme--sabots-clogz-spider-man-rouge .clogz-product__info,
+.clogz-pair-theme--sabots-clogz-spider-man-noir .clogz-product__info,
+.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-product__info{
+ background:var(--pair-soft);
+}
+@media(max-width:700px){
+ .clogz-spider-card__media,.clogz-spider-product__image{aspect-ratio:1/1}
+ .clogz-spider-card__media img,.clogz-spider-product__image img{object-position:center}
+}
+
+
+/* CLOGZ 2026-10-25 | all ten colorways full-bleed widgets */
+/* All ten active classic clogs get a coherent, whole-widget color surface. */
+.clogz-pair-theme--sabots-clogz-noir{--pair-bg:#909ba4;--pair-glow:#d9dee2;--pair-page:#b8c0c7;--pair-page-edge:#88939c;--pair-soft:#c2cbd1;--pair-accent:#313a42;--pair-ink:#1d2831}
+.clogz-pair-theme--sabots-clogz-rouge{--pair-bg:#ec837b;--pair-glow:#ffe0d9;--pair-page:#fac2b9;--pair-page-edge:#e78a82;--pair-soft:#f7cfc7;--pair-accent:#ad2932;--pair-ink:#74202a}
+.clogz-pair-theme--sabots-clogz-blanc{--pair-bg:#d5d7d2;--pair-glow:#fcfaf5;--pair-page:#e8e7e1;--pair-page-edge:#c7cbc6;--pair-soft:#f2f0e9;--pair-accent:#636961;--pair-ink:#313936}
+.clogz-pair-theme--sabots-clogz-beige{--pair-bg:#d4ae81;--pair-glow:#f6e7cf;--pair-page:#e9cfb0;--pair-page-edge:#c5a47e;--pair-soft:#ead5b6;--pair-accent:#82603b;--pair-ink:#4e3926}
+.clogz-pair-theme--sabots-clogz-vert-foret{--pair-bg:#83b298;--pair-glow:#dceee0;--pair-page:#bedac5;--pair-page-edge:#86ae93;--pair-soft:#cde4d3;--pair-accent:#28543e;--pair-ink:#1c4331}
+.clogz-pair-theme--sabots-clogz-rose-bonbon-pins-offerts{--pair-bg:#e79cbb;--pair-glow:#ffe6f3;--pair-page:#f5c3da;--pair-page-edge:#de8fae;--pair-soft:#f9d2e4;--pair-accent:#ac3a70;--pair-ink:#70274f}
+.clogz-pair-theme--sabots-clogz-bleu-ciel{--pair-bg:#95c9ef;--pair-glow:#e5f4ff;--pair-page:#c0e2f8;--pair-page-edge:#89bde6;--pair-soft:#d4ebfa;--pair-accent:#236f9f;--pair-ink:#1b5179}
+.clogz-pair-theme--sabots-clogz-lilas{--pair-bg:#b69bdd;--pair-glow:#eee5ff;--pair-page:#dac7f0;--pair-page-edge:#af91d3;--pair-soft:#e4d6f5;--pair-accent:#6d4c9c;--pair-ink:#4b3072}
+.clogz-pair-theme--sabots-clogz-orange{--pair-bg:#ffa95e;--pair-glow:#ffe1ba;--pair-page:#ffd4aa;--pair-page-edge:#ffae71;--pair-soft:#ffdab2;--pair-accent:#bd4a12;--pair-ink:#643012}
+.clogz-pair-theme--sabots-clogz-gris{--pair-bg:#bac3c6;--pair-glow:#e9edee;--pair-page:#d9dedf;--pair-page-edge:#aeb8ba;--pair-soft:#d7dfe0;--pair-accent:#46585e;--pair-ink:#27353a}
+/* Product detail: color runs across the entire section and every inner panel. */
+.clogz-pair-theme:not([class*="spider-man"]){
+ background:radial-gradient(ellipse 94% 75% at 22% 3%,var(--pair-soft) 0%,transparent 76%),linear-gradient(145deg,var(--pair-page),var(--pair-page-edge));
+ color:var(--pair-ink);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__gallery{
+ background:radial-gradient(ellipse at 48% 27%,var(--pair-glow) 0%,var(--pair-bg) 88%);
+ border:1px solid color-mix(in srgb,var(--pair-accent),transparent 72%);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__info{
+ background:linear-gradient(143deg,var(--pair-soft) 0%,var(--pair-page) 95%);
+ border-color:color-mix(in srgb,var(--pair-accent),transparent 73%);
+ color:var(--pair-ink);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__mainmedia{
+ background:transparent!important;
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__mainmedia img{
+ background:transparent!important;mix-blend-mode:multiply!important;
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__cod,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-pair-theme__instruction{
+ background:color-mix(in srgb,var(--pair-glow) 42%,var(--pair-bg));
+ color:var(--pair-ink);
+ border-color:color-mix(in srgb,var(--pair-accent),transparent 75%);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__option-values label span,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-inline-form input{
+ background:color-mix(in srgb,var(--pair-soft) 72%,var(--pair-page));
+ border-color:color-mix(in srgb,var(--pair-accent),transparent 60%);
+ color:var(--pair-ink);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__option-values input:checked+span{
+ color:#fff!important;background:var(--pair-ink)!important;border-color:var(--pair-ink)!important;
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__thumbs button{
+ background:var(--pair-bg);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__stock,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-product__description,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-availability,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-delivery-gift,
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-muted{
+ color:var(--pair-ink);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-sticky-atc{
+ background:var(--pair-soft);
+ border-top:1px solid color-mix(in srgb,var(--pair-accent),transparent 70%);
+ color:var(--pair-ink);
+}
+.clogz-pair-theme:not([class*="spider-man"]) .clogz-sticky-atc .clogz-pill--green{
+ background:var(--pair-ink);border-color:var(--pair-ink);color:#fff;
+}
+/* Full catalog: photo, frame, price panel, and button carry the actual model color. */
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]){
+ background:var(--pair-page)!important;
+ border-color:var(--pair-page-edge)!important;
+ color:var(--pair-ink)!important;
+}
+.clogz-grid--catalog .clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__photo,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__photo{
+ background:radial-gradient(ellipse at 48% 22%,var(--pair-glow),var(--pair-bg) 95%)!important;
+}
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__photo img{
+ background:transparent!important;mix-blend-mode:multiply!important;
+}
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__body,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__body h3,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__body h3 a,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__price,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-availability,
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-payment-mini{
+ color:var(--pair-ink)!important;background:transparent;
+}
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__add{
+ background:var(--pair-ink)!important;border-color:var(--pair-ink)!important;color:#fff!important;
+}
+.clogz-card--navigate[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-card__add:hover{
+ background:var(--pair-accent)!important;border-color:var(--pair-accent)!important;color:#fff!important;
+}
+/* Pastels and Essentiels: remove white cards and group-level fallback colors. */
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"],
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"]{
+ background:var(--pair-page)!important;
+ border-color:var(--pair-page-edge)!important;
+ color:var(--pair-ink)!important;
+}
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__image,
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__image{
+ background:radial-gradient(ellipse at 48% 25%,var(--pair-glow),var(--pair-bg) 94%)!important;
+}
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__image img,
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__image img{
+ background:transparent!important;mix-blend-mode:multiply!important;
+}
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__details,
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__details{
+ color:var(--pair-ink)!important;background:transparent!important;
+}
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__details small,
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__details small{
+ color:var(--pair-ink)!important;
+}
+.clogz-curated-grid--pastels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__arrow,
+.clogz-curated-grid--essentiels .clogz-curated-card[class*="clogz-pair-theme--sabots-clogz-"] .clogz-curated-card__arrow{
+ background:var(--pair-bg);color:var(--pair-ink);
+}
+/* Home collection cards: actual handle colors beat the position-based backgrounds. */
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]){
+ background:var(--pair-page)!important;border-color:var(--pair-page-edge)!important;color:var(--pair-ink)!important;
+}
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-image{
+ background:radial-gradient(ellipse at 48% 24%,var(--pair-glow),var(--pair-bg) 94%)!important;
+}
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-image img{
+ background:transparent!important;mix-blend-mode:multiply!important;
+}
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-bottom,
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-bottom span,
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-bottom strong{
+ color:var(--pair-ink)!important;background:transparent;
+}
+.clogz-editorial__cards .clogz-editorial__card[class*="clogz-pair-theme--sabots-clogz-"]:not([class*="spider-man"]) .clogz-editorial__card-arrow{
+ background:var(--pair-bg);color:var(--pair-ink);
+}
+@media(max-width:850px){
+ .clogz-pair-theme:not([class*="spider-man"]) .clogz-product__info{padding:19px;border-radius:21px}
+ .clogz-pair-theme:not([class*="spider-man"]) .clogz-product__gallery{border-radius:22px}
+}
+@media(prefers-reduced-motion:reduce){
+ .clogz-card--navigate .clogz-card__photo img,
+ .clogz-curated-card .clogz-curated-card__image img,
+ .clogz-editorial__cards .clogz-editorial__card-image img{transition:none!important}
+}
+
+/* CLOGZ Spider-Man blanc: clean white image crop, no dark top stripe */
+.clogz-curated-grid--spider .clogz-curated-card.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-curated-card__image{
+ background:#fff!important;isolation:isolate;overflow:hidden
+}
+.clogz-curated-grid--spider .clogz-curated-card.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-curated-card__image img{
+ display:block;width:100%;height:100%;object-fit:cover!important;object-position:center 56%;transform:scale(1.13)!important;transform-origin:center 56%;background:#fff!important;mix-blend-mode:normal!important;transition:transform .3s ease
+}
+.clogz-curated-grid--spider .clogz-curated-card.clogz-pair-theme--sabots-clogz-spider-man-blanc:hover .clogz-curated-card__image img{transform:scale(1.17)!important}
+@media(prefers-reduced-motion:reduce){.clogz-curated-grid--spider .clogz-curated-card.clogz-pair-theme--sabots-clogz-spider-man-blanc .clogz-curated-card__image img{transition:none!important}}

@@ -1,0 +1,14 @@
+{% comment %}CLOGZ: a Shopify cart attribute to identify the Dakar delivery neighborhood; the native checkout retains its required address fields.{% endcomment %}
+{% assign selected_zone = cart.attributes['Zone de livraison'] | default: '' %}
+<div class="clogz-zone-field" data-clogz-zone-wrapper>
+  <label for="ClogzZone-{{ id_suffix | default: 'cart' }}">📍 Zone de livraison à Dakar *</label>
+  <select id="ClogzZone-{{ id_suffix | default: 'cart' }}" data-clogz-zone name="attributes[Zone de livraison]" required>
+    <option value="" {% if selected_zone == blank %}selected{% endif %} disabled>Sélectionne ton quartier</option>
+    {% assign dakar_zones = 'Sacré-Cœur 1|Sacré-Cœur 2|Sacré-Cœur 3|Mermoz|Point E|Fann|Ouakam|Yoff|Ngor|Almadies|Liberté 1|Liberté 2|Liberté 3|Liberté 4|Liberté 5|Liberté 6|Grand Dakar|HLM|Fass|Médina|Plateau|Gueule Tapée|Parcelles Assainies|Grand Yoff|Patte d’Oie|Hann|Maristes|Sicap|Cambérène|Pikine|Guédiawaye|Autre zone de Dakar' | split: '|' %}
+    {% for dakar_zone in dakar_zones %}
+      <option value="{{ dakar_zone | escape }}" {% if selected_zone == dakar_zone %}selected{% endif %}>{{ dakar_zone | escape }}</option>
+    {% endfor %}
+  </select>
+  <p class="clogz-zone-help">La livraison offerte sous 24 h est réservée à Dakar. Ton quartier sera associé à la commande. Au paiement, vérifie l’adresse précise et le téléphone du destinataire. Le partage de position reste facultatif.</p>
+  <p class="clogz-zone-error" data-clogz-zone-error hidden role="alert"></p>
+</div>

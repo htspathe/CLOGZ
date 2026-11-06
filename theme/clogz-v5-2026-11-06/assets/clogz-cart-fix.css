@@ -1,0 +1,12 @@
+
+/* CLOGZ mobile cart reliability patch. Loaded only with the drawer. */
+#ClogzDrawer [hidden],#ClogzDrawer.is-empty #ClogzCheckoutLink{display:none!important}
+#ClogzDrawer .clogz-cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px;min-height:clamp(190px,28dvh,310px);padding:22px 14px;color:#211d1b}
+#ClogzDrawer .clogz-cart-empty strong{display:block;font-weight:850;font-size:clamp(19px,3vw,25px);letter-spacing:-.035em}
+#ClogzDrawer .clogz-cart-empty p{max-width:280px;color:#76685f;line-height:1.5;margin:0}
+#ClogzDrawer .clogz-cart-empty .clogz-pill{display:inline-flex;align-items:center;justify-content:center;max-width:290px;width:100%;min-height:47px;text-decoration:none}
+#ClogzDrawer.is-empty .clogz-drawer__total,#ClogzDrawer.is-empty .clogz-drawer__checkout-note,#ClogzDrawer.is-empty .clogz-drawer__shipping,#ClogzDrawer.is-empty .clogz-cod-checkout-notice,#ClogzDrawer.is-empty .clogz-drawer__delivery-terms{display:none!important}
+#ClogzDrawer.is-empty .clogz-drawer__bottom{max-height:42dvh;gap:9px}
+#ClogzDrawer.is-empty .clogz-drawer__buttons{display:grid;grid-template-columns:1fr}
+#ClogzDrawer.is-empty .clogz-drawer__buttons [data-continue-shopping]{order:1}
+@media(max-width:700px){#ClogzDrawer .clogz-cart-empty{min-height:clamp(145px,23dvh,260px);padding:18px 8px}#ClogzDrawer.is-empty .clogz-drawer__bottom{max-height:48dvh}}

@@ -1,0 +1,77 @@
+{{ 'clogz-cart-choice.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'clogz-cart-choice.js' | asset_url }}" defer></script>
+{% liquid
+  assign has_other_brand = false
+  for item in cart.items
+    if item.product.vendor != 'CLOGZ'
+      assign has_other_brand = true
+    endif
+  endfor
+%}
+<section class="clogz-page-space" data-clogz-page-cart><div class="clogz-container">
+<h1 class="clogz-page-title">TON PANIER.</h1>
+{% if cart.item_count == 0 %}
+  <p>Ton panier attend sa paire.</p>
+  <a class="clogz-pill clogz-pill--green" href="/collections/clogz-tous-les-sabots">Trouve ta paire</a>
+{% else %}
+  {% if has_other_brand %}<div class="clogz-cod-checkout-notice" role="alert">Ce panier contient des articles qui ne font pas partie de CLOGZ. Retire-les pour continuer ta commande CLOGZ.</div>{% endif %}
+  <form action="{{ routes.cart_url }}" method="post" data-clogz-cart-form><p data-clogz-live-cart-status class="clogz-cart-live-status" role="status" aria-live="polite"></p>
+  <div class="cz4-cart-quick-actions">
+    <button type="button" class="clogz-pill clogz-pill--green" data-clogz-quick-checkout>Je valide ma commande</button>
+  </div>
+  <table class="clogz-cart-table">
+    <thead><tr><th>Article</th><th>Prix</th><th>Qté</th><th>Total</th><th class="clogz-cart-remove-heading"><span class="clogz-sr-only">Actions</span></th></tr></thead>
+    <tbody>
+      {% for item in cart.items %}
+        <tr>
+          {% if item.product.vendor == 'CLOGZ' %}
+            {%- capture cz_item_name -%}{% render 'clogz-color-name', handle: item.product.handle, title: item.product.title %}{%- endcapture -%}
+            {%- capture cz_item_hook -%}{% render 'clogz-color-name', handle: item.product.handle, title: item.product.title, field: 'hook' %}{%- endcapture -%}
+            {%- if cz_item_hook != blank -%}{%- assign cz_item_title = cz_item_name | prepend: 'Sabots CLOGZ ' -%}{%- else -%}{%- assign cz_item_title = item.product.title -%}{%- endif -%}
+            <td><a href="{{ item.url }}">
+              {% if item.image %}{% if item.product.handle == 'sabots-clogz-gris' %}<img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-gris-ardoise-fonce-transparent-20261106.webp?v=1793934849" alt="{{ cz_item_title | escape }}" loading="lazy" width="110" height="110">{% elsif item.product.handle == 'sabots-clogz-bleu-ciel' %}<img src="https://cdn.shopify.com/s/files/1/0783/6398/3932/files/clogz-v5-bleu-cadrage-harmonise-20261106.png?v=1793929804" alt="{{ cz_item_title | escape }}" loading="lazy" width="110" height="110">{% else %}<img src="{{ item.image | image_url: width: 220 }}" alt="{{ cz_item_title | escape }}" loading="lazy" width="110" height="110">{% endif %}{% endif %}
+              <div>{{ cz_item_title | escape }}</div>
+              <small class="clogz-muted">{% unless item.variant.title == 'Default Title' %}{{ item.variant.title | escape }}{% endunless %}</small>
+            </a>{% if item.product.id == 15430136037436 or item.product.id == 15430136135740 %}
+              <div class="clogz-cart-pack-details">{% for property in item.properties %}{% assign property_name = property.first | slice: 0, 6 %}{% if property_name == 'Paire ' and property.last != blank %}<small>{{ property.first | escape }} : {{ property.last | escape }}</small>{% endif %}{% endfor %}</div>
+              <a class="clogz-pack__edit" href="/pages/packs?edit_key={{ item.key | url_encode }}">Modifier mon pack</a>
+              {% endif %}
+              {% render 'clogz-edit-panier', item: item %}</td>
+            <td>{% render 'clogz-price', amount: item.final_price %}</td>
+            <td><label class="clogz-sr-only" for="CartQuantity-{{ forloop.index }}">Quantité {{ cz_item_title | escape }}</label><div class="clogz-cart-qty-controls" data-cart-line="{{ forloop.index }}"><button type="button" data-clogz-qty-step="-1" aria-label="Diminuer la quantité de {{ cz_item_title | escape }}">−</button><input class="clogz-cart-qty" id="CartQuantity-{{ forloop.index }}" data-cart-line="{{ forloop.index }}" type="number" inputmode="numeric" min="0" step="1" name="updates[]" value="{{ item.quantity }}"><button type="button" data-clogz-qty-step="1" aria-label="Augmenter la quantité de {{ cz_item_title | escape }}">+</button></div></td>
+            <td>{% render 'clogz-price', amount: item.final_line_price %}</td><td class="clogz-cart-remove-cell"><button type="button" data-clogz-remove-line="{{ forloop.index }}" aria-label="Retirer {{ cz_item_title | escape }} du panier">Retirer</button></td>
+          {% else %}
+            <td>Article hors CLOGZ</td>
+            <td>—</td><td><input type="hidden" name="updates[]" value="{{ item.quantity }}">—</td><td>—</td><td class="clogz-cart-remove-cell"><button type="button" data-clogz-remove-line="{{ forloop.index }}" aria-label="Retirer l'article hors CLOGZ">Retirer</button></td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="clogz-cart-total">
+    <strong>Sous-total : {% render 'clogz-price', amount: cart.total_price %}</strong>
+    <p class="clogz-cod-checkout-notice cz4-cart-trust">Livraison gratuite à Dakar · Paiement à la livraison (cash, Wave, OM) · Pins offerts</p>
+  </div>
+  {% render 'clogz-order-details', context: 'cart' %}
+  {% render 'clogz-delivery-gps', context: 'cart' %}
+  <details class="cz4-cart-accordion">
+    <summary>Comment se passe la livraison ?</summary>
+    <p>On te confirme ta commande sur WhatsApp, puis on te livre gratuitement partout à Dakar. Tu paies à la réception : cash, Wave ou Orange Money. L'adresse et le téléphone du destinataire sont à préciser au paiement. Hors Dakar, écris-nous avant de valider.</p>
+    <a href="/pages/politique-livraison-clogz">Voir les conditions de livraison</a>
+  </details>
+  <div class="clogz-cart-actions">
+    <a class="clogz-pill clogz-pill--line" href="/collections/clogz-tous-les-sabots">Continuer mes achats</a>
+    {% unless has_other_brand %}<button id="ClogzNativeCheckoutButton" class="clogz-pill clogz-pill--green" type="button">Je valide ma commande</button>{% endunless %}
+  </div>
+  </form>
+{% endif %}
+
+  {% render 'clogz-suivi-panier' %}
+  <aside class="clogz-cart-support" aria-label="Besoin d’assistance CLOGZ">
+  <div class="clogz-cart-support__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+  <div><h2>Une question sur ta commande ?</h2><p>Pointure, quartier de livraison, paiement à la réception : on te répond directement.</p></div>
+  <a href="/pages/contact-clogz" class="clogz-pill clogz-pill--line">Écris-nous</a>
+</aside>
+</div></section>
+{% schema %}{"name":"Page panier CLOGZ","settings":[]}{% endschema %}
